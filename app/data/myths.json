@@ -1,0 +1,94 @@
+{
+  "myths": [
+    {
+      "id": "m001",
+      "statement": "Pessoas com tipo sanguíneo O são 'doadores universais' e podem doar para qualquer pessoa sem risco.",
+      "answer": "partial_myth",
+      "answerLabel": "MITO PARCIAL",
+      "explanation": "É verdade que hemácias do tipo O não possuem antígenos A ou B, tornando-as compatíveis com qualquer receptor para transfusão de hemácias concentradas. Porém, o plasma do tipo O contém anticorpos Anti-A e Anti-B, que podem causar reações se o sangue total for transfundido. Por isso, em emergência, usa-se apenas hemácias concentradas de O-, não sangue total.",
+      "references": ["Manual de Medicina Transfusional, Ministério da Saúde, 2016"],
+      "icon": "🩸"
+    },
+    {
+      "id": "m002",
+      "statement": "O tipo sanguíneo determina a personalidade de uma pessoa (tipo A = organizado, tipo B = criativo, etc.).",
+      "answer": "myth",
+      "answerLabel": "MITO",
+      "explanation": "Não existe evidência científica robusta que correlacione tipo sanguíneo com traços de personalidade. A 'teoria da personalidade por tipo sanguíneo' surgiu no Japão na década de 1930 como pseudociência e foi amplamente desacreditada por estudos controlados.",
+      "references": ["Wikipedia: Blood type personality theory", "Dean, 2012 — Critique of blood type personality theory"],
+      "icon": "🧠"
+    },
+    {
+      "id": "m003",
+      "statement": "Sangue Rh negativo é raro e perigoso para quem o possui.",
+      "answer": "partial_myth",
+      "answerLabel": "MITO PARCIAL",
+      "explanation": "É verdade que Rh- é relativamente raro (~15% da população brasileira), mas não é 'perigoso'. A única complicação importante é em gestações de mãe Rh- com bebê Rh+, que pode causar DHRN. Com imunoglobulina anti-D (Rhogam), essa condição é perfeitamente prevenível.",
+      "references": ["Dados populacionais brasileiros — IBGE/Ministério da Saúde"],
+      "icon": "🩺"
+    },
+    {
+      "id": "m004",
+      "statement": "Os filhos sempre herdam o tipo sanguíneo do pai.",
+      "answer": "partial_myth",
+      "answerLabel": "MITO PARCIAL",
+      "explanation": "Os filhos herdam UM alelo de cada pai. O tipo sanguíneo depende da combinação dos alelos materno e paterno. Um pai tipo A (IAi) e mãe tipo B (IBi) podem ter filho tipo AB, A, B ou O, independentemente do tipo de cada um.",
+      "references": ["Genética mendeliana — Sistema ABO"],
+      "icon": "👨‍👩‍👧‍👦"
+    },
+    {
+      "id": "m005",
+      "statement": "Tipo AB pode receber sangue de qualquer pessoa sem problemas.",
+      "answer": "partial_myth",
+      "answerLabel": "MITO PARCIAL",
+      "explanation": "Verdadeiro apenas para hemácias concentradas. Tipo AB+ é 'receptor universal' de hemácias porque não possui anticorpos anti-A nem anti-B. Porém, para transfusão de plasma, a regra se inverte: tipo AB só pode RECEBER plasma de tipo AB, pois possui antígenos A e B que reagiriam com plasma de outros tipos.",
+      "references": ["Hematologia — Compatibilidade transfusional"],
+      "icon": "🅰️🅱️"
+    },
+    {
+      "id": "m006",
+      "statement": "A dieta do tipo sanguíneo (comer de acordo com seu tipo) melhora a saúde e ajuda a emagrecer.",
+      "answer": "myth",
+      "answerLabel": "MITO",
+      "explanation": "Nenhum estudo científico randomizado controlado demonstrou benefícios da dieta do tipo sanguíneo. Uma revisão sistemática de 2013 (Wang et al., PLoS ONE) concluiu que não há evidência para apoiar essa teoria. A dieta balanceada e individualizada por necessidades nutricionais é o que funciona.",
+      "references": ["Wang et al., 2013 — PLoS ONE (meta-análise)"],
+      "icon": "🥗"
+    },
+    {
+      "id": "m007",
+      "statement": "Mosquitos preferem picar pessoas com tipo sanguíneo O.",
+      "answer": "partial_fact",
+      "answerLabel": "FATO PARCIAL",
+      "explanation": "Alguns estudos (como o de Shirai et al., 2004, Journal of Medical Entomology) sugerem que mosquitos do gênero Aedes e Anopheles são mais atraídos por indivíduos tipo O. Porém, outros fatores (CO2 exalado, temperatura corporal, microbioma da pele) também influenciam fortemente. Não é uma regra absoluta.",
+      "references": ["Shirai et al., 2004 — Journal of Medical Entomology"],
+      "icon": "🦟"
+    },
+    {
+      "id": "m008",
+      "statement": "O tipo sanguíneo de uma pessoa pode mudar ao longo da vida.",
+      "answer": "myth",
+      "answerLabel": "MITO",
+      "explanation": "O tipo sanguíneo ABO é geneticamente determinado e permanece inalterado ao longo da vida, exceto em casos extremamente raros de transplante de medula óssea (onde o tipo muda para o do doador) ou condições hematológicas muito raras (como síndrome de Bombay).",
+      "references": ["Genética básica — Determinação do tipo ABO"],
+      "icon": "🔄"
+    },
+    {
+      "id": "m009",
+      "statement": "Doar sangue enfraquece a pessoa e demora meses para se recuperar.",
+      "answer": "myth",
+      "answerLabel": "MITO",
+      "explanation": "O corpo humano repõe o volume de plasma em 24-48 horas e as hemácias em 4-6 semanas. A doação de sangue é segura para adultos saudáveis e não causa enfraquecimento persistente. Recomenda-se apenas evitar esforço físico intenso no dia da doação.",
+      "references": ["Hemocentros — Orientações pós-doação"],
+      "icon": "💪"
+    },
+    {
+      "id": "m010",
+      "statement": "Pessoas com tipo sanguíneo A têm maior risco de desenvolver COVID-19 grave.",
+      "answer": "partial_myth",
+      "answerLabel": "MITO PARCIAL",
+      "explanation": "Alguns estudos iniciais (Zhao et al., 2020) sugeriram associação entre tipo A e maior risco, e tipo O com menor risco. Porém, meta-análises subsequentes mostraram que o efeito é pequeno, inconsistente entre populações e provavelmente confundido por outros fatores genéticos. O tipo sanguíneo NÃO é um preditor confiável de risco de COVID-19.",
+      "references": ["Zhao et al., 2020 — NEJM (estudo inicial)", "Meta-análise 2021 — Inconclusivo"],
+      "icon": "🦠"
+    }
+  ]
+}

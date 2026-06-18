@@ -1,0 +1,124 @@
+{
+  "entries": [
+    {
+      "id": "enc001",
+      "title": "Sistema ABO",
+      "category": "fundamentos",
+      "shortDescription": "O sistema de classificação sanguínea mais importante na medicina transfusional.",
+      "content": "O sistema ABO foi descoberto por Karl Landsteiner em 1900-1901, quando observou que o soro de alguns indivíduos aglutinava hemácias de outros. Ele identificou três grupos (A, B, O) e, posteriormente, seu aluno Decastello descobriu o quarto grupo (AB). Landsteiner recebeu o Prêmio Nobel de Fisiologia ou Medicina em 1930 por essa descoberta. O sistema ABO é determinado por três alelos (IA, IB, i) localizados no cromossomo 9. Os antígenos A e B são glicoproteínas e glicolipídios na superfície dos eritrócitos, enquanto o tipo O não expressa nenhum desses antígenos.",
+      "keyTerms": ["antígeno", "Landsteiner", "aglutinação", "alelos"],
+      "relatedEntries": ["enc002", "enc003", "enc005"],
+      "icon": "🔬"
+    },
+    {
+      "id": "enc002",
+      "title": "Antígenos",
+      "category": "fundamentos",
+      "shortDescription": "Moléculas na superfície das hemácias que determinam o tipo sanguíneo.",
+      "content": "Antígenos são moléculas capazes de induzir resposta imune. No sistema ABO, os antígenos A e B são oligossacarídeos ligados a proteínas ou lipídios da membrana eritrocitária. O antígeno A possui N-acetilgalactosamina como açúcar terminal, enquanto o antígeno B possui galactose. O tipo O possui apenas a cadeia precursora H, sem açúcar terminal adicional. O antígeno D (Rh) é uma proteína transmembrana de 417 aminoácidos, diferente na estrutura dos antígenos ABO.",
+      "keyTerms": ["glicoproteína", "oligossacarídeo", "membrana eritrocitária", "antígeno D"],
+      "relatedEntries": ["enc001", "enc003", "enc006"],
+      "icon": "🧬"
+    },
+    {
+      "id": "enc003",
+      "title": "Anticorpos",
+      "category": "fundamentos",
+      "shortDescription": "Proteínas do sistema imune que reconhecem e neutralizam antígenos estranhos.",
+      "content": "No sistema ABO, os anticorpos anti-A e anti-B são naturalmente presentes no plasma de indivíduos que não possuem o antígeno correspondente. Eles são predominantemente IgM (imunoglobulina M), de grande tamanho, que não atravessam a placenta. O tipo O possui anti-A e anti-B; o tipo A possui anti-B; o tipo B possui anti-A; o tipo AB não possui nenhum. Já o anti-D (anti-Rh) não é natural — só aparece após exposição ao antígeno D, como em gestação ou transfusão, e é do tipo IgG, que atravessa a placenta.",
+      "keyTerms": ["IgM", "IgG", "anti-A", "anti-B", "anti-D"],
+      "relatedEntries": ["enc002", "enc004", "enc008"],
+      "icon": "🛡️"
+    },
+    {
+      "id": "enc004",
+      "title": "Aglutinação",
+      "category": "fundamentos",
+      "shortDescription": "Reação visual entre antígenos e anticorpos que forma grumos de hemácias.",
+      "content": "A aglutinação ocorre quando anticorpos se ligam a antígenos em superfícies de hemácias adjacentes, formando pontes que unem as células em clusters visíveis. Cada molécula de IgM pode ligar-se a 10 antígenos, sendo extremamente eficaz na aglutinação. In vitro, a aglutinação é o princípio do teste de tipagem sanguínea: hemácias com antígeno A aglutinam na presença de anti-A; hemácias sem o antígeno permanecem dispersas. A aglutinação in vivo (transfusão incompatível) ativa o sistema do complemento, causando hemólise intravascular, liberação de hemoglobina, obstrução tubular renal e choque hemorrágico.",
+      "keyTerms": ["IgM", "complemento", "hemólise", "teste de tipagem"],
+      "relatedEntries": ["enc002", "enc003", "enc007"],
+      "icon": "🔴"
+    },
+    {
+      "id": "enc005",
+      "title": "Genética Mendeliana do ABO",
+      "category": "genetica",
+      "shortDescription": "Como os alelos IA, IB e i determinam o tipo sanguíneo por herança mendeliana.",
+      "content": "O lócus ABO está no braço longo do cromossomo 9 (9q34). Três alelos principais determinam o fenótipo: IA (codifica transferase A, que adiciona N-acetilgalactosamina), IB (codifica transferase B, que adiciona galactose) e i (alelo recessivo, não codifica enzima funcional). IA e IB são codominantes entre si; ambos dominam sobre i. Assim, existem 6 genótipos possíveis: IAIA, IAi, IBIB, IBi, IAIB, ii — que resultam em 4 fenótipos: A, B, AB e O. A herança segue as leis de Mendel: cada pai transmite um alelo aleatório para cada filho.",
+      "keyTerms": ["alelos", "codominância", "recessivo", "cromossomo 9", "fenótipo"],
+      "relatedEntries": ["enc001", "enc002"],
+      "icon": "🧬"
+    },
+    {
+      "id": "enc006",
+      "title": "Fator Rh (Antígeno D)",
+      "category": "fundamentos",
+      "shortDescription": "Segundo sistema de tipagem sanguínea mais importante, determinado pela presença do antígeno D.",
+      "content": "O sistema Rh foi descoberto em 1937 por Landsteiner e Wiener em macacos Rhesus. O antígeno D é uma proteína transmembrana (polipeptídeo de 417 aa) codificada pelo gene RHD. Indivíduos Rh+ possuem pelo menos um alelo D; Rh- possuem dois alelos d (deleção ou mutação não funcional). A frequência de Rh- varia etnicamente: ~15% em caucasianos, ~5-8% em afro-descendentes, <1% em asiáticos. O Rh é crucial em transfusões (sensibilização) e gestações (DHRN). A imunoglobulina anti-D (Rhogam) previne a sensibilização em mães Rh-.",
+      "keyTerms": ["RHD", "Rhogam", "sensibilização", "transmembrana"],
+      "relatedEntries": ["enc002", "enc008"],
+      "icon": "🅾️"
+    },
+    {
+      "id": "enc007",
+      "title": "Transfusão Sanguínea",
+      "category": "clinica",
+      "shortDescription": "Procedimento médico de transferência de sangue ou componentes entre doador e receptor.",
+      "content": "A primeira transfusão documentada foi realizada por Jean-Baptiste Denys em 1667 (sangue de cordeiro, com resultado fatal). James Blundell, em 1818, foi o primeiro a transfundir sangue humano com sucesso. A tipagem ABO (1901) e a descoberta do Rh (1937) revolucionaram a segurança transfusional. Hoje, o sangue é fracionado em componentes: hemácias concentradas, plasma fresco congelado, plaquetas e crioprecipitado. A compatibilidade ABO/Rh é obrigatória para hemácias. Além disso, são realizados testes cruzados (crossmatching) e triagem para anticorpos irregulares.",
+      "keyTerms": ["hemácias concentradas", "crossmatching", "componentes sanguíneos", "tipagem cruzada"],
+      "relatedEntries": ["enc004", "enc006", "enc008"],
+      "icon": "💉"
+    },
+    {
+      "id": "enc008",
+      "title": "Doença Hemolítica do Recém-Nascido (DHRN)",
+      "category": "clinica",
+      "shortDescription": "Condição em que anticorpos maternos destroem hemácias fetais, causando anemia grave.",
+      "content": "A DHRN ocorre quando uma mãe sensibilizada produz anticorpos IgG que atravessam a placenta e atacam hemácias fetais. A forma mais comum é por incompatibilidade Rh: mãe Rh- + bebê Rh+. A primeira gestação geralmente não é afetada (a sensibilização ocorre no parto). Em gestações subsequentes, o bebê desenvolve anemia hemolítica, icterícia, hepatoesplenomegalia e, em casos graves, hidropsia fetal (edema generalizado). A prevenção é feita com imunoglobulina anti-D (Rhogam) aos 28 semanas e no pós-parto (se o bebê for Rh+). O tratamento inclui fototerapia, transfusão intrauterina e, em casos graves, exchange transfusion.",
+      "keyTerms": ["sensibilização", "imunoglobulina anti-D", "icterícia", "anemia hemolítica"],
+      "relatedEntries": ["enc003", "enc006", "enc007"],
+      "icon": "👶"
+    },
+    {
+      "id": "enc009",
+      "title": "Subgrupos de A (A1 e A2)",
+      "category": "avancado",
+      "shortDescription": "Variações do antígeno A que afetam a expressão e a reatividade sorológica.",
+      "content": "O grupo A possui dois subgrupos principais: A1 (~80% dos indivíduos tipo A) e A2 (~20%). A1 expressa mais antígenos A na superfície eritrocitária (~800.000-1.200.000 sítios/célula) do que A2 (~250.000-350.000). O antígeno A1 reage fortemente com anti-A, enquanto A2 pode reação mais fraca. Indivíduos A2 podem produzir anti-A1, um anticorpo que reage com hemácias A1 mas não com A2. Em tipagem de rotina, A1 e A2 não são diferenciados, mas em transfusões de grande volume ou transplante de medula, essa distinção pode ser relevante. O gene A1 é o alelo padrão; A2 resulta de uma mutação pontual que reduz a atividade da transferase A.",
+      "keyTerms": ["anti-A1", "transferase A", "subgrupo", "expressão antigênica"],
+      "relatedEntries": ["enc001", "enc002"],
+      "icon": "🔍"
+    },
+    {
+      "id": "enc010",
+      "title": "D Fraco (Weak D)",
+      "category": "avancado",
+      "shortDescription": "Variante do antígeno D com expressão reduzida, de importância clínica em tipagem.",
+      "content": "O fenótipo 'D fraco' (weak D) ocorre quando o antígeno D está presente na membrana eritrocitária em quantidade reduzida (~30-10.000 sítios/célula, vs. ~10.000-30.000 em D normal). Indivíduos D fraco podem ser classificados erroneamente como Rh- em testes de tipagem indireta (soro anti-D policlonais), mas são identificados como Rh+ em testes diretos (monoclonais) ou técnicas de antiglobulina (Coombs). A importância clínica: indivíduos D fraco NÃO produzem anti-D quando expostos a sangue D positivo. Portanto, não necessitam Rhogam em gestação e podem receber sangue Rh+ sem risco de sensibilização. No entanto, como doadores, seu sangue deve ser classificado como Rh+ para não sensibilizar receptores Rh-.",
+      "keyTerms": ["expressão reduzida", "tipagem indireta", "antiglobulina", "Coombs"],
+      "relatedEntries": ["enc002", "enc006"],
+      "icon": "🧪"
+    },
+    {
+      "id": "enc011",
+      "title": "Doação de Sangue",
+      "category": "saude_publica",
+      "shortDescription": "Processo de coleta de sangue voluntário para uso em transfusões e tratamentos.",
+      "content": "No Brasil, a doação de sangue é regulada pela RDC 153/2004 da Anvisa. Requisitos básicos: idade 16-69 anos (16-17 com consentimento), peso >50kg, boas condições de saúde, jejum de 2-4h (evitar alimentos gordurosos). O intervalo mínimo é de 60 dias para homens e 90 dias para mulheres (até 4 doações/ano para homens, 3 para mulheres). O volume coletado é ~450mL de sangue total. Após a doação, o plasma é reposto em 24-48h; as hemácias, em 4-6 semanas. O sangue passa por triagem sorológica para HIV, hepatites B e C, sífilis, Chagas e HTLV. O Brasil tem ~1,8% de doadores voluntários regularmente (meta OMS: 3-5%).",
+      "keyTerms": ["RDC 153/2004", "triagem sorológica", "doador voluntário", "hemocomponentes"],
+      "relatedEntries": ["enc007", "enc012"],
+      "icon": "❤️"
+    },
+    {
+      "id": "enc012",
+      "title": "Hemocentros no Brasil",
+      "category": "saude_publica",
+      "shortDescription": "Rede de serviços de coleta, processamento e distribuição de sangue no SUS.",
+      "content": "Os hemocentros são unidades especializadas que coletam, processam, testam, armazenam e distribuem sangue e hemocomponentes. No Brasil, a rede é coordenada pelo Ministério da Saúde e regulamentada por legislações específicas (Lei 10.205/2001, RDC 153/2004). O Hemominas (MG), Hemope (PE), Hemocentro de Campinas (SP) e Fundação Pró-Sangue (SP) são referências nacionais. O sistema utiliza o sistema InVesalius e SIGTAP para gestão. O sangue é armazenado em diferentes temperaturas: hemácias a 2-6°C (vida útil 35-42 dias com aditivos), plasma a -18°C (1 ano), plaquetas a 20-24°C com agitação (5 dias). O Brasil possui ~3.000 bancos de sangue, mas a distribuição é desigual, com concentração na região Sudeste.",
+      "keyTerms": ["SUS", "Hemominas", "hemocomponentes", "InVesalius", "armazenamento"],
+      "relatedEntries": ["enc007", "enc011"],
+      "icon": "🏥"
+    }
+  ]
+}

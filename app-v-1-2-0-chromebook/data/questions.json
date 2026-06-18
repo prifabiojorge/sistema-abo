@@ -1,0 +1,454 @@
+{
+  "questions": [
+    {
+      "id": "q001",
+      "category": "genetics",
+      "difficulty": "easy",
+      "type": "multiple_choice",
+      "question": "Quais são os alelos possíveis no sistema ABO?",
+      "options": [
+        { "id": "a", "text": "A, B e O" },
+        { "id": "b", "text": "IA, IB e i" },
+        { "id": "c", "text": "Rh+ e Rh-" },
+        { "id": "d", "text": "X e Y" }
+      ],
+      "correctAnswer": "b",
+      "explanation": "O sistema ABO é determinado por três alelos: IA (produz antígeno A), IB (produz antígeno B) e i (não produz antígeno). IA e IB são codominantes entre si e ambos dominam sobre i.",
+      "reference": "Genética mendeliana — Landsteiner, 1901"
+    },
+    {
+      "id": "q002",
+      "category": "genetics",
+      "difficulty": "easy",
+      "type": "multiple_choice",
+      "question": "Se ambos os pais são do tipo A, quais tipos sanguíneos os filhos podem ter?",
+      "options": [
+        { "id": "a", "text": "Apenas tipo A" },
+        { "id": "b", "text": "A ou B" },
+        { "id": "c", "text": "A ou O" },
+        { "id": "d", "text": "A, B, AB ou O" }
+      ],
+      "correctAnswer": "c",
+      "explanation": "Pais tipo A podem ter genótipos IAIA ou IAi. Se ambos forem IAi (heterozigotos), há 25% de chance de filho tipo O (ii). Nunca terão filhos B ou AB pois não possuem o alelo IB.",
+      "reference": "Genética mendeliana"
+    },
+    {
+      "id": "q003",
+      "category": "genetics",
+      "difficulty": "easy",
+      "type": "true_false",
+      "question": "O alelo IA é dominante sobre o alelo i.",
+      "correctAnswer": true,
+      "explanation": "Verdadeiro. IA e IB são codominantes entre si, mas ambos são dominantes sobre i. Um indivíduo com genótipo IAi expressa o fenótipo tipo A.",
+      "reference": "Genética mendeliana"
+    },
+    {
+      "id": "q004",
+      "category": "genetics",
+      "difficulty": "medium",
+      "type": "multiple_choice",
+      "question": "Um casal com filho tipo AB pode ter quais genótipos?",
+      "options": [
+        { "id": "a", "text": "Ambos precisam ser AB" },
+        { "id": "b", "text": "Um A e um B, necessariamente" },
+        { "id": "c", "text": "Um AB e qualquer outro tipo" },
+        { "id": "d", "text": "Qualquer combinação que inclua IA e IB" }
+      ],
+      "correctAnswer": "d",
+      "explanation": "Para ter um filho AB (IAIB), cada pai deve contribuir com um alelo: um com IA e outro com IB. Poderia ser, por exemplo, pai A (IAi) e mãe B (IBi), ou pai AB (IAIB) e mãe O (ii), entre outras combinações.",
+      "reference": "Genética mendeliana"
+    },
+    {
+      "id": "q005",
+      "category": "genetics",
+      "difficulty": "medium",
+      "type": "multiple_choice",
+      "question": "Qual a probabilidade de um casal AB × O ter um filho tipo A?",
+      "options": [
+        { "id": "a", "text": "0%" },
+        { "id": "b", "text": "25%" },
+        { "id": "c", "text": "50%" },
+        { "id": "d", "text": "100%" }
+      ],
+      "correctAnswer": "c",
+      "explanation": "Pai AB (IAIB) pode passar IA ou IB. Mãe O (ii) sempre passa i. Combinações possíveis: IAi (tipo A) ou IBi (tipo B). Probabilidade de tipo A = 50%.",
+      "reference": "Genética mendeliana"
+    },
+    {
+      "id": "q006",
+      "category": "genetics",
+      "difficulty": "medium",
+      "type": "multiple_choice",
+      "question": "Qual genótipo produz o fenótipo tipo O?",
+      "options": [
+        { "id": "a", "text": "IAIA" },
+        { "id": "b", "text": "IAi" },
+        { "id": "c", "text": "IBi" },
+        { "id": "d", "text": "ii" }
+      ],
+      "correctAnswer": "d",
+      "explanation": "O genótipo ii é o único que não produz antígenos A nem B na superfície das hemácias, resultando no fenótipo tipo O.",
+      "reference": "Genética mendeliana"
+    },
+    {
+      "id": "q007",
+      "category": "genetics",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "question": "No sistema ABO, quantos fenótipos e genótipos distintos existem?",
+      "options": [
+        { "id": "a", "text": "4 fenótipos e 4 genótipos" },
+        { "id": "b", "text": "4 fenótipos e 6 genótipos" },
+        { "id": "c", "text": "6 fenótipos e 4 genótipos" },
+        { "id": "d", "text": "3 fenótipos e 6 genótipos" }
+      ],
+      "correctAnswer": "b",
+      "explanation": "Fenótipos: A, B, AB, O (4). Genótipos: IAIA, IAi, IBIB, IBi, IAIB, ii (6).",
+      "reference": "Genética mendeliana"
+    },
+    {
+      "id": "q008",
+      "category": "genetics",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "question": "Um indivíduo com genótipo IAIB e pai Rh- (rr) e mãe Rh+ (Rr). Qual a probabilidade de ser Rh-?",
+      "options": [
+        { "id": "a", "text": "0%" },
+        { "id": "b", "text": "25%" },
+        { "id": "c", "text": "50%" },
+        { "id": "d", "text": "75%" }
+      ],
+      "correctAnswer": "c",
+      "explanation": "O fator Rh é independente do ABO. Pai rr passa r. Mãe Rr passa R ou r (50% cada). Probabilidade de rr (Rh-) = 50%.",
+      "reference": "Genética mendeliana — Herança independente"
+    },
+    {
+      "id": "q009",
+      "category": "antigens",
+      "difficulty": "easy",
+      "type": "multiple_choice",
+      "question": "Onde os antígenos ABO estão localizados?",
+      "options": [
+        { "id": "a", "text": "No núcleo da hemácia" },
+        { "id": "b", "text": "Na membrana plasmática da hemácia" },
+        { "id": "c", "text": "No plasma sanguíneo" },
+        { "id": "d", "text": "Nas mitocôndrias" }
+      ],
+      "correctAnswer": "b",
+      "explanation": "Os antígenos ABO são glicoproteínas e glicolipídios inseridos na membrana plasmática das hemácias (eritrócitos).",
+      "reference": "Imunohematologia básica"
+    },
+    {
+      "id": "q010",
+      "category": "antigens",
+      "difficulty": "easy",
+      "type": "multiple_choice",
+      "question": "Qual anticorpo está naturalmente presente no plasma de indivíduos tipo A?",
+      "options": [
+        { "id": "a", "text": "Anti-A" },
+        { "id": "b", "text": "Anti-B" },
+        { "id": "c", "text": "Anti-D" },
+        { "id": "d", "text": "Nenhum" }
+      ],
+      "correctAnswer": "b",
+      "explanation": "O organismo produz anticorpos contra os antígenos que NÃO possui. Tipo A tem antígeno A, então produz Anti-B.",
+      "reference": "Imunohematologia básica"
+    },
+    {
+      "id": "q011",
+      "category": "antigens",
+      "difficulty": "medium",
+      "type": "multiple_choice",
+      "question": "Qual tipo sanguíneo NÃO possui anticorpos anti-A nem anti-B no plasma?",
+      "options": [
+        { "id": "a", "text": "Tipo A" },
+        { "id": "b", "text": "Tipo B" },
+        { "id": "c", "text": "Tipo AB" },
+        { "id": "d", "text": "Tipo O" }
+      ],
+      "correctAnswer": "c",
+      "explanation": "Tipo AB possui ambos os antígenos (A e B), portanto não produz anticorpos contra nenhum deles. É chamado de 'receptor universal' de hemácias.",
+      "reference": "Imunohematologia básica"
+    },
+    {
+      "id": "q012",
+      "category": "antigens",
+      "difficulty": "medium",
+      "type": "multiple_choice",
+      "question": "O antígeno D (fator Rh) é um antígeno de:",
+      "options": [
+        { "id": "a", "text": "Proteína transmembrana" },
+        { "id": "b", "text": "Glicoproteína de membrana" },
+        { "id": "c", "text": "Carboidrato livre" },
+        { "id": "d", "text": "Lipídio nuclear" }
+      ],
+      "correctAnswer": "a",
+      "explanation": "O antígeno D é uma proteína transmembrana (polipeptídio) presente na membrana dos eritrócitos, diferente dos antígenos ABO que são glicoproteínas/glicolipídios.",
+      "reference": "Imunohematologia — Sistema Rh"
+    },
+    {
+      "id": "q013",
+      "category": "antigens",
+      "difficulty": "hard",
+      "type": "true_false",
+      "question": "Indivíduos tipo O possuem anticorpos anti-A e anti-B do tipo IgG, que atravessam a placenta.",
+      "correctAnswer": false,
+      "explanation": "Falso. Os anticorpos naturais anti-A e anti-B são predominantemente IgM (não atravessam a placenta). Após sensibilização (ex: transfusão ou gravidez), podem aparecer IgG.",
+      "reference": "Imunohematologia — Imunoglobulinas"
+    },
+    {
+      "id": "q014",
+      "category": "antigens",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "question": "O que acontece em uma reação de aglutinação in vitro?",
+      "options": [
+        { "id": "a", "text": "As hemácias se dissolvem (hemólise)" },
+        { "id": "b", "text": "As hemácias se agrupam em clusters visíveis" },
+        { "id": "c", "text": "O plasma se coagula" },
+        { "id": "d", "text": "Os anticorpos são destruídos" }
+      ],
+      "correctAnswer": "b",
+      "explanation": "A aglutinação é o agrupamento visível de hemácias mediado por anticorpos que se ligam a antígenos em hemácias adjacentes, formando clusters (grumos).",
+      "reference": "Imunohematologia — Reação antígeno-anticorpo"
+    },
+    {
+      "id": "q015",
+      "category": "transfusion",
+      "difficulty": "easy",
+      "type": "true_false",
+      "question": "Uma pessoa do tipo O negativo pode doar hemácias para qualquer pessoa.",
+      "correctAnswer": true,
+      "explanation": "Verdadeiro para hemácias concentradas: tipo O- não possui antígenos A, B nem D na superfície das hemácias, então não causa reação transfusional. Porém, o plasma de tipo O contém Anti-A e Anti-B, então a doação de sangue total deve ser feita com cautela.",
+      "reference": "Medicina transfusional"
+    },
+    {
+      "id": "q016",
+      "category": "transfusion",
+      "difficulty": "easy",
+      "type": "multiple_choice",
+      "question": "Quem pode receber hemácias de um doador tipo A+?",
+      "options": [
+        { "id": "a", "text": "Qualquer pessoa" },
+        { "id": "b", "text": "Apenas A+ e AB+" },
+        { "id": "c", "text": "A+, A-, AB+ e AB-" },
+        { "id": "d", "text": "Apenas A+" }
+      ],
+      "correctAnswer": "b",
+      "explanation": "Tipo A+ possui antígenos A e D. Quem pode receber: A+ (tem A e D), AB+ (tem A, B e D). Rh+ pode doar para Rh+, mas não para Rh-.",
+      "reference": "Medicina transfusional — Compatibilidade ABO/Rh"
+    },
+    {
+      "id": "q017",
+      "category": "transfusion",
+      "difficulty": "easy",
+      "type": "multiple_choice",
+      "question": "O tipo AB+ é chamado de 'receptor universal' porque:",
+      "options": [
+        { "id": "a", "text": "Pode doar para todos" },
+        { "id": "b", "text": "Não possui anticorpos anti-A nem anti-B no plasma" },
+        { "id": "c", "text": "Possui sangue mais puro" },
+        { "id": "d", "text": "Tem mais hemácias que os outros tipos" }
+      ],
+      "correctAnswer": "b",
+      "explanation": "Tipo AB+ possui antígenos A, B e D. Como possui todos os antígenos, não produz anticorpos contra nenhum deles, podendo receber hemácias de qualquer tipo ABO e Rh.",
+      "reference": "Medicina transfusional"
+    },
+    {
+      "id": "q018",
+      "category": "transfusion",
+      "difficulty": "medium",
+      "type": "multiple_choice",
+      "question": "Um paciente tipo B- precisa de hemácias. Quais tipos são compatíveis?",
+      "options": [
+        { "id": "a", "text": "B+, B-, O+, O-" },
+        { "id": "b", "text": "B- e O- apenas" },
+        { "id": "c", "text": "A+, A-, B+, B-" },
+        { "id": "d", "text": "Todos exceto AB" }
+      ],
+      "correctAnswer": "b",
+      "explanation": "B- não possui antígenos A nem D. Pode receber de: B- (não tem A, não tem D), O- (não tem A, não tem B, não tem D). Rh- só pode receber de Rh-.",
+      "reference": "Medicina transfusional"
+    },
+    {
+      "id": "q019",
+      "category": "transfusion",
+      "difficulty": "medium",
+      "type": "multiple_choice",
+      "question": "Por que a compatibilidade de plasma é o oposto da compatibilidade de hemácias?",
+      "options": [
+        { "id": "a", "text": "Plasma não contém anticorpos" },
+        { "id": "b", "text": "O plasma contém anticorpos contra os antígenos que o indivíduo não possui" },
+        { "id": "c", "text": "Plasma é filtrado antes da transfusão" },
+        { "id": "d", "text": "É um erro histórico da medicina" }
+      ],
+      "correctAnswer": "b",
+      "explanation": "O plasma contém anticorpos contra antígenos ausentes. Tipo O tem Anti-A e Anti-B no plasma, então só pode RECEBER plasma de tipo O. Tipo AB não tem anticorpos, então pode receber plasma de qualquer tipo.",
+      "reference": "Medicina transfusional — Compatibilidade de plasma"
+    },
+    {
+      "id": "q020",
+      "category": "transfusion",
+      "difficulty": "medium",
+      "type": "clinical_scenario",
+      "question": "EMERGÊNCIA: Paciente tipo A+ precisa de hemácias com urgência. No estoque há: A+, O+, O-. Qual a melhor escolha?",
+      "options": [
+        { "id": "a", "text": "A+ (tipo idêntico)" },
+        { "id": "b", "text": "O+ (doador universal de hemácias)" },
+        { "id": "c", "text": "O- (doador universal absoluto)" },
+        { "id": "d", "text": "Qualquer um, pois são todos compatíveis" }
+      ],
+      "correctAnswer": "a",
+      "explanation": "A+ é a escolha ideal: compatível e preserva estoque de O- para emergências onde o tipo não é conhecido. O+ e O- também são compatíveis com A+, mas O- deve ser reservado para situações de tipo desconhecido ou receptor Rh-.",
+      "reference": "Medicina transfusional — Protocolos de emergência"
+    },
+    {
+      "id": "q021",
+      "category": "transfusion",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "question": "O que caracteriza uma reação transfusional aguda por incompatibilidade ABO?",
+      "options": [
+        { "id": "a", "text": "Febre leve e coceira" },
+        { "id": "b", "text": "Hemólise intravascular, hemoglobinúria, hipotensão e choque" },
+        { "id": "c", "text": "Aumento da pressão arterial" },
+        { "id": "d", "text": "Apenas manchas vermelhas na pele" }
+      ],
+      "correctAnswer": "b",
+      "explanation": "Reação ABO aguda é mediada por anticorpos pré-formados (Anti-A/Anti-B) do tipo IgM, que ativam o complemento e causam hemólise intravascular massiva. Manifestações: dor lombar, febre, hipotensão, hemoglobinúria, choque.",
+      "reference": "Medicina transfusional — Reações adversas"
+    },
+    {
+      "id": "q022",
+      "category": "transfusion",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "question": "Se um paciente tipo O recebe sangue tipo A por engano, qual anticorpo causa a reação?",
+      "options": [
+        { "id": "a", "text": "Anti-A do receptor contra as hemácias do doador" },
+        { "id": "b", "text": "Anti-B do receptor contra as hemácias do doador" },
+        { "id": "c", "text": "Anti-O do doador contra as hemácias do receptor" },
+        { "id": "d", "text": "Nenhum, pois O é doador universal" }
+      ],
+      "correctAnswer": "a",
+      "explanation": "O receptor tipo O possui Anti-A e Anti-B no plasma. Quando recebe hemácias tipo A, o Anti-A do receptor ataca as hemácias do doador (que possuem antígeno A), causando hemólise.",
+      "reference": "Medicina transfusional — Fisiopatologia das reações"
+    },
+    {
+      "id": "q023",
+      "category": "rh_dhrn",
+      "difficulty": "easy",
+      "type": "multiple_choice",
+      "question": "O que significa ser 'Rh negativo'?",
+      "options": [
+        { "id": "a", "text": "Não ter anticorpos no sangue" },
+        { "id": "b", "text": "Não possuir o antígeno D na membrana das hemácias" },
+        { "id": "c", "text": "Ter sangue azulado" },
+        { "id": "d", "text": "Não poder ter filhos" }
+      ],
+      "correctAnswer": "b",
+      "explanation": "Rh negativo significa ausência do antígeno D na membrana dos eritrócitos. A presença do antígeno D determina o Rh positivo.",
+      "reference": "Imunohematologia — Sistema Rh"
+    },
+    {
+      "id": "q024",
+      "category": "rh_dhrn",
+      "difficulty": "medium",
+      "type": "multiple_choice",
+      "question": "A Doença Hemolítica do Recém-Nascido (DHRN) por incompatibilidade Rh ocorre quando:",
+      "options": [
+        { "id": "a", "text": "Mãe Rh+ e bebê Rh-" },
+        { "id": "b", "text": "Mãe Rh- e bebê Rh+" },
+        { "id": "c", "text": "Pai Rh- e mãe Rh+" },
+        { "id": "d", "text": "Ambos os pais são Rh+" }
+      ],
+      "correctAnswer": "b",
+      "explanation": "Mãe Rh- pode ser sensibilizada durante a gestação ou parto de um bebê Rh+, produzindo Anti-D. Em gestações subsequentes com bebês Rh+, os anticorpos maternos atravessam a placenta e destroem as hemácias fetais.",
+      "reference": "Obstetrícia — DHRN"
+    },
+    {
+      "id": "q025",
+      "category": "rh_dhrn",
+      "difficulty": "medium",
+      "type": "multiple_choice",
+      "question": "Qual a medida preventiva para DHRN por incompatibilidade Rh?",
+      "options": [
+        { "id": "a", "text": "Transfusão de sangue Rh+ para a mãe" },
+        { "id": "b", "text": "Imunoglobulina anti-D (Rhogam)" },
+        { "id": "c", "text": "Vacina contra hepatite B" },
+        { "id": "d", "text": "Não há prevenção possível" }
+      ],
+      "correctAnswer": "b",
+      "explanation": "A imunoglobulina anti-D (Rhogam) é administrada à mãe Rh- após procedimentos ou parto de bebê Rh+. Ela destrói as hemácias fetais Rh+ antes que a mãe desenvolva sua própria resposta imune.",
+      "reference": "Obstetrícia — Prevenção de DHRN"
+    },
+    {
+      "id": "q026",
+      "category": "rh_dhrn",
+      "difficulty": "hard",
+      "type": "true_false",
+      "question": "A primeira gestação de uma mãe Rh- com bebê Rh+ geralmente não apresenta DHRN grave.",
+      "correctAnswer": true,
+      "explanation": "Verdadeiro. A sensibilização ocorre tipicamente no final da primeira gestação ou durante o parto. A DHRN grave manifesta-se mais comumente em gestações subsequentes, quando a mãe já produziu anticorpos anti-D.",
+      "reference": "Obstetrícia — DHRN"
+    },
+    {
+      "id": "q027",
+      "category": "biosafety",
+      "difficulty": "easy",
+      "type": "multiple_choice",
+      "question": "Qual o descarte correto de uma lanceta usada em teste de glicemia?",
+      "options": [
+        { "id": "a", "text": "Lixo comum doméstico" },
+        { "id": "b", "text": "Lixo orgânico" },
+        { "id": "c", "text": "Recipiente apropriado para perfurocortantes (classe B)" },
+        { "id": "d", "text": "Reciclagem de plásticos" }
+      ],
+      "correctAnswer": "c",
+      "explanation": "Lancetas são resíduos perfurocortantes potencialmente contaminados (classe B do PGRSS). Devem ser descartadas em caixas apropriadas rígidas e resistentes à perfuração, nunca no lixo comum.",
+      "reference": "Biossegurança — PGRSS (Anvisa RDC 222/2018)"
+    },
+    {
+      "id": "q028",
+      "category": "biosafety",
+      "difficulty": "easy",
+      "type": "true_false",
+      "question": "Em uma ação de tipagem sanguínea educativa em escola, é obrigatória a presença de profissional de saúde habilitado.",
+      "correctAnswer": false,
+      "explanation": "Falso para simuladores virtuais: o ABO Sim elimina totalmente a necessidade de profissional de saúde, sangue real e riscos biológicos. Porém, se houver coleta real de sangue, a presença de profissional habilitado é obrigatória por lei.",
+      "reference": "Legislação — Lei 7.498/1986 (Lei do Exercício Profissional de Enfermagem)"
+    },
+    {
+      "id": "q029",
+      "category": "biosafety",
+      "difficulty": "medium",
+      "type": "multiple_choice",
+      "question": "Qual vírus representa o maior risco em acidente com perfurocortante contaminado?",
+      "options": [
+        { "id": "a", "text": "Influenza" },
+        { "id": "b", "text": "HIV, VHB (Hepatite B) e VHC (Hepatite C)" },
+        { "id": "c", "text": "Herpes simples" },
+        { "id": "d", "text": "HPV" }
+      ],
+      "correctAnswer": "b",
+      "explanation": "HIV, HBV e HCV são os principais patógenos de transmissão hematogênica em acidentes ocupacionais com perfurocortantes. A hepatite B tem o maior risco de transmissão (~30%), seguida por HCV (~3%) e HIV (~0.3%).",
+      "reference": "Biossegurança — Protocolos de PEP (Profilaxia Pós-Exposição)"
+    },
+    {
+      "id": "q030",
+      "category": "biosafety",
+      "difficulty": "hard",
+      "type": "multiple_choice",
+      "question": "Segundo a LGPD (Lei 13.709/2018), o tipo sanguíneo de um servidor público é considerado:",
+      "options": [
+        { "id": "a", "text": "Dado público" },
+        { "id": "b", "text": "Dado pessoal sensível" },
+        { "id": "c", "text": "Dado anonimizado" },
+        { "id": "d", "text": "Dado irrelevante para proteção" }
+      ],
+      "correctAnswer": "b",
+      "explanation": "O tipo sanguíneo é considerado dado pessoal sensível segundo o art. 5º, II e art. 11 da LGPD, pois se enquadra em 'dados relativos à saúde'. Requer consentimento explícito para coleta e tratamento.",
+      "reference": "LGPD — Lei 13.709/2018, art. 5º e 11"
+    }
+  ]
+}

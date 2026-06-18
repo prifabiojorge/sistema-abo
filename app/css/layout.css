@@ -1,0 +1,158 @@
+/* Layout & Grid — ABO Sim */
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  padding: var(--space-5);
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.screen {
+  display: none;
+  animation: fadeIn 0.4s ease;
+}
+
+.screen--active {
+  display: block;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--accent-primary);
+  color: white;
+  padding: var(--space-2) var(--space-4);
+  z-index: 1001;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-5);
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--glass-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font: var(--weight-bold) var(--text-xl) var(--font-display);
+}
+
+.navbar__actions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: var(--space-8) var(--space-4);
+}
+
+.hero__title {
+  font: var(--weight-bold) var(--text-3xl) var(--font-display);
+  margin-bottom: var(--space-4);
+}
+
+.hero__subtitle {
+  color: var(--text-secondary);
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-6);
+}
+
+.hero__cta {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Feature Grid */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+}
+
+/* Score badge on home */
+.score-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--accent-subtle);
+  color: var(--accent-primary);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  font: var(--weight-semibold) var(--text-sm) var(--font-body);
+  margin-top: var(--space-4);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .hero {
+    padding: var(--space-6) var(--space-3);
+  }
+  .hero__title {
+    font-size: var(--text-2xl);
+  }
+  .hero__subtitle {
+    font-size: var(--text-base);
+  }
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+  .navbar {
+    padding: var(--space-3);
+  }
+  .navbar__title {
+    font-size: var(--text-lg);
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* High contrast */
+.high-contrast {
+  --bg-primary: #000;
+  --bg-secondary: #111;
+  --text-primary: #fff;
+  --text-secondary: #ccc;
+  --accent-primary: #ff0;
+  --reagent-anti-a: #0ff;
+  --reagent-anti-b: #ff0;
+  --reagent-anti-d: #0f0;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: var(--space-4);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  border-top: 1px solid var(--glass-border);
+}

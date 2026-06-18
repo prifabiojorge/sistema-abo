@@ -1,0 +1,46 @@
+{
+  "name": "abo-sim",
+  "version": "1.0.0",
+  "description": "Simulador Interativo de Tipagem Sanguínea ABO/Rh",
+  "main": "electron-main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win portable",
+    "build:dir": "electron-builder --win portable --dir"
+  },
+  "build": {
+    "appId": "com.ciseb.abosim",
+    "productName": "ABO Sim",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "app/**/*",
+      "electron-main.js",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ],
+      "signAndEditExecutable": false
+    },
+    "portable": {
+      "artifactName": "ABO-Sim-v${version}-Portable.exe"
+    },
+    "nsis": {
+      "artifactName": "ABO-Sim-v${version}-Setup.exe"
+    }
+  },
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.0",
+    "sharp": "^0.34.5"
+  }
+}

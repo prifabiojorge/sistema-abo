@@ -1,0 +1,254 @@
+/* ==========================================================================
+   DESIGN TOKENS (DTCG Architecture)
+   3-Tier Hierarchy: Primitive -> Semantic -> Component
+   ========================================================================== */
+
+:root {
+  /* ----------------------------------------------------------------------
+     1. PRIMITIVE TOKENS (Never use directly in components)
+     ---------------------------------------------------------------------- */
+  
+  /* Gray Scale */
+  --gray-50:  #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+  --gray-950: #030712;
+
+  /* Blue Scale (Anti-A Reagent & Links) */
+  --blue-50:  #eff6ff;
+  --blue-100: #dbeafe;
+  --blue-200: #bfdbfe;
+  --blue-300: #93c5fd;
+  --blue-400: #60a5fa;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+  --blue-800: #1e40af;
+  --blue-900: #1e3a8a;
+  --blue-950: #172554;
+
+  /* Green Scale (Anti-D Reagent & Success) */
+  --green-50:  #f0fdf4;
+  --green-100: #dcfce7;
+  --green-200: #bbf7d0;
+  --green-300: #86efac;
+  --green-400: #4ade80;
+  --green-500: #22c55e;
+  --green-600: #16a34a;
+  --green-700: #15803d;
+  --green-800: #166534;
+  --green-900: #14532d;
+  --green-950: #052e16;
+
+  /* Red Scale (Blood, Anti-A, Error) */
+  --red-50:  #fef2f2;
+  --red-100: #fee2e2;
+  --red-200: #fecaca;
+  --red-300: #fca5a5;
+  --red-400: #f87171;
+  --red-500: #ef4444;
+  --red-600: #dc2626;
+  --red-700: #b91c1c;
+  --red-800: #991b1b;
+  --red-900: #7f1d1d;
+  --red-950: #450a0a;
+
+  /* Amber Scale (Anti-B Reagent & Warning) */
+  --amber-50:  #fffbeb;
+  --amber-100: #fef3c7;
+  --amber-200: #fde68a;
+  --amber-300: #fcd34d;
+  --amber-400: #fbbf24;
+  --amber-500: #f59e0b;
+  --amber-600: #d97706;
+  --amber-700: #b45309;
+  --amber-800: #92400e;
+  --amber-900: #78350f;
+  --amber-950: #451a03;
+
+  --white: #ffffff;
+  --black: #000000;
+
+  /* Spacing Scale (Base 4px) */
+  --space-0:   0px;
+  --space-0-5: 2px;
+  --space-1:   4px;
+  --space-1-5: 6px;
+  --space-2:   8px;
+  --space-2-5: 10px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-16:  64px;
+
+  /* Typography Scale (Major Third - 16px base) */
+  --text-xs:   12px;
+  --text-sm:   14px;
+  --text-base: 16px;
+  --text-lg:   18px;
+  --text-xl:   20px;
+  --text-2xl:  24px;
+  --text-3xl:  30px;
+  --text-4xl:  36px;
+  --text-5xl:  48px;
+
+  /* Font Families */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Outfit', 'Inter', sans-serif;
+  
+  /* Borders & Shadows */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* ----------------------------------------------------------------------
+     2. SEMANTIC TOKENS (Use these in layouts and general classes)
+     (Light Mode Defaults)
+     ---------------------------------------------------------------------- */
+     
+  /* Actions (The ABO project uses RED as primary brand color) */
+  --action-primary:        var(--red-600);
+  --action-primary-hover:  var(--red-700);
+  --action-primary-active: var(--red-800);
+  --action-secondary:      var(--gray-200);
+  --action-secondary-hover:var(--gray-300);
+  --action-secondary-active:var(--gray-400);
+
+  /* Surface */
+  --surface-page:   var(--gray-50);
+  --surface-card:   var(--white);
+  --surface-raised: var(--white);
+  --surface-sunken: var(--gray-100);
+  --surface-overlay:rgba(0, 0, 0, 0.5);
+  --surface-disabled:var(--gray-100);
+
+  /* Text */
+  --text-primary:   var(--gray-900);
+  --text-secondary: var(--gray-600);
+  --text-tertiary:  var(--gray-400);
+  --text-disabled:  var(--gray-300);
+  --text-on-action: var(--white);
+  --text-link:      var(--blue-600);
+  --text-link-hover:var(--blue-800);
+
+  /* Borders */
+  --border-default: var(--gray-200);
+  --border-strong:  var(--gray-300);
+  --border-focus:   var(--blue-500);
+  --border-error:   var(--red-500);
+
+  /* Feedback */
+  --feedback-success-bg: var(--green-50);
+  --feedback-success-text: var(--green-800);
+  --feedback-error-bg: var(--red-50);
+  --feedback-error-text: var(--red-800);
+  --feedback-warning-bg: var(--amber-50);
+  --feedback-warning-text: var(--amber-800);
+
+  /* Interactive / State Overlays */
+  --hover-overlay:  rgba(0, 0, 0, 0.04);
+  --active-overlay: rgba(0, 0, 0, 0.08);
+  --shadow-focus-ring: 0 0 0 2px var(--surface-page), 0 0 0 4px var(--border-focus);
+  
+  /* Biological Semantic Tokens */
+  --blood-cell: var(--red-600);
+  --blood-cell-agglu: var(--red-900);
+  --plasma-bg: var(--amber-50);
+  --reagent-anti-a: var(--blue-500);
+  --reagent-anti-b: var(--amber-400);
+  --reagent-anti-d: var(--green-500);
+
+  /* ----------------------------------------------------------------------
+     3. COMPONENT TOKENS (Scoped)
+     ---------------------------------------------------------------------- */
+  --btn-padding-x: var(--space-4);
+  --btn-padding-y: var(--space-2-5);
+  --card-padding:  var(--space-6);
+  --card-gap:      var(--space-4);
+}
+
+/* ----------------------------------------------------------------------
+   DARK MODE OVERRIDES (The standard theme for ABO Sim)
+   ---------------------------------------------------------------------- */
+:root[data-theme="dark"] {
+  /* Surfaces */
+  --surface-page:   var(--gray-950);
+  --surface-card:   #181c28; /* var(--gray-900) adjusted for ABO Sim lab aesthetic */
+  --surface-raised: #2c3248; /* var(--gray-800) */
+  --surface-sunken: var(--black);
+  --surface-disabled:var(--gray-800);
+
+  /* Text */
+  --text-primary:   var(--gray-50);
+  --text-secondary: var(--gray-400);
+  --text-tertiary:  var(--gray-500);
+  --text-disabled:  var(--gray-600);
+  --text-on-action: var(--white);
+
+  /* Borders */
+  --border-default: var(--gray-800);
+  --border-strong:  var(--gray-700);
+  --border-focus:   var(--blue-400);
+
+  /* Actions */
+  --action-primary:        var(--red-600);
+  --action-primary-hover:  var(--red-500);
+  --action-secondary:      var(--gray-800);
+  --action-secondary-hover:var(--gray-700);
+  
+  /* Feedback Overrides for Dark Mode */
+  --feedback-success-bg: rgba(34, 197, 94, 0.1);
+  --feedback-success-text: var(--green-400);
+  --feedback-error-bg: rgba(239, 68, 68, 0.1);
+  --feedback-error-text: var(--red-400);
+  --feedback-warning-bg: rgba(245, 158, 11, 0.1);
+  --feedback-warning-text: var(--amber-400);
+
+  /* ----------------------------------------------------------------------
+     LEGACY ALIASES (Backward compatibility during refactor)
+     ---------------------------------------------------------------------- */
+  --bg-primary: var(--surface-page);
+  --bg-secondary: var(--surface-card);
+  --bg-tertiary: var(--surface-sunken);
+  --bg-elevated: var(--surface-raised);
+  --text-muted: var(--text-tertiary);
+  --accent-primary: var(--action-primary);
+  --accent-hover: var(--action-primary-hover);
+  --accent-subtle: var(--action-secondary);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-blur: 12px;
+  --font-body: var(--font-sans);
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.15);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.20);
+  --shadow-glow: 0 0 20px rgba(220, 38, 38, 0.3);
+  --success: var(--green-500);
+  --warning: var(--amber-500);
+  --error: var(--red-500);
+  --info: var(--blue-500);
+}
+
+:root[data-theme="light"] {
+  --bg-primary: var(--gray-50);
+  --bg-secondary: var(--white);
+  --bg-tertiary: var(--gray-100);
+  --bg-elevated: var(--white);
+  --glass-bg: rgba(0, 0, 0, 0.04);
+  --glass-border: rgba(0, 0, 0, 0.10);
+}

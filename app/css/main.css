@@ -1,0 +1,10 @@
+/* Main CSS — imports all modules */
+
+@import url('./reset.css');
+@import url('./variables.css');
+@import url('./layout.css');
+@import url('./components.css');
+@import url('./simulator.css');
+@import url('./quiz.css');
+@import url('./screens.css');
+@import url('./animations.css');

@@ -1,0 +1,565 @@
+/* Screens — ABO Sim */
+
+/* Shared screen layouts */
+.myths__header,
+.encyclopedia__header,
+.transfusion__header,
+.teacher__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-6);
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.myths__content,
+.encyclopedia__content,
+.transfusion__content,
+.teacher__content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Teacher login */
+.teacher__login {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 320px;
+  margin: var(--space-8) auto;
+  padding: var(--space-6);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--glass-border);
+}
+
+.teacher__login input {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  text-align: center;
+  letter-spacing: 0.5em;
+  font-size: var(--text-xl);
+}
+
+/* Transfusion scenarios */
+.transfusion-scenario {
+  animation: fadeIn 0.4s ease;
+}
+
+.transfusion-progress {
+  height: 6px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-5);
+  overflow: hidden;
+}
+
+.transfusion-progress__bar {
+  height: 100%;
+  background: var(--accent-primary);
+  border-radius: var(--radius-full);
+  transition: width 0.3s ease;
+}
+
+.transfusion-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+}
+
+.transfusion-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.transfusion-header h3 {
+  font: var(--weight-bold) var(--text-xl) var(--font-display);
+}
+
+.transfusion-emoji {
+  font-size: var(--text-2xl);
+}
+
+.transfusion-patient {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.transfusion-patient p {
+  margin-bottom: var(--space-2);
+}
+
+.transfusion-blood-type {
+  font-weight: var(--weight-bold);
+  color: var(--accent-primary);
+}
+
+.transfusion-stock {
+  margin-bottom: var(--space-4);
+}
+
+.transfusion-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+.transfusion-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.transfusion-option:hover {
+  background: var(--bg-elevated);
+}
+
+.transfusion-option input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent-primary);
+}
+
+.transfusion-type-label {
+  font-weight: var(--weight-semibold);
+}
+
+.transfusion-feedback {
+  margin-top: var(--space-4);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  animation: fadeIn 0.3s ease;
+}
+
+.transfusion-feedback--correct {
+  background: rgba(38, 166, 91, 0.15);
+  border: 1px solid var(--success);
+}
+
+.transfusion-feedback--wrong {
+  background: rgba(217, 64, 64, 0.15);
+  border: 1px solid var(--error);
+}
+
+.transfusion-points {
+  font-weight: var(--weight-bold);
+  color: var(--success);
+  margin-top: var(--space-2);
+}
+
+.transfusion-summary {
+  text-align: center;
+  padding: var(--space-6) 0;
+}
+
+.transfusion-summary h3 {
+  font: var(--weight-bold) var(--text-2xl) var(--font-display);
+  margin-bottom: var(--space-4);
+}
+
+.transfusion-summary__actions {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: center;
+  margin-top: var(--space-5);
+  flex-wrap: wrap;
+}
+
+/* Myths vs Facts */
+.myths-intro {
+  text-align: center;
+  margin-bottom: var(--space-5);
+}
+
+.myths-progress {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  max-width: 400px;
+  margin: var(--space-3) auto 0;
+}
+
+.myths-progress__bar {
+  flex: 1;
+  height: 8px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.myths-progress__bar::before {
+  content: '';
+  display: block;
+  height: 100%;
+  background: var(--accent-primary);
+  border-radius: var(--radius-full);
+  transition: width 0.3s ease;
+}
+
+.myths-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-4);
+}
+
+.myth-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  transition: all 0.3s ease;
+}
+
+.myth-card--revealed {
+  background: var(--bg-secondary);
+}
+
+.myth-card__icon {
+  font-size: var(--text-2xl);
+  display: block;
+  margin-bottom: var(--space-3);
+}
+
+.myth-card__statement {
+  font: var(--weight-semibold) var(--text-base) var(--font-body);
+  margin-bottom: var(--space-4);
+  line-height: 1.5;
+}
+
+.myth-card__actions {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.myth-btn {
+  flex: 1;
+  min-width: 80px;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--glass-border);
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.myth-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.myth-btn--myth:hover { background: rgba(217, 64, 64, 0.2); border-color: var(--error); }
+.myth-btn--fact:hover { background: rgba(38, 166, 91, 0.2); border-color: var(--success); }
+.myth-btn--partial:hover { background: rgba(245, 166, 35, 0.2); border-color: var(--warning); }
+
+.myth-card__result {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.myth-result__label {
+  display: inline-block;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+}
+
+.myth-result__label--myth {
+  background: rgba(217, 64, 64, 0.2);
+  color: var(--error);
+}
+
+.myth-result__label--fact {
+  background: rgba(38, 166, 91, 0.2);
+  color: var(--success);
+}
+
+.myth-result__label--partial_myth,
+.myth-result__label--partial_fact {
+  background: rgba(245, 166, 35, 0.2);
+  color: var(--warning);
+}
+
+.myth-result__badge {
+  font-size: var(--text-sm);
+}
+
+.myth-card__back {
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+}
+
+/* Encyclopedia */
+.encyclopedia-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: var(--space-5);
+  min-height: 60vh;
+}
+
+.encyclopedia-sidebar {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--glass-border);
+  padding: var(--space-4);
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.encyclopedia-search {
+  width: 100%;
+  padding: var(--space-3);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+}
+
+.encyclopedia-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.encyclopedia-link {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.encyclopedia-link:hover {
+  background: var(--glass-bg);
+}
+
+.encyclopedia-link--visited {
+  opacity: 0.6;
+}
+
+.encyclopedia-link__icon {
+  font-size: var(--text-xl);
+}
+
+.encyclopedia-link__title {
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-sm);
+}
+
+.encyclopedia-link__desc {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.encyclopedia-article {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--glass-border);
+  padding: var(--space-6);
+}
+
+.encyclopedia-placeholder {
+  text-align: center;
+  padding: var(--space-8) 0;
+  color: var(--text-muted);
+}
+
+.encyclopedia-placeholder__icon {
+  font-size: var(--text-4xl);
+  display: block;
+  margin-bottom: var(--space-3);
+}
+
+.encyclopedia-article__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.encyclopedia-article__icon {
+  font-size: var(--text-3xl);
+}
+
+.encyclopedia-article__header h2 {
+  font: var(--weight-bold) var(--text-2xl) var(--font-display);
+}
+
+.encyclopedia-article__category {
+  background: var(--accent-subtle);
+  color: var(--accent-primary);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+}
+
+.encyclopedia-article__lead {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-4);
+  font-style: italic;
+}
+
+.encyclopedia-article__content p {
+  line-height: 1.7;
+  margin-bottom: var(--space-4);
+}
+
+.encyclopedia-article__terms,
+.encyclopedia-article__related {
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--glass-border);
+  font-size: var(--text-sm);
+}
+
+.encyclopedia-related-link {
+  color: var(--accent-primary);
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .encyclopedia-layout {
+    grid-template-columns: 1fr;
+  }
+  .encyclopedia-sidebar {
+    max-height: 40vh;
+  }
+}
+
+/* Teacher Dashboard */
+.teacher-dashboard {
+  animation: fadeIn 0.4s ease;
+}
+
+.teacher-dashboard__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-5);
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.teacher-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.teacher-stat {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  text-align: center;
+}
+
+.teacher-stat__value {
+  display: block;
+  font: var(--weight-bold) var(--text-2xl) var(--font-display);
+  color: var(--accent-primary);
+}
+
+.teacher-stat__label {
+  display: block;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  margin-top: var(--space-1);
+}
+
+.teacher-section {
+  background: var(--bg-secondary);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  margin-bottom: var(--space-4);
+}
+
+.teacher-section h4 {
+  margin-bottom: var(--space-4);
+  font: var(--weight-semibold) var(--text-lg) var(--font-display);
+}
+
+.teacher-chart {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.teacher-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.teacher-bar__label {
+  width: 40px;
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.teacher-bar__track {
+  flex: 1;
+  height: 20px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.teacher-bar__fill {
+  height: 100%;
+  border-radius: var(--radius-sm);
+  transition: width 0.5s ease;
+}
+
+.teacher-bar__value {
+  width: 50px;
+  text-align: right;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+}
+
+.teacher-empty {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.teacher__hint {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  text-align: center;
+}

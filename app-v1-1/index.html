@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Simulador Interativo de Tipagem Sanguínea ABO/Rh - ABO Sim">
+  <meta name="theme-color" content="#111520">
+  <meta property="og:title" content="ABO Sim - Simulador de Tipagem Sanguínea">
+  <meta property="og:description" content="Aprenda imunohematologia de forma segura, visual e gamificada. Simule tipagens ABO/Rh com animações de aglutinação.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="./img/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="./img/favicon.svg">
+  <link rel="apple-touch-icon" href="./img/icons/icon-192x192.png">
+  <link rel="manifest" href="./manifest.json">
+  <title>ABO Sim - Tipagem Sanguínea</title>
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./css/tokens.css">
+  <link rel="stylesheet" href="./css/main.css">
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js')
+        .then((reg) => console.log('[PWA] SW registrado:', reg.scope))
+        .catch((err) => console.warn('[PWA] SW falhou:', err));
+    }
+  </script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Pular para conteúdo principal</a>
+  <div id="app">
+    <header class="navbar" role="banner">
+      <div class="navbar__brand">
+        <span class="navbar__logo" aria-hidden="true">🧪</span>
+        <span class="navbar__title">ABO Sim</span>
+      </div>
+      <nav class="navbar__actions" role="navigation" aria-label="Ações principais">
+        <button id="theme-toggle" class="btn btn--ghost" aria-label="Alternar tema claro/escuro">🌙</button>
+        <button id="accessibility-toggle" class="btn btn--ghost" aria-label="Alto contraste">♿</button>
+      </nav>
+    </header>
+
+    <main id="main-content" role="main">
+      <!-- Home Screen -->
+      <section id="screen-home" class="screen screen--active" data-screen="home" aria-label="Tela inicial">
+        <div class="hero">
+          <h1 class="hero__title">Simulador Interativo de Tipagem Sanguínea ABO/Rh</h1>
+          <p class="hero__subtitle">Aprenda imunohematologia de forma segura, visual e gamificada</p>
+          <div class="hero__cta">
+            <a href="#simulator" class="btn btn--primary" data-nav="simulator">Começar Simulação</a>
+            <a href="#quiz" class="btn btn--secondary" data-nav="quiz">Quiz</a>
+          </div>
+          <div id="home-score" class="score-badge" hidden></div>
+        </div>
+        <div class="feature-grid">
+          <a href="#simulator" class="card card--feature" data-nav="simulator">
+            <span class="card__icon" aria-hidden="true">🔬</span>
+            <h3 class="card__title">Simular</h3>
+            <p class="card__desc">Realize tipagens virtuais com animações de aglutinação</p>
+          </a>
+          <a href="#quiz" class="card card--feature" data-nav="quiz">
+            <span class="card__icon" aria-hidden="true">❓</span>
+            <h3 class="card__title">Quiz</h3>
+            <p class="card__desc">Teste seus conhecimentos com 30+ perguntas</p>
+          </a>
+          <a href="#myths" class="card card--feature" data-nav="myths">
+            <span class="card__icon" aria-hidden="true">🧬</span>
+            <h3 class="card__title">Mitos vs. Fatos</h3>
+            <p class="card__desc">Desmistifique crenças sobre tipos sanguíneos</p>
+          </a>
+          <a href="#encyclopedia" class="card card--feature" data-nav="encyclopedia">
+            <span class="card__icon" aria-hidden="true">📖</span>
+            <h3 class="card__title">Enciclopédia</h3>
+            <p class="card__desc">Explore conceitos de imunohematologia</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- Simulator Screen -->
+      <section id="screen-simulator" class="screen" data-screen="simulator" aria-label="Simulador de tipagem" hidden>
+        <div class="simulator">
+          <header class="simulator__header">
+            <a href="#home" class="btn btn--ghost" data-nav="home">← Voltar</a>
+            <h2>Simulador</h2>
+            <span class="score-display" id="score-display" aria-live="polite">Score: 0</span>
+          </header>
+          <div class="simulator__content">
+            <div class="mode-selector" style="margin-bottom: 1rem; display: flex; gap: 1rem; justify-content: center;">
+              <label><input type="radio" name="sim-mode" value="standard" checked> Modo Simulação</label>
+              <label><input type="radio" name="sim-mode" value="inverse"> Modo Diagnóstico Livre</label>
+            </div>
+            <div class="type-selector" id="type-selector">
+              <label for="blood-type-select">Tipo sanguíneo:</label>
+              <select id="blood-type-select" aria-label="Selecionar tipo sanguíneo">
+                <option value="random">🎲 Aleatório</option>
+                <option value="A_POS">A+</option>
+                <option value="A_NEG">A-</option>
+                <option value="B_POS">B+</option>
+                <option value="B_NEG">B-</option>
+                <option value="AB_POS">AB+</option>
+                <option value="AB_NEG">AB-</option>
+                <option value="O_POS">O+</option>
+                <option value="O_NEG">O-</option>
+              </select>
+            </div>
+            <div class="wells-container" id="wells-container">
+              <div class="reagent-well" data-reagent="anti-a" role="button" tabindex="0" aria-label="Poço Anti-A">
+                <canvas class="well-canvas" id="well-anti-a" width="200" height="200"></canvas>
+                <span class="well-label">Anti-A</span>
+              </div>
+              <div class="reagent-well" data-reagent="anti-b" role="button" tabindex="0" aria-label="Poço Anti-B">
+                <canvas class="well-canvas" id="well-anti-b" width="200" height="200"></canvas>
+                <span class="well-label">Anti-B</span>
+              </div>
+              <div class="reagent-well" data-reagent="anti-d" role="button" tabindex="0" aria-label="Poço Anti-D">
+                <canvas class="well-canvas" id="well-anti-d" width="200" height="200"></canvas>
+                <span class="well-label">Anti-D</span>
+              </div>
+            </div>
+            <button id="btn-drop-blood" class="btn btn--primary" disabled>🩸 Pingar sangue</button>
+            <button id="btn-analyze-inverse" class="btn btn--secondary is-hidden">Identificar Sangue</button>
+            <p id="inverse-instruction" class="is-hidden" style="text-align: center; margin-top: 10px;">Clique diretamente nos poços para ativar a aglutinação.</p>
+            <div class="info-panel" id="info-panel" aria-live="polite">
+              <p>Selecione um tipo sanguíneo e clique em "Pingar sangue" para começar.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quiz Screen -->
+      <section id="screen-quiz" class="screen" data-screen="quiz" aria-label="Quiz" hidden>
+        <div class="quiz">
+          <header class="quiz__header">
+            <a href="#home" class="btn btn--ghost" data-nav="home">← Voltar</a>
+            <h2>Quiz</h2>
+          </header>
+          <div class="quiz__content" id="quiz-content">
+            <p>Carregando quiz...</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Myths Screen -->
+      <section id="screen-myths" class="screen" data-screen="myths" aria-label="Mitos vs. Fatos" hidden>
+        <div class="myths">
+          <header class="myths__header">
+            <a href="#home" class="btn btn--ghost" data-nav="home">← Voltar</a>
+            <h2>Mitos vs. Fatos</h2>
+          </header>
+          <div class="myths__content" id="myths-content">
+            <p>Carregando...</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Encyclopedia Screen -->
+      <section id="screen-encyclopedia" class="screen" data-screen="encyclopedia" aria-label="Enciclopédia" hidden>
+        <div class="encyclopedia">
+          <header class="encyclopedia__header">
+            <a href="#home" class="btn btn--ghost" data-nav="home">← Voltar</a>
+            <h2>Enciclopédia</h2>
+          </header>
+          <div class="encyclopedia__content" id="encyclopedia-content">
+            <p>Carregando...</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Transfusion Screen -->
+      <section id="screen-transfusion" class="screen" data-screen="transfusion" aria-label="Cenários de Transfusão" hidden>
+        <div class="transfusion">
+          <header class="transfusion__header">
+            <a href="#home" class="btn btn--ghost" data-nav="home">← Voltar</a>
+            <h2>Cenários de Transfusão</h2>
+          </header>
+          <div class="transfusion__content" id="transfusion-content">
+            <p>Carregando...</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Teacher Screen -->
+      <section id="screen-teacher" class="screen" data-screen="teacher" aria-label="Painel do Professor" hidden>
+        <div class="teacher">
+          <header class="teacher__header">
+            <a href="#home" class="btn btn--ghost" data-nav="home">← Voltar</a>
+            <h2>Painel do Professor</h2>
+          </header>
+          <div class="teacher__content" id="teacher-content">
+            <form id="teacher-login" class="teacher__login">
+              <label for="teacher-pin">PIN (4 dígitos):</label>
+              <input type="password" id="teacher-pin" maxlength="4" pattern="[0-9]{4}" inputmode="numeric" required aria-label="PIN do professor">
+              <button type="submit" class="btn btn--primary">Entrar</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+      <p><strong>ABO Sim</strong> v1.2.0 — Prof. Fábio Fabuloso — CISEB Celso Rodrigues 2026</p>
+      <p style="font-size: 0.75rem; margin-top: 0.25rem; opacity: 0.7;">Simulador educativo de tipagem sanguínea ABO/Rh</p>
+    </footer>
+  </div>
+
+  <script src="./js/bundle.js"></script>
+</body>
+</html>

@@ -1,0 +1,2630 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+00_OVERVIEW.md
+01_ARCHITECTURE.md
+02_DESIGN_SYSTEM.md
+03_FEATURES_SPEC.md
+04_IMPLEMENTATION_PLAN.md
+05_ORCHESTRATOR.md
+06_FILE_STRUCTURE.md
+07_DATA_SCHEMAS.md
+08_AGGLUTINATION_ALGORITHM.md
+09_CHANGELOG_v1.1.md
+10_UX_UI_REFACTOR_PLAN.md
+11_CHANGELOG_v1.2.md
+IMPROVEMENTS_PROPOSAL.md
+research_plan.md
+RESEARCH_REPORT_v2_PROPOSAL.md
+STATUS.md
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="00_OVERVIEW.md">
+# 🧪 Simulador Interativo de Tipagem Sanguínea ABO/Rh
+
+## Visão do Produto
+
+**Nome do projeto:** ABO Sim  
+**Versão alvo:** 1.1.0 (Com Modo Inverso/Diagnóstico Livre)  
+**Data de início:** 2026-04-24  
+**Deadline estimado:** 2026-05-04 (10 dias úteis)
+
+---
+
+## 1. Propósito
+
+Aplicação web educativa que simula visualmente o teste laboratorial de tipagem sanguínea ABO/Rh. O usuário interage com poços de reagentes virtuais (Anti-A, Anti-B, Anti-D), observa animações de aglutinação em tempo real com sistema de partículas, e aprende os fundamentos de imunohematologia de forma segura, engajante e cientificamente correta.
+
+## 2. Público-alvo
+
+| Persona | Descrição | Necessidade principal |
+|:---|:---|:---|
+| **Aluno (14-18 anos)** | Estudante do Ensino Médio em aula de Biologia | Compreender visualmente o sistema ABO sem medo de agulhas |
+| **Servidor escolar** | Professor ou funcionário em ação de saúde | Entender seu tipo sanguíneo e compatibilidade sem riscos |
+| **Professor de Biologia** | Docente que conduz a atividade | Ferramenta pedagógica segura com painel de acompanhamento |
+| **Gestor escolar** | Diretor/Coordenador | Demonstrar ação educativa sem riscos biológicos/jurídicos |
+
+## 3. Problemas que resolve (mapeados do PROBLEMAS.txt)
+
+### 3.1 Eliminação total de riscos
+
+| Dimensão de risco | Status com o simulador |
+|:---|:---|
+| Biossegurança (agulhas, patógenos, HIV, HBV, HCV) | ✅ **Eliminado** — zero sangue real |
+| LGPD (dados sensíveis de saúde) | ✅ **Eliminado** — dados simulados, não pessoais |
+| Descoberta de não-paternidade | ✅ **Eliminado** — tipos sanguíneos são ficcionais |
+| PGRSS (resíduos de saúde) | ✅ **Eliminado** — zero resíduos biológicos |
+| Profissional de saúde habilitado | ✅ **Eliminado** — qualquer professor pode aplicar |
+| Desmaios/síncope vasovagal | ✅ **Eliminado** — sem punção, sem medo |
+| Responsabilidade civil | ✅ **Eliminado** — sem procedimento invasivo |
+| Qualidade analítica (D fraco, Rouleaux) | ✅ **Mitigado** — resultados controlados, sem erro |
+
+### 3.2 Potencialização pedagógica
+
+| Aspecto | Como o simulador potencializa |
+|:---|:---|
+| Engajamento | Gamificação, animações, feedback imediato |
+| Retenção de conhecimento | Aprender fazendo (simulação) > ouvir (aula expositiva) |
+| Desmistificação | Módulo "Mitos vs. Fatos" combate pseudociência |
+| Acessibilidade | Funciona em qualquer dispositivo, modo alto contraste |
+| Escalabilidade | Todos usam simultaneamente sem filas |
+| Continuidade | Reutilizável ano após ano, sem custo recorrente |
+
+## 4. Restrições e Premissas
+
+### 4.1 Restrições técnicas
+- **Sem backend/servidor**: Deve funcionar como arquivo HTML estático (abre offline)
+- **Sem frameworks pesados**: Vanilla HTML + CSS + JavaScript apenas
+- **Sem dependências CDN obrigatórias**: Tudo embutido (funciona sem internet)
+- **Sem coleta de dados pessoais**: Nenhum formulário que identifique o usuário
+- **Compatibilidade**: Chrome 90+, Firefox 88+, Edge 90+, Safari 14+
+- **Responsivo**: Desktop, tablet e celular (min 320px)
+
+### 4.2 Premissas
+- Professor terá acesso a projetor ou computadores/tablets em sala
+- Público fala Português Brasileiro
+- Cor não é o único indicador de informação (acessibilidade para daltonismo)
+- Conteúdo validado por referências de imunohematologia
+
+## 5. Critérios de sucesso (MVP)
+
+| Critério | Meta |
+|:---|:---|
+| Tempo de carregamento | < 3 segundos em 3G |
+| Funciona offline | ✅ após primeiro carregamento |
+| Cobertura de tipos sanguíneos | 8 tipos (A+, A-, B+, B-, AB+, AB-, O+, O-) |
+| Quiz funcional | Mínimo 20 perguntas |
+| Animação de aglutinação | Fluida a 60fps em dispositivos médios |
+| Acessibilidade | WCAG 2.1 AA (contraste, teclado, screen reader) |
+| Tamanho do bundle | < 2MB total (incluindo assets) |
+
+## 6. Entregáveis
+
+1. `index.html` — Arquivo único ou conjunto de arquivos estáticos
+2. Documentação do professor (como usar em sala)
+3. Banco de questões do quiz (JSON)
+4. Assets visuais (SVGs de hemácias, anticorpos, poços)
+
+## 7. Referências científicas para o conteúdo
+
+- Genética mendeliana do sistema ABO (alelos IA, IB, i)
+- Antígenos A, B e D (Rh) na superfície eritrocitária
+- Reações antígeno-anticorpo e aglutinação
+- Compatibilidade transfusional ABO/Rh
+- Subgrupos de A (A1, A2) e D fraco (nível avançado)
+- Doença Hemolítica do Recém-Nascido (DHRN) por incompatibilidade Rh
+
+---
+
+> [!NOTE]
+> Este documento é a **visão geral** do projeto. Os detalhes de arquitetura, design, features, implementação e orquestração estão nos documentos subsequentes (`01_` a `08_`).
+</file>
+
+<file path="01_ARCHITECTURE.md">
+# 🏗️ Arquitetura Técnica — ABO Sim v1.0
+
+## 1. Visão geral
+
+```
+┌──────────────────────────────────────────────────────────┐
+│                    BROWSER (Client-only)                  │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────┐  │
+│  │  UI Layer   │  │  Simulation │  │   Game/Quiz     │  │
+│  │  (HTML/CSS) │  │  Engine     │  │   Engine        │  │
+│  │             │  │  (Canvas)   │  │   (JS Logic)    │  │
+│  └──────┬──────┘  └──────┬──────┘  └───────┬─────────┘  │
+│  ┌──────┴────────────────┴──────────────────┴─────────┐  │
+│  │         Core (State Manager + Event Bus)            │  │
+│  └──────────────────────┬──────────────────────────────┘  │
+│  ┌──────────────────────┴──────────────────────────────┐  │
+│  │         Data Layer (Static JSON + LocalStorage)      │  │
+│  └─────────────────────────────────────────────────────┘  │
+└──────────────────────────────────────────────────────────┘
+```
+
+**Zero Backend** — Funciona como HTML estático abrindo offline no navegador.
+
+---
+
+## 2. Padrão: Module Pattern + Event-Driven
+
+```
+         EVENT BUS (Pub/Sub global)
+    ┌────┴───┐ ┌────┴───┐ ┌───┴────┐ ┌───┴────┐
+    │ Screen │ │  Sim   │ │  Quiz  │ │ Score  │
+    │ Router │ │ Engine │ │ Engine │ │Manager │
+    └────────┘ └────────┘ └────────┘ └────────┘
+```
+
+Eventos principais: `reagent:drop`, `agglutination:start`, `agglutination:complete`, `quiz:answer`, `score:update`, `screen:change`, `theme:toggle`
+
+---
+
+## 3. Componentes
+
+### 3.1 Screen Router
+- Hash-based routing (`#home`, `#simulator`, `#quiz`, `#myths`, `#encyclopedia`, `#transfusion`, `#teacher`)
+
+### 3.2 Simulation Engine (Canvas 2D)
+- **ParticleSystem** → Pool de partículas (hemácias)
+- **ReagentManager** → Estado dos 3 poços (Anti-A, Anti-B, Anti-D)
+- **AgglutinationSim** → Clustering quando há reação Ag-Ab
+- **AnimationLoop** → requestAnimationFrame a 60fps
+- **InteractionHandler** → Drag/drop, touch, click
+
+**Fluxo da simulação:**
+1. Usuário seleciona tipo sanguíneo (ou recebe aleatório)
+2. "Pinga" sangue virtual em cada poço
+3. ParticleSystem spawna hemácias
+4. AgglutinationSim verifica compatibilidade Ag-Ab
+5. Se reage → partículas clusterizam (aglutinação visual)
+6. Se não reage → partículas dispersas (Brownian motion)
+7. Após 3 poços → resultado revelado com explicação
+
+### 3.3 Particle Model (Hemácia)
+```javascript
+{
+  x, y,              // posição no canvas
+  vx, vy,            // velocidade
+  radius: 6-10,      // raio visual (px)
+  clusterId: null|int,// null=livre, int=cluster
+  antigenA: boolean,
+  antigenB: boolean,
+  antigenD: boolean,
+  color: string,
+  opacity: number
+}
+```
+
+- **Não-aglutinação**: Brownian motion, colisão elástica
+- **Aglutinação**: Força de atração, clusters crescentes, ~2-3s para efeito completo
+
+### 3.4 Quiz Engine
+- 4 alternativas (single choice) + drag-and-drop matching + cenários clínicos
+- Feedback imediato com explicação científica
+- Progressão por dificuldade
+
+### 3.5 Score Manager
+- +10pts resposta correta, +5pts tipagem correta
+- Multiplicador streak (2x, 3x, 5x)
+- Achievements desbloqueáveis
+- Leaderboard local (apelido, sem dados sensíveis)
+
+### 3.6 Data Layer
+**Estáticos (JSON):** `blood-types.json`, `questions.json`, `transfusion-rules.json`, `myths.json`, `encyclopedia.json`
+
+**Persistência (LocalStorage):** `abo-sim-score`, `abo-sim-progress`, `abo-sim-quiz-history`, `abo-sim-achievements`
+
+---
+
+## 4. Módulos JavaScript
+
+```
+js/
+├── main.js
+├── core/
+│   ├── event-bus.js, state-manager.js, router.js, storage.js
+├── simulation/
+│   ├── particle.js, particle-system.js, reagent-well.js
+│   ├── agglutination.js, simulation-engine.js, animation-loop.js
+├── quiz/
+│   ├── quiz-engine.js, quiz-renderer.js, question-loader.js
+├── game/
+│   ├── score-manager.js, achievements.js, leaderboard.js
+├── screens/
+│   ├── home-screen.js, simulator-screen.js, transfusion-screen.js
+│   ├── quiz-screen.js, myths-screen.js, encyclopedia-screen.js
+│   └── teacher-screen.js
+├── ui/
+│   ├── components.js, animations.js, accessibility.js, theme.js
+└── utils/
+    ├── blood-logic.js, random.js, dom-helpers.js
+```
+
+---
+
+## 5. Decisões técnicas
+
+| Decisão | Escolha | Justificativa |
+|:---|:---|:---|
+| Rendering | Canvas 2D | Performance para centenas de partículas |
+| Módulos | ES Modules nativos | Sem bundler, navegadores modernos suportam |
+| Estilização | CSS custom properties | Theming dark/light sem recompilação |
+| Tipografia | Inter + Outfit (embutidas) | Funciona offline |
+| Persistência | LocalStorage | Sem banco de dados |
+| Build | Nenhum | Abre index.html e funciona |
+
+## 6. Performance budget
+
+| Recurso | Budget |
+|:---|:---|
+| HTML | < 50KB |
+| CSS | < 80KB |
+| JavaScript | < 150KB |
+| Fontes | < 200KB |
+| SVG assets | < 300KB |
+| Total | **< 1.3MB** |
+
+## 7. Compatibilidade
+
+- **Tier 1** (full): Chrome 90+, Edge 90+, Firefox 88+, Safari 14+
+- **Tier 2** (degraded): Chrome 80-89, Firefox 78-87 → fallback imagens estáticas
+- **Tier 3** (blocked): IE 11 → mensagem de atualização
+</file>
+
+<file path="02_DESIGN_SYSTEM.md">
+# 🎨 Design System — ABO Sim v1.0
+
+## 1. Identidade visual
+
+**Conceito**: Laboratorial moderno — clean, científico, mas com calor humano. Inspirado em dashboards de saúde premium e apps de educação gamificada.
+
+**Mood**: Dark mode principal (conforto visual em projetor/sala escura) com light mode alternativo.
+
+---
+
+## 2. Paleta de cores
+
+### 2.1 Dark Theme (Principal)
+
+```css
+:root[data-theme="dark"] {
+  /* Background hierarchy */
+  --bg-primary:     hsl(220, 20%, 8%);     /* #111520 - fundo principal */
+  --bg-secondary:   hsl(220, 18%, 12%);    /* #181c28 - cards/painéis */
+  --bg-tertiary:    hsl(220, 16%, 16%);    /* #222838 - inputs/wells */
+  --bg-elevated:    hsl(220, 14%, 20%);    /* #2c3248 - modais/tooltips */
+
+  /* Text hierarchy */
+  --text-primary:   hsl(220, 20%, 95%);    /* #eef0f5 */
+  --text-secondary: hsl(220, 15%, 65%);    /* #959cae */
+  --text-muted:     hsl(220, 10%, 45%);    /* #666d7a */
+
+  /* Accent — Vermelho sangue científico */
+  --accent-primary:   hsl(0, 72%, 50%);    /* #da2c2c - sangue */
+  --accent-hover:     hsl(0, 72%, 60%);    /* #e05555 */
+  --accent-subtle:    hsl(0, 72%, 15%);    /* #3d1010 - bg accent */
+
+  /* Reagentes (cores dos poços) */
+  --reagent-anti-a:   hsl(210, 85%, 55%);  /* #2e7dd6 - Azul (Anti-A) */
+  --reagent-anti-b:   hsl(45, 90%, 55%);   /* #e6b81a - Amarelo (Anti-B) */
+  --reagent-anti-d:   hsl(150, 70%, 45%);  /* #22a861 - Verde (Anti-D/Rh) */
+
+  /* Feedback */
+  --success:  hsl(145, 65%, 42%);   /* #26a65b */
+  --warning:  hsl(38, 92%, 50%);    /* #f5a623 */
+  --error:    hsl(0, 75%, 55%);     /* #d94040 */
+  --info:     hsl(210, 80%, 55%);   /* #3388dd */
+
+  /* Aglutinação visual */
+  --blood-cell:       hsl(0, 65%, 40%);    /* hemácia normal */
+  --blood-cell-agglu: hsl(0, 70%, 30%);    /* hemácia em cluster */
+  --plasma:           hsl(45, 30%, 85%);   /* plasma de fundo */
+
+  /* Glass effect */
+  --glass-bg:     rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-blur:   12px;
+}
+```
+
+### 2.2 Light Theme
+
+```css
+:root[data-theme="light"] {
+  --bg-primary:     hsl(220, 20%, 97%);
+  --bg-secondary:   hsl(220, 18%, 93%);
+  --bg-tertiary:    hsl(220, 16%, 88%);
+  --bg-elevated:    hsl(0, 0%, 100%);
+  --text-primary:   hsl(220, 20%, 10%);
+  --text-secondary: hsl(220, 15%, 40%);
+  --text-muted:     hsl(220, 10%, 60%);
+  /* Accents mantidos iguais */
+}
+```
+
+---
+
+## 3. Tipografia
+
+```css
+/* Importar subsets para offline */
+@font-face {
+  font-family: 'Inter';
+  src: url('./fonts/Inter-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Outfit';
+  src: url('./fonts/Outfit-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  --font-body:    'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Outfit', 'Inter', sans-serif;
+
+  /* Scale (modular — ratio 1.25) */
+  --text-xs:   0.75rem;   /* 12px */
+  --text-sm:   0.875rem;  /* 14px */
+  --text-base: 1rem;      /* 16px */
+  --text-lg:   1.25rem;   /* 20px */
+  --text-xl:   1.563rem;  /* 25px */
+  --text-2xl:  1.953rem;  /* 31px */
+  --text-3xl:  2.441rem;  /* 39px */
+  --text-4xl:  3.052rem;  /* 49px */
+
+  /* Weight */
+  --weight-normal:   400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+}
+
+/* Uso */
+h1 { font: var(--weight-bold) var(--text-3xl) var(--font-display); }
+h2 { font: var(--weight-semibold) var(--text-2xl) var(--font-display); }
+h3 { font: var(--weight-semibold) var(--text-xl) var(--font-display); }
+body { font: var(--weight-normal) var(--text-base)/1.6 var(--font-body); }
+```
+
+---
+
+## 4. Spacing & Layout
+
+```css
+:root {
+  --space-1:  0.25rem;  /* 4px */
+  --space-2:  0.5rem;   /* 8px */
+  --space-3:  0.75rem;  /* 12px */
+  --space-4:  1rem;     /* 16px */
+  --space-5:  1.5rem;   /* 24px */
+  --space-6:  2rem;     /* 32px */
+  --space-7:  3rem;     /* 48px */
+  --space-8:  4rem;     /* 64px */
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.12);
+  --shadow-md:  0 4px 12px rgba(0,0,0,0.15);
+  --shadow-lg:  0 8px 32px rgba(0,0,0,0.20);
+  --shadow-glow: 0 0 20px rgba(218, 44, 44, 0.3); /* glow vermelho */
+}
+```
+
+---
+
+## 5. Componentes UI
+
+### 5.1 Botões
+```css
+.btn {
+  font: var(--weight-medium) var(--text-sm) var(--font-body);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn--primary   { background: var(--accent-primary); color: white; }
+.btn--secondary { background: var(--glass-bg); border-color: var(--glass-border); }
+.btn--ghost     { background: transparent; color: var(--text-secondary); }
+.btn:hover      { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+.btn:active     { transform: translateY(0); }
+```
+
+### 5.2 Cards (Glassmorphism)
+```css
+.card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+```
+
+### 5.3 Poço de reagente
+```css
+.reagent-well {
+  width: 160px;
+  height: 160px;
+  border-radius: var(--radius-full);
+  border: 3px solid var(--glass-border);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.reagent-well--anti-a { border-color: var(--reagent-anti-a); }
+.reagent-well--anti-b { border-color: var(--reagent-anti-b); }
+.reagent-well--anti-d { border-color: var(--reagent-anti-d); }
+.reagent-well:hover   { box-shadow: 0 0 24px rgba(var(--well-color-rgb), 0.3); }
+.reagent-well.active  { border-width: 4px; animation: pulse 1.5s infinite; }
+```
+
+---
+
+## 6. Animações
+
+```css
+/* Fade in para telas */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Pulse para poço ativo */
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(var(--well-color-rgb), 0.4); }
+  50%      { box-shadow: 0 0 0 12px rgba(var(--well-color-rgb), 0); }
+}
+
+/* Blood drop falling */
+@keyframes dropFall {
+  0%   { transform: translateY(-60px) scale(1); opacity: 0; }
+  50%  { opacity: 1; }
+  100% { transform: translateY(0) scale(0.8); opacity: 0.8; }
+}
+
+/* Score popup */
+@keyframes scorePopup {
+  0%   { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-40px) scale(1.2); opacity: 0; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+```
+
+---
+
+## 7. Layout das telas principais
+
+### 7.1 Home Screen
+```
+┌──────────────────────────────────────────────┐
+│  [Logo]  ABO Sim            [🌙] [♿]       │ ← Navbar
+├──────────────────────────────────────────────┤
+│                                              │
+│    🧪 Simulador Interativo de                │
+│       Tipagem Sanguínea ABO/Rh               │ ← Hero
+│                                              │
+│    [Começar Simulação]   [Quiz]              │
+│                                              │
+├────────┬────────┬────────┬───────────────────┤
+│ 🔬     │ ❓     │ 🧬     │ 📖               │
+│Simular │Quiz    │Mitos   │Enciclopédia       │ ← Feature cards
+│        │        │vs Fatos│                   │
+└────────┴────────┴────────┴───────────────────┘
+```
+
+### 7.2 Simulator Screen
+```
+┌──────────────────────────────────────────────┐
+│  ← Voltar    SIMULADOR          Score: 150   │
+├──────────────────────────────────────────────┤
+│                                              │
+│    Tipo sanguíneo: [???]                     │
+│                                              │
+│    ┌────────┐  ┌────────┐  ┌────────┐       │
+│    │ Anti-A │  │ Anti-B │  │ Anti-D │       │
+│    │  (🔵)  │  │  (🟡)  │  │  (🟢)  │       │ ← Canvas wells
+│    │        │  │        │  │        │       │
+│    └────────┘  └────────┘  └────────┘       │
+│                                              │
+│    [🩸 Pingar sangue]                        │ ← Action button
+│                                              │
+│  ┌──────────────────────────────────────┐    │
+│  │ Explicação: Aguardando teste...      │    │ ← Info panel
+│  └──────────────────────────────────────┘    │
+└──────────────────────────────────────────────┘
+```
+
+---
+
+## 8. Responsividade
+
+| Breakpoint | Target | Layout |
+|:---|:---|:---|
+| < 480px | Celular portrait | Poços empilhados verticalmente |
+| 480-768px | Celular landscape / tablet | Poços em row, info abaixo |
+| 768-1024px | Tablet | Layout completo, sidebar info |
+| > 1024px | Desktop / Projetor | Layout completo, espaçamento extra |
+
+---
+
+## 9. Acessibilidade
+
+| Requisito | Implementação |
+|:---|:---|
+| Contraste mínimo 4.5:1 | Cores validadas contra WCAG AA |
+| Navegação por teclado | Focus visible, tab order lógico |
+| Screen reader | ARIA labels em todos os interativos |
+| Reduced motion | `@media (prefers-reduced-motion)` |
+| Alto contraste | Toggle manual no navbar |
+| Daltonismo | Formas + texto além de cor nos poços |
+</file>
+
+<file path="03_FEATURES_SPEC.md">
+# 📋 Especificação de Features — ABO Sim v1.0
+
+## Feature Map
+
+| ID | Feature | Prioridade | Fase |
+|:---|:---|:---|:---|
+| F01 | Home Screen (Hero + Navegação) | P0 | 1 |
+| F02 | Simulador de Tipagem (Core) | P0 | 1 |
+| F03 | Sistema de Partículas (Canvas) | P0 | 1 |
+| F04 | Aglutinação Visual | P0 | 1 |
+| F05 | Revelação de Resultado | P0 | 1 |
+| F06 | Quiz Gamificado | P0 | 2 |
+| F07 | Score & Achievements | P1 | 2 |
+| F08 | Mitos vs. Fatos | P1 | 2 |
+| F09 | Enciclopédia | P1 | 3 |
+| F10 | Cenários de Transfusão | P1 | 3 |
+| F11 | Dark/Light Theme | P1 | 3 |
+| F12 | Painel do Professor | P2 | 3 |
+| F13 | Acessibilidade completa | P1 | 3 |
+| F14 | Responsividade mobile | P0 | Contínuo |
+
+---
+
+## F01 — Home Screen
+
+**Descrição:** Tela inicial que apresenta o simulador e permite navegar para todas as seções.
+
+**Critérios de aceite:**
+- [ ] Hero com título, subtítulo e CTA "Começar Simulação"
+- [ ] Grid de 4-6 feature cards com ícone, título e descrição
+- [ ] Navbar com logo, toggle de tema e botão de acessibilidade
+- [ ] Animação de entrada (fade + slide)
+- [ ] Score acumulado visível se existir progresso anterior
+- [ ] Responsivo: cards empilham em mobile
+
+---
+
+## F02 — Simulador de Tipagem (Core)
+
+**Descrição:** Tela principal onde o usuário realiza a tipagem virtual.
+
+**Fluxo do usuário:**
+```
+1. [Tela exibe 3 poços: Anti-A, Anti-B, Anti-D]
+2. [Botão "Pingar sangue" ou seletor de tipo]
+3. Usuário clica/toca em um poço
+4. Animação: gota cai no poço
+5. Partículas (hemácias) aparecem no poço
+6. Reação ocorre automaticamente (aglutina ou não)
+7. Rótulo "Positivo ✓" ou "Negativo ✗" aparece no poço
+8. Repete para os 3 poços
+9. [Todos preenchidos] → Resultado revelado com explicação
+10. [Botão "Novo teste" ou "Ir para Quiz"]
+```
+
+**Critérios de aceite:**
+- [ ] 3 poços circulares com rótulo e cor distintos (Anti-A=azul, Anti-B=amarelo, Anti-D=verde)
+- [ ] Click/touch no poço dispara animação de gota
+- [ ] Partículas aparecem com fade-in (spawn de 30-50 por poço)
+- [ ] Reação visível em 2-3 segundos
+- [ ] Não permite re-clicar um poço já preenchido
+- [ ] Resultado final exibido em card com: tipo ABO, Rh, genótipos possíveis
+- [ ] Explicação textual do por que aglutiou ou não
+- [ ] Botão "Novo teste" reseta os poços
+
+**Modos de operação:**
+1. **Modo Descoberta**: Sistema escolhe tipo aleatório. Usuário observa reações e deduz.
+2. **Modo Verificação**: Usuário escolhe um tipo e verifica se acertou as reações.
+3. **Modo Desafio**: Sistema mostra reações e usuário deve identificar o tipo.
+
+---
+
+## F03 — Sistema de Partículas (Canvas)
+
+**Descrição:** Motor de partículas que renderiza hemácias em cada poço do simulador.
+
+**Especificação técnica:**
+- Canvas 2D dedicado por poço (ou 1 Canvas grande com viewports)
+- 30-50 partículas por poço
+- Cada partícula: círculo de 6-10px, cor vermelha/carmesim
+- Movimento Browniano: velocidade aleatória com colisão elástica nas paredes
+- Frame rate: 60fps via `requestAnimationFrame`
+- Pool de objetos reutilizáveis (evita GC pressure)
+
+**Critérios de aceite:**
+- [ ] Partículas se movem suavemente sem stuttering
+- [ ] Colisão com paredes do poço (bounce)
+- [ ] Performance: < 16ms por frame com 150 partículas totais
+- [ ] Partículas têm leve variação de tamanho e opacidade (naturalismo)
+- [ ] Spawn com animação de fade-in progressivo
+
+---
+
+## F04 — Aglutinação Visual
+
+**Descrição:** Quando o anticorpo do reagente encontra o antígeno da hemácia, as partículas devem visualmente clusterizar.
+
+**Comportamento:**
+```
+NÃO-AGLUTINAÇÃO:
+  - Partículas permanecem dispersas
+  - Brownian motion contínuo
+  - Distribuição uniforme no poço
+  - Cor: vermelho normal
+
+AGLUTINAÇÃO:
+  - Partículas são atraídas entre si (força gravitacional simulada)
+  - Formam 3-5 clusters distintos
+  - Cada cluster: 6-15 partículas agrupadas
+  - Clusters se movem lentamente como unidades
+  - Cor: vermelho mais escuro nos clusters
+  - Tempo para clustering completo: 2-3 segundos
+  - Efeito visual: partículas "grudam" e ficam mais opacas
+```
+
+**Algoritmo de clustering:**
+```
+Para cada partícula com antígeno correspondente:
+  1. Calcular distância para partículas vizinhas
+  2. Se distância < threshold → aplicar força de atração
+  3. Quando 2+ partículas colidem → criar cluster (grupo)
+  4. Cluster herda posição do centroide
+  5. Novas partículas próximas são atraídas ao cluster
+  6. Cluster inteiro se move com velocidade reduzida
+```
+
+**Critérios de aceite:**
+- [ ] Aglutinação visualmente distinguível de não-aglutinação em < 3s
+- [ ] Clusters são orgânicos (não grid, não alinhados)
+- [ ] Transição é gradual (não instantânea)
+- [ ] Sem overlap excessivo (partículas não ficam todas num ponto)
+
+---
+
+## F05 — Revelação de Resultado
+
+**Descrição:** Após os 3 poços serem preenchidos, revela o tipo sanguíneo com explicação.
+
+**Conteúdo do resultado:**
+```
+┌─────────────────────────────────────────┐
+│  Resultado: Tipo A+                     │
+│                                         │
+│  Anti-A: POSITIVO ✓ (aglutinou)         │
+│  Anti-B: NEGATIVO ✗ (não aglutinou)     │
+│  Anti-D: POSITIVO ✓ (aglutinou)         │
+│                                         │
+│  Explicação:                            │
+│  As hemácias possuem antígeno A na      │
+│  superfície, por isso reagiram com o    │
+│  Anti-A. Não possuem antígeno B. O      │
+│  fator Rh (antígeno D) está presente.   │
+│                                         │
+│  Genótipos possíveis: IA IA ou IA i     │
+│                                         │
+│  Frequência na população brasileira:    │
+│  ~34% (tipo mais comum)                 │
+│                                         │
+│  [🔄 Novo Teste]   [📝 Ir para Quiz]   │
+└─────────────────────────────────────────┘
+```
+
+**Critérios de aceite:**
+- [ ] Card com animação de reveal (escala + fade)
+- [ ] Mostra reação de cada poço com ícone visual
+- [ ] Explicação em linguagem acessível (não jargão)
+- [ ] Genótipos possíveis (mendelismo)
+- [ ] Frequência na população brasileira
+- [ ] Score: +5 pontos por tipagem completada
+
+---
+
+## F06 — Quiz Gamificado
+
+**Descrição:** Série de perguntas sobre sistema ABO, genética, transfusão e biossegurança.
+
+**Tipos de pergunta:**
+1. **Múltipla escolha**: 4 alternativas, 1 correta
+2. **Verdadeiro/Falso**: Afirmação a ser julgada
+3. **Matching (drag-and-drop)**: Conectar tipo → anticorpo, tipo → pode doar para
+4. **Cenário clínico**: Caso + pergunta de decisão
+
+**Banco de questões mínimo: 30 perguntas**
+
+**Categorias:**
+| Categoria | Qtd mínima | Exemplo |
+|:---|:---|:---|
+| Genética ABO | 8 | "Quais genótipos um indivíduo tipo AB pode ter?" |
+| Antígenos e anticorpos | 6 | "Qual anticorpo está no plasma de tipo O?" |
+| Compatibilidade transfusional | 8 | "Tipo B pode receber sangue de quem?" |
+| Fator Rh e DHRN | 4 | "Por que Rh- na gravidez é preocupante?" |
+| Biossegurança | 4 | "Qual o descarte correto de lanceta usada?" |
+
+**Mecânica:**
+- 10 perguntas por rodada (sorteadas do banco)
+- Timer de 30s por pergunta (configurável)
+- Feedback imediato: correto (verde + explicação), incorreto (vermelho + explicação)
+- +10pts por acerto, streak multiplier (2x após 3 seguidos, 3x após 5, 5x após 10)
+- Barra de progresso (X/10)
+- Resultado final: nota, acertos, tempo médio
+
+**Critérios de aceite:**
+- [ ] Mínimo 30 perguntas no banco
+- [ ] Embaralhamento de perguntas e alternativas
+- [ ] Feedback com explicação científica em cada questão
+- [ ] Animação de acerto/erro (shake para erro, confetti para acerto)
+- [ ] Score persistido em LocalStorage
+- [ ] Botão "Jogar novamente" com novo embaralhamento
+
+---
+
+## F07 — Score & Achievements
+
+**Achievements desbloqueáveis:**
+
+| ID | Nome | Condição | Ícone |
+|:---|:---|:---|:---|
+| ACH01 | Primeiro Teste | Completar 1 tipagem | 🩸 |
+| ACH02 | Hematologista Mirim | Completar tipagem de todos os 8 tipos | 🔬 |
+| ACH03 | Quiz Master | 10/10 no quiz | 🏆 |
+| ACH04 | Sem Errar | Quiz perfeito sem erro | ⭐ |
+| ACH05 | Streak de Fogo | Streak de 10 respostas certas | 🔥 |
+| ACH06 | Enciclopedista | Visitar todos os verbetes | 📚 |
+| ACH07 | Caçador de Mitos | Completar todos os Mitos vs. Fatos | 🕵️ |
+| ACH08 | Salva-vidas | Acertar todos os cenários de transfusão | ❤️ |
+
+---
+
+## F08 — Mitos vs. Fatos
+
+**Descrição:** Seção que apresenta mitos populares sobre tipos sanguíneos e os desmistifica com evidência.
+
+**Formato:** Card com afirmação → usuário clica MITO ou FATO → reveal com explicação.
+
+**Conteúdo mínimo (10 cards):**
+
+| Afirmação | Resposta | Referência |
+|:---|:---|:---|
+| "Tipo O é doador universal" | PARCIALMENTE — apenas hemácias concentradas | Medicina transfusional |
+| "Tipo sanguíneo define personalidade" | MITO — sem base científica | Wikipedia: Blood type personality theory |
+| "Sangue Rh- é raro e perigoso" | MITO PARCIAL — raro (~15%), mas não perigoso | Dados populacionais |
+| "Filhos herdam tipo do pai" | PARCIALMENTE — herdam alelos de AMBOS os pais | Genética mendeliana |
+| "Tipo AB pode receber de todos" | PARCIALMENTE — hemácias sim, plasma não | Hematologia |
+| "Dieta do tipo sanguíneo funciona" | MITO — sem evidência científica robusta | Meta-análises |
+| "Mosquitos preferem tipo O" | FATO PARCIAL — há estudos sugerindo preferência | Journal of Medical Entomology |
+| "Tipo sanguíneo muda ao longo da vida" | MITO — determinado geneticamente, não muda | Genética básica |
+| "Doar sangue enfraquece" | MITO — corpo repõe volume em 24-72h | Hematologia |
+| "COVID-19 afeta mais tipo A" | PARCIALMENTE — alguns estudos sugeriram, mas inconclusivos | Meta-análise 2021 |
+
+---
+
+## F09 — Enciclopédia
+
+**Verbetes (mínimo 12):**
+1. Sistema ABO — história e descoberta (Landsteiner, 1900)
+2. Antígenos — o que são, onde ficam
+3. Anticorpos — Anti-A, Anti-B, Anti-D
+4. Aglutinação — mecanismo imunológico
+5. Genética mendeliana do ABO — alelos IA, IB, i
+6. Fator Rh — antígeno D
+7. Transfusão sanguínea — história e regras
+8. DHRN — Doença hemolítica do recém-nascido
+9. Subgrupos de A — A1, A2
+10. D fraco — importância clínica
+11. Doação de sangue — processo e requisitos
+12. Hemocentros — como funcionam no Brasil
+
+---
+
+## F10 — Cenários de Transfusão
+
+**Descrição:** Simulação de decisão clínica: paciente chega, qual sangue usar?
+
+**Formato:**
+```
+┌──────────────────────────────────┐
+│ 🚨 EMERGÊNCIA                   │
+│                                  │
+│ Paciente: Maria, 28 anos         │
+│ Tipo sanguíneo: B-               │
+│ Situação: Hemorragia pós-parto   │
+│                                  │
+│ Estoque disponível:              │
+│ [A+] [A-] [B+] [B-] [O+] [O-]  │
+│                                  │
+│ Qual(is) sangue(s) podem ser     │
+│ transfundidos com segurança?     │
+│                                  │
+│ [Selecione os compatíveis]       │
+└──────────────────────────────────┘
+```
+
+**5-8 cenários com complexidade crescente.**
+
+---
+
+## F11 — Dark/Light Theme
+- Toggle no navbar (ícone 🌙/☀️)
+- Persiste escolha em LocalStorage
+- Respeita `prefers-color-scheme` do sistema como default
+
+## F12 — Painel do Professor
+- Acesso por PIN (4 dígitos, configurável, default: 1234)
+- Visualiza: total de tipagens feitas, distribuição de acertos no quiz, perguntas mais erradas
+- Dados agregados (sem identificação individual)
+- Botão "Resetar dados" para nova turma
+</file>
+
+<file path="04_IMPLEMENTATION_PLAN.md">
+# 📅 Plano de Implementação — ABO Sim v1.0
+
+## Timeline geral (10 dias úteis)
+
+```
+Fase 0: Setup          │▓▓│                                        (0.5 dia)
+Fase 1: Core Engine    │  │▓▓▓▓▓▓▓▓│                               (3 dias)
+Fase 2: Quiz & Game    │          │▓▓▓▓▓▓│                         (2.5 dias)
+Fase 3: Conteúdo       │                │▓▓▓▓│                     (2 dias)
+Fase 4: Polish         │                     │▓▓▓▓│                (1.5 dias)
+Fase 5: QA & Deploy    │                          │▓▓│             (0.5 dia)
+                       D1  D2  D3  D4  D5  D6  D7  D8  D9  D10
+```
+
+---
+
+## Fase 0 — Setup do Projeto (0.5 dia)
+
+### Task 0.1: Scaffold do projeto
+**Agente:** `app-builder` (skill: `scaffolding.md`)
+**Input:** Estrutura definida em `06_FILE_STRUCTURE.md`
+
+**Ações:**
+1. Criar a árvore de diretórios completa
+2. Criar `index.html` com estrutura semântica base
+3. Criar `css/variables.css` com todos os tokens do design system
+4. Criar `css/reset.css` com CSS reset moderno
+5. Criar `css/main.css` que importa módulos CSS
+6. Criar `js/main.js` com entry point
+7. Criar `js/core/event-bus.js` com implementação do Pub/Sub
+8. Criar `js/core/router.js` com hash-based routing
+9. Criar `js/core/storage.js` com abstração do LocalStorage
+10. Criar `js/core/state-manager.js` com estado inicial
+
+**Critério de conclusão:**
+- `index.html` abre no navegador sem erros no console
+- Navegação por hash funciona (#home mostra seção home)
+- Event bus funciona (teste: emit → subscribe confirma)
+
+---
+
+### Task 0.2: Download de assets base
+**Agente:** `frontend-specialist`
+
+**Ações:**
+1. Baixar fontes Inter e Outfit (woff2, subset latin)
+2. Colocar em `fonts/`
+3. Verificar que `@font-face` carrega corretamente
+
+---
+
+## Fase 1 — Core Engine (3 dias)
+
+### Task 1.1: Home Screen (0.5 dia)
+**Agente:** `frontend-specialist` (skills: `frontend-design`, `web-design-guidelines`)
+
+**Ações:**
+1. Implementar HTML da home (hero, feature cards, navbar)
+2. Estilizar com CSS conforme `02_DESIGN_SYSTEM.md`
+3. Adicionar animações de entrada (fadeIn)
+4. Implementar navbar com toggle de tema e botão acessibilidade
+5. Fazer responsivo (mobile-first)
+
+**Critério de conclusão:**
+- Tela visual conforme wireframe do design system
+- Responsiva de 320px a 1920px
+- Feature cards são clicáveis e navegam via router
+
+---
+
+### Task 1.2: Canvas Base + Particle System (1 dia)
+**Agente:** `frontend-specialist` (skills: `game-development`)
+
+**Ações:**
+1. Implementar `js/simulation/animation-loop.js`
+   - requestAnimationFrame loop
+   - Delta time calculation
+   - FPS counter (debug mode)
+2. Implementar `js/simulation/particle.js`
+   - Classe Particle com propriedades (x, y, vx, vy, radius, etc.)
+   - Método `update(dt)` para movimento
+   - Método `draw(ctx)` para renderizar
+   - Colisão com paredes circulares do poço
+3. Implementar `js/simulation/particle-system.js`
+   - Pool de partículas (preallocated)
+   - `spawn(count, wellBounds)` para criar partículas
+   - `update(dt)` que itera todas as partículas
+   - `draw(ctx)` que renderiza todas
+4. Implementar `js/simulation/reagent-well.js`
+   - Classe ReagentWell (tipo, posição, dimensões, canvas ref)
+   - Estado: empty → filled → result
+   - Método `addBlood(bloodType)` que trigger spawn
+
+**Critério de conclusão:**
+- 3 poços visíveis na tela (Canvas ou SVG containers)
+- Partículas se movem com Brownian motion em cada poço
+- 60fps em dispositivo médio (teste em DevTools Performance)
+- Partículas colidem com as paredes do poço circular
+
+---
+
+### Task 1.3: Agglutination Logic (1 dia)
+**Agente:** `frontend-specialist` (skills: `game-development`)
+
+**Ações:**
+1. Implementar `js/utils/blood-logic.js`
+   - Tabela de compatibilidade antígeno-anticorpo
+   - Função `shouldAgglutinate(bloodType, reagent) → boolean`
+   - Dados dos 8 tipos: antígenos presentes, anticorpos no plasma
+2. Implementar `js/simulation/agglutination.js`
+   - Algoritmo de clustering baseado em forças de atração
+   - `startClustering(particles)` → inicia força de atração
+   - `updateClusters(dt)` → move partículas para centroides
+   - Cluster estabiliza em 2-3 segundos
+   - Visual: partículas em cluster ficam mais escuras e opacas
+3. Integrar com `particle-system.js`:
+   - Quando `shouldAgglutinate === true` → ativa clustering
+   - Quando `false` → mantém Brownian motion
+
+**Critério de conclusão:**
+- Tipo A sangue em poço Anti-A → aglutina visualmente
+- Tipo A sangue em poço Anti-B → NÃO aglutina
+- Diferença visual clara entre aglutinação e não-aglutinação
+- Transição gradual (não instantânea)
+- Funciona corretamente para todos os 8 tipos
+
+---
+
+### Task 1.4: Simulation Orchestration (0.5 dia)
+**Agente:** `frontend-specialist`
+
+**Ações:**
+1. Implementar `js/simulation/simulation-engine.js`
+   - Orquestra o fluxo: selecionar tipo → pingar → observar → revelar
+   - Gerencia estado: qual poço já foi preenchido
+   - Detecta quando todos os 3 poços estão prontos
+2. Implementar `js/screens/simulator-screen.js`
+   - Layout da tela do simulador
+   - Botões de interação (selecionar tipo, pingar, novo teste)
+   - Info panel com status e explicação
+3. Implementar 3 modos: Descoberta, Verificação, Desafio
+
+**Critério de conclusão:**
+- Fluxo completo funciona: clicar poço → gota cai → reação → resultado
+- Os 3 modos são selecionáveis
+- Resultado exibido com genótipos e explicação
+
+---
+
+## Fase 2 — Quiz & Gamificação (2.5 dias)
+
+### Task 2.1: Banco de Questões (0.5 dia)
+**Agente:** `deep-researcher` (skills: `research-synthesis`, `source-verification`)
+
+**Ações:**
+1. Criar `data/questions.json` com 30+ perguntas
+2. Cada pergunta com: enunciado, tipo, alternativas, resposta correta, explicação, dificuldade, categoria
+3. Validar precisão científica de cada pergunta e explicação
+4. Incluir referências para as explicações
+
+**Critério de conclusão:**
+- 30+ perguntas distribuídas entre 5 categorias
+- Todas com explicação científica validada
+- JSON válido e bem estruturado
+
+---
+
+### Task 2.2: Quiz Engine (1 dia)
+**Agente:** `frontend-specialist` (skills: `game-development`)
+
+**Ações:**
+1. Implementar `js/quiz/question-loader.js`
+   - Carrega e embaralha questões do JSON
+   - Filtra por categoria/dificuldade
+   - Garante não repetir na mesma sessão
+2. Implementar `js/quiz/quiz-engine.js`
+   - Máquina de estados: idle → question → feedback → next → results
+   - Timer por questão (30s default)
+   - Cálculo de score com multiplicador streak
+   - Persistência de histórico
+3. Implementar `js/quiz/quiz-renderer.js`
+   - Renderiza pergunta com alternativas
+   - Animações de acerto (confetti) e erro (shake)
+   - Barra de progresso
+   - Tela de resultado final
+
+**Critério de conclusão:**
+- Quiz de 10 perguntas funciona end-to-end
+- Timer funcional com visual feedback
+- Feedback imediato com explicação
+- Score calculado e persistido
+- Animações de acerto/erro
+
+---
+
+### Task 2.3: Score Manager & Achievements (0.5 dia)
+**Agente:** `frontend-specialist`
+
+**Ações:**
+1. Implementar `js/game/score-manager.js`
+   - Score total acumulado, streak counter, multiplicador
+2. Implementar `js/game/achievements.js`
+   - 8 achievements conforme spec
+   - Notificação toast ao desbloquear
+3. Implementar `js/game/leaderboard.js`
+   - Ranking local por apelido
+   - Top 10 exibido em modal
+
+---
+
+### Task 2.4: Cenários de Transfusão (0.5 dia)
+**Agente:** `frontend-specialist` + `deep-researcher`
+
+**Ações:**
+1. Criar `data/transfusion-scenarios.json` com 5-8 cenários
+2. Implementar `js/screens/transfusion-screen.js`
+   - Card de cenário com paciente, tipo, situação
+   - Grid de opções de sangue para selecionar
+   - Feedback: correto/incorreto com explicação clínica
+3. Scoring: +15pts por cenário correto
+
+---
+
+## Fase 3 — Conteúdo & Extras (2 dias)
+
+### Task 3.1: Mitos vs. Fatos (0.5 dia)
+**Agente:** `deep-researcher` (skills: `source-verification`)
+
+**Ações:**
+1. Criar `data/myths.json` com 10 mitos/fatos
+2. Implementar `js/screens/myths-screen.js`
+   - Cards com afirmação, botões MITO/FATO
+   - Reveal com explicação e referência
+   - Animação flip-card
+
+---
+
+### Task 3.2: Enciclopédia (0.5 dia)
+**Agente:** `deep-researcher` + `documentation-writer`
+
+**Ações:**
+1. Criar `data/encyclopedia.json` com 12 verbetes
+2. Implementar `js/screens/encyclopedia-screen.js`
+   - Lista lateral com verbetes
+   - Área de conteúdo com texto, imagens SVG
+   - Busca/filtro por texto
+
+---
+
+### Task 3.3: Painel do Professor (0.5 dia)
+**Agente:** `frontend-specialist` (skills: `data-analysis`)
+
+**Ações:**
+1. Implementar `js/screens/teacher-screen.js`
+   - Autenticação por PIN (hash no LocalStorage)
+   - Dashboard com: total tipagens, distribuição de acertos, perguntas mais erradas
+   - Gráficos simples (Canvas ou CSS-only charts)
+   - Botão "Resetar turma"
+
+---
+
+### Task 3.4: Assets visuais (0.5 dia)
+**Agente:** `frontend-specialist`
+
+**Ações:**
+1. Gerar ícones SVG para: hemácias, anticorpos, poços, gota de sangue, etc.
+2. Criar favicon e Open Graph image
+3. Otimizar SVGs (SVGO)
+4. Criar OG tags para compartilhamento
+
+---
+
+## Fase 4 — Polish (1.5 dia)
+
+### Task 4.1: Acessibilidade (0.5 dia)
+**Agente:** `frontend-specialist` (skills: `web-design-guidelines`)
+
+**Ações:**
+1. Implementar `js/ui/accessibility.js`
+   - Alto contraste toggle
+   - Focus management (trap em modais)
+   - Skip links
+2. Adicionar ARIA labels em todos os interativos
+3. Testar com teclado only
+4. Validar contraste com Lighthouse
+
+---
+
+### Task 4.2: Responsividade final (0.5 dia)
+**Agente:** `frontend-specialist` (skills: `responsive-design`)
+
+**Ações:**
+1. Testar em 320px, 375px, 768px, 1024px, 1440px
+2. Corrigir breakpoints problemáticos
+3. Validar touch targets (min 44x44px)
+4. Testar orientação landscape em mobile
+
+---
+
+### Task 4.3: Micro-animações & polish (0.5 dia)
+**Agente:** `frontend-specialist`
+
+**Ações:**
+1. Transições entre telas (fade/slide)
+2. Hover effects em todos os botões/cards
+3. Loading skeleton para carregamento
+4. Smooth scroll para âncoras
+5. Feedback tátil/visual para todas as interações
+
+---
+
+## Fase 5 — QA & Deploy (0.5 dia)
+
+### Task 5.1: Testing
+**Agente:** `test-engineer` (skills: `testing-patterns`)
+
+**Ações:**
+1. Teste manual de todos os fluxos (8 tipos × 3 modos)
+2. Teste de quiz (30 perguntas)
+3. Teste de cenários de transfusão
+4. Teste em 3 navegadores (Chrome, Firefox, Safari/Edge)
+5. Teste offline (desconectar rede → tudo funciona)
+6. Lighthouse audit (Performance, Accessibility, SEO)
+
+---
+
+### Task 5.2: Bundle final
+**Ações:**
+1. Minificar CSS (se necessário)
+2. Inline critical CSS no `<head>`
+3. Gerar versão single-file (opcional) para distribuição fácil
+4. Criar ZIP para download
+
+---
+
+## Dependências entre tasks
+
+```mermaid
+graph TD
+    T0.1[0.1 Scaffold] --> T1.1[1.1 Home Screen]
+    T0.1 --> T1.2[1.2 Canvas + Particles]
+    T0.2[0.2 Fonts/Assets] --> T1.1
+    T1.2 --> T1.3[1.3 Agglutination]
+    T1.3 --> T1.4[1.4 Sim Orchestration]
+    T1.1 --> T2.1[2.1 Banco Questões]
+    T2.1 --> T2.2[2.2 Quiz Engine]
+    T2.2 --> T2.3[2.3 Score & Achievements]
+    T1.4 --> T2.4[2.4 Transfusion Scenarios]
+    T2.1 --> T3.1[3.1 Mitos vs Fatos]
+    T2.1 --> T3.2[3.2 Enciclopédia]
+    T2.3 --> T3.3[3.3 Painel Professor]
+    T1.1 --> T3.4[3.4 Assets Visuais]
+    T3.3 --> T4.1[4.1 Acessibilidade]
+    T3.4 --> T4.2[4.2 Responsividade]
+    T4.1 --> T4.3[4.3 Polish]
+    T4.2 --> T4.3
+    T4.3 --> T5.1[5.1 Testing]
+    T5.1 --> T5.2[5.2 Bundle]
+```
+
+---
+
+## Regra de ouro para a IA executora
+
+> [!IMPORTANT]
+> **Após concluir cada Task, a IA deve:**
+> 1. Testar no navegador (se possível via browser tool)
+> 2. Verificar console sem erros
+> 3. Atualizar o status no arquivo `memoria/STATUS.md`
+> 4. Commitar (se usando Git)
+> 5. Só então seguir para a próxima task
+</file>
+
+<file path="05_ORCHESTRATOR.md">
+# 🎛️ Orquestrador de Agentes — ABO Sim v1.0
+
+## 1. Propósito
+
+Este documento define o **protocolo de orquestração** para a IA executora que irá codificar o projeto ABO Sim. O orquestrador determina **qual agente/skill invocar**, **em que momento**, e **como validar** a saída antes de prosseguir.
+
+---
+
+## 2. Mapa de agentes disponíveis
+
+| Agente | Localização | Quando usar |
+|:---|:---|:---|
+| `frontend-specialist` | `agents/frontend-specialist.md` | UI, CSS, Canvas, animações, responsividade |
+| `game-developer` | `agents/game-developer.md` | Particle system, game loop, gamificação |
+| `deep-researcher` | `agents/deep-researcher.md` | Conteúdo científico, questões, validação |
+| `documentation-writer` | `agents/documentation-writer.md` | Verbetes da enciclopédia, explicações |
+| `test-engineer` | `agents/test-engineer.md` | Testes manuais, validação, QA |
+| `product-manager` | `agents/product-manager.md` | Decisões de scope, trade-offs |
+| `project-planner` | `agents/project-planner.md` | Replanejar se houver atrasos |
+| `debugger` | `agents/debugger.md` | Bugs, performance issues |
+| `seo-specialist` | `agents/seo-specialist.md` | Meta tags, OG, estrutura semântica |
+| `performance-optimizer` | `agents/performance-optimizer.md` | Canvas performance, bundle size |
+
+## 3. Mapa de skills disponíveis
+
+| Skill | Localização | Quando usar |
+|:---|:---|:---|
+| `frontend-design` | `skills/frontend-design/` | Implementar design system |
+| `web-design-guidelines` | `skills/web-design-guidelines/` | Acessibilidade, responsividade |
+| `game-development` | `skills/game-development/` | Particle physics, game loop |
+| `brainstorming` | `skills/brainstorming/` | Ideação de conteúdo, cenários |
+| `app-builder` | `skills/app-builder/` | Scaffolding, feature building |
+| `research-synthesis` | `skills/research-synthesis/` | Síntese de conteúdo educativo |
+| `source-verification` | `skills/source-verification/` | Validar info científica |
+| `data-analysis` | `skills/data-analysis/` | Dashboard do professor |
+| `clean-code` | `skills/clean-code/` | Refactoring, code quality |
+| `testing-patterns` | `skills/testing-patterns/` | Estratégia de teste |
+| `seo-fundamentals` | `skills/seo-fundamentals/` | SEO on-page |
+| `responsive-design` | `skills/mindrally-skills/responsive-design/` | Breakpoints, fluid layout |
+
+---
+
+## 4. Protocolo de orquestração
+
+### 4.1 Regra OBRIGATÓRIA antes de cada task
+
+```
+ANTES de iniciar qualquer Task do 04_IMPLEMENTATION_PLAN.md:
+
+1. LER o SKILL.md correspondente na pasta da skill indicada
+2. LER o arquivo do agente indicado em agents/
+3. VERIFICAR o STATUS.md para contexto do que já foi feito
+4. VERIFICAR se a task possui dependências não concluídas
+5. SÓ ENTÃO começar a codar
+```
+
+### 4.2 Regra OBRIGATÓRIA após cada task
+
+```
+APÓS concluir cada Task:
+
+1. TESTAR no navegador (abrir index.html, verificar console)
+2. VALIDAR contra os critérios de conclusão da task
+3. ATUALIZAR o STATUS.md com:
+   - Task ID
+   - Status: ✅ DONE | ⚠️ PARCIAL | ❌ BLOQUEADO
+   - Notas (se houver desvio do plano)
+4. SE houver bug → invocar agente `debugger`
+5. SE houver dúvida de scope → invocar agente `product-manager`
+6. Prosseguir para próxima task
+```
+
+---
+
+## 5. Fluxo de decisão do orquestrador
+
+```
+┌─────────────────────────────────┐
+│       INÍCIO DE NOVA TASK       │
+└──────────────┬──────────────────┘
+               ▼
+┌──────────────────────────────────┐
+│ 1. Ler 04_IMPLEMENTATION_PLAN.md │
+│    → Identificar próxima task    │
+└──────────────┬───────────────────┘
+               ▼
+┌──────────────────────────────────┐
+│ 2. Verificar dependências        │
+│    → Todas concluídas?           │
+└──────┬───────────────┬───────────┘
+       │ SIM           │ NÃO
+       ▼               ▼
+┌──────────────┐ ┌──────────────────┐
+│ 3. Ler skill │ │ BLOQUEAR: anotar │
+│    + agente  │ │ em STATUS.md     │
+└──────┬───────┘ └──────────────────┘
+       ▼
+┌──────────────────────────────────┐
+│ 4. EXECUTAR a task               │
+│    (codar, criar arquivos, etc.) │
+└──────────────┬───────────────────┘
+               ▼
+┌──────────────────────────────────┐
+│ 5. VALIDAR                       │
+│    → Critérios de conclusão OK?  │
+└──────┬───────────────┬───────────┘
+       │ SIM           │ NÃO
+       ▼               ▼
+┌──────────────┐ ┌──────────────────────┐
+│ 6. Atualizar │ │ DEBUGAR:             │
+│    STATUS.md │ │ → invocar `debugger` │
+│    → ✅ DONE │ │ → corrigir           │
+└──────┬───────┘ │ → re-validar         │
+       │         └──────────┬───────────┘
+       ▼                    │
+┌──────────────┐            │
+│ PRÓXIMA TASK │◄───────────┘
+└──────────────┘
+```
+
+---
+
+## 6. Tabela de roteamento Task → Agente(s) + Skill(s)
+
+| Task | Agente primário | Skill(s) | Agente secundário |
+|:---|:---|:---|:---|
+| 0.1 Scaffold | — | `app-builder/scaffolding.md` | — |
+| 0.2 Fonts | `frontend-specialist` | — | — |
+| 1.1 Home Screen | `frontend-specialist` | `frontend-design`, `web-design-guidelines` | — |
+| 1.2 Canvas+Particles | `frontend-specialist` | `game-development` | `game-developer` |
+| 1.3 Agglutination | `frontend-specialist` | `game-development` | — |
+| 1.4 Sim Orchestration | `frontend-specialist` | — | — |
+| 2.1 Banco Questões | `deep-researcher` | `research-synthesis`, `source-verification` | — |
+| 2.2 Quiz Engine | `frontend-specialist` | `game-development` | — |
+| 2.3 Score/Achievements | `frontend-specialist` | — | `game-developer` |
+| 2.4 Transfusion | `frontend-specialist` | — | `deep-researcher` |
+| 3.1 Mitos vs Fatos | `deep-researcher` | `source-verification` | `frontend-specialist` |
+| 3.2 Enciclopédia | `deep-researcher` | `research-synthesis` | `documentation-writer` |
+| 3.3 Painel Professor | `frontend-specialist` | `data-analysis` | — |
+| 3.4 Assets visuais | `frontend-specialist` | — | — |
+| 4.1 Acessibilidade | `frontend-specialist` | `web-design-guidelines` | — |
+| 4.2 Responsividade | `frontend-specialist` | `responsive-design` | — |
+| 4.3 Polish | `frontend-specialist` | `frontend-design` | — |
+| 5.1 Testing | `test-engineer` | `testing-patterns` | `debugger` |
+| 5.2 Bundle | — | — | `performance-optimizer` |
+
+---
+
+## 7. Protocolo de fallback
+
+### 7.1 Se uma task falhar após 3 tentativas
+```
+1. Marcar como ⚠️ PARCIAL no STATUS.md
+2. Documentar o que funciona e o que não funciona
+3. Invocar `debugger` com contexto completo
+4. Se debugger falhar → invocar `product-manager` para decisão de scope
+5. Possível decisão: simplificar feature, adiar para v1.1, remover do MVP
+```
+
+### 7.2 Se performance do Canvas estiver ruim
+```
+1. Invocar `performance-optimizer`
+2. Medidas possíveis:
+   - Reduzir contagem de partículas (30 → 20 por poço)
+   - Usar OffscreenCanvas (se suportado)
+   - Reduzir fidelidade visual em mobile
+   - Desabilitar Brownian motion em dispositivos lentos
+```
+
+### 7.3 Se conteúdo científico gerar dúvida
+```
+1. Invocar `deep-researcher` com skill `source-verification`
+2. Buscar referências primárias (PubMed, livros-texto de hematologia)
+3. Em caso de controvérsia → apresentar ambos os lados no app
+4. NUNCA publicar informação não verificada
+```
+
+---
+
+## 8. Template do STATUS.md
+
+A IA executora deve criar e manter o arquivo `memoria/STATUS.md` com o seguinte formato:
+
+```markdown
+# 📊 Status do Projeto — ABO Sim
+
+**Última atualização:** [data/hora]
+**Fase atual:** [0-5]
+**Progresso geral:** [X/18 tasks concluídas]
+
+## Tasks
+
+| Task | Status | Data | Notas |
+|:---|:---|:---|:---|
+| 0.1 Scaffold | ⬜ TODO | — | — |
+| 0.2 Fonts | ⬜ TODO | — | — |
+| 1.1 Home Screen | ⬜ TODO | — | — |
+| ... | ... | ... | ... |
+
+## Blockers
+
+| Blocker | Task afetada | Ação necessária |
+|:---|:---|:---|
+| — | — | — |
+
+## Decisões tomadas
+
+| Data | Decisão | Motivo |
+|:---|:---|:---|
+| — | — | — |
+```
+
+---
+
+## 9. Instruções finais para a IA executora
+
+> [!IMPORTANT]
+> ### Checklist de contexto OBRIGATÓRIO antes de iniciar
+> 
+> Antes de escrever UMA LINHA de código, a IA executora DEVE ler, nesta ordem:
+> 
+> 1. `memoria/00_OVERVIEW.md` — Entender o propósito e restrições
+> 2. `memoria/01_ARCHITECTURE.md` — Entender a arquitetura e padrões
+> 3. `memoria/02_DESIGN_SYSTEM.md` — Entender cores, tipografia, componentes
+> 4. `memoria/03_FEATURES_SPEC.md` — Entender cada feature em detalhe
+> 5. `memoria/04_IMPLEMENTATION_PLAN.md` — Entender a ordem das tasks
+> 6. `memoria/05_ORCHESTRATOR.md` (este arquivo) — Entender o protocolo
+> 7. `memoria/06_FILE_STRUCTURE.md` — Entender onde colocar cada arquivo
+> 8. `memoria/07_DATA_SCHEMAS.md` — Entender a estrutura dos dados JSON
+> 9. `PROBLEMAS.txt` (raiz do projeto) — Contexto original do problema
+> 
+> **Se algum documento estiver ausente ou incompleto, PARAR e reportar.**
+</file>
+
+<file path="06_FILE_STRUCTURE.md">
+# 📁 Estrutura de Arquivos — ABO Sim v1.0
+
+## Árvore completa do projeto
+
+```
+SISTEMA-ABO/
+├── PROBLEMAS.txt                    # Contexto original (não alterar)
+├── .agent.lnk                       # Link para ecossistema de agentes
+│
+├── memoria/                         # Documentação de engenharia (não alterar)
+│   ├── 00_OVERVIEW.md
+│   ├── 01_ARCHITECTURE.md
+│   ├── 02_DESIGN_SYSTEM.md
+│   ├── 03_FEATURES_SPEC.md
+│   ├── 04_IMPLEMENTATION_PLAN.md
+│   ├── 05_ORCHESTRATOR.md
+│   ├── 06_FILE_STRUCTURE.md         # (este arquivo)
+│   ├── 07_DATA_SCHEMAS.md
+│   └── STATUS.md                    # Criado pela IA executora
+│
+├── app/                             # ← TODA a aplicação fica aqui
+│   ├── index.html                   # Entry point principal
+│   │
+│   ├── css/
+│   │   ├── reset.css                # CSS reset moderno
+│   │   ├── variables.css            # Design tokens (cores, fonts, spacing)
+│   │   ├── main.css                 # @import de todos os módulos CSS
+│   │   ├── layout.css               # Grid, containers, responsividade
+│   │   ├── components.css           # Botões, cards, modais, navbar
+│   │   ├── simulator.css            # Estilos do simulador (poços, canvas)
+│   │   ├── quiz.css                 # Estilos do quiz
+│   │   ├── screens.css              # Estilos por tela (home, myths, etc.)
+│   │   └── animations.css           # Keyframes e transições
+│   │
+│   ├── js/
+│   │   ├── main.js                  # Entry point JS — inicializa app
+│   │   │
+│   │   ├── core/
+│   │   │   ├── event-bus.js         # Pub/Sub pattern
+│   │   │   ├── state-manager.js     # Estado global centralizado
+│   │   │   ├── router.js            # Hash-based screen routing
+│   │   │   └── storage.js           # Abstração LocalStorage
+│   │   │
+│   │   ├── simulation/
+│   │   │   ├── particle.js          # Classe Particle (hemácia)
+│   │   │   ├── particle-system.js   # Pool e lifecycle de partículas
+│   │   │   ├── reagent-well.js      # Classe ReagentWell (poço)
+│   │   │   ├── agglutination.js     # Lógica e animação de clustering
+│   │   │   ├── simulation-engine.js # Orquestração da simulação
+│   │   │   └── animation-loop.js    # requestAnimationFrame wrapper
+│   │   │
+│   │   ├── quiz/
+│   │   │   ├── quiz-engine.js       # Estado e lógica do quiz
+│   │   │   ├── quiz-renderer.js     # Renderiza UI do quiz
+│   │   │   └── question-loader.js   # Carrega/embaralha questões
+│   │   │
+│   │   ├── game/
+│   │   │   ├── score-manager.js     # Score, streak, multiplicador
+│   │   │   ├── achievements.js      # Sistema de conquistas
+│   │   │   └── leaderboard.js       # Ranking local
+│   │   │
+│   │   ├── screens/
+│   │   │   ├── home-screen.js       # Tela inicial
+│   │   │   ├── simulator-screen.js  # Tela do simulador
+│   │   │   ├── transfusion-screen.js# Cenários de transfusão
+│   │   │   ├── quiz-screen.js       # Tela do quiz
+│   │   │   ├── myths-screen.js      # Mitos vs. Fatos
+│   │   │   ├── encyclopedia-screen.js# Enciclopédia
+│   │   │   └── teacher-screen.js    # Painel do professor
+│   │   │
+│   │   ├── ui/
+│   │   │   ├── components.js        # Componentes reutilizáveis
+│   │   │   ├── animations.js        # Transições programáticas
+│   │   │   ├── accessibility.js     # ARIA, focus management
+│   │   │   └── theme.js             # Dark/light toggle
+│   │   │
+│   │   └── utils/
+│   │       ├── blood-logic.js       # Regras ABO/Rh, compatibilidade
+│   │       ├── random.js            # Helpers de aleatoriedade
+│   │       └── dom-helpers.js       # querySelector wrappers
+│   │
+│   ├── data/
+│   │   ├── blood-types.json         # 8 tipos sanguíneos com propriedades
+│   │   ├── questions.json           # 30+ perguntas do quiz
+│   │   ├── transfusion-rules.json   # Matriz de compatibilidade
+│   │   ├── transfusion-scenarios.json# 5-8 cenários clínicos
+│   │   ├── myths.json               # 10 mitos/fatos
+│   │   └── encyclopedia.json        # 12 verbetes educativos
+│   │
+│   ├── fonts/
+│   │   ├── Inter-Variable.woff2     # Fonte Inter (body)
+│   │   └── Outfit-Variable.woff2    # Fonte Outfit (headings)
+│   │
+│   ├── img/
+│   │   ├── favicon.svg              # Favicon
+│   │   ├── og-image.png             # Open Graph (1200x630)
+│   │   ├── hero-bg.svg              # Background decorativo do hero
+│   │   └── icons/
+│   │       ├── blood-drop.svg       # Gota de sangue
+│   │       ├── red-blood-cell.svg   # Hemácia
+│   │       ├── antibody.svg         # Anticorpo (Y-shape)
+│   │       ├── microscope.svg       # Microscópio
+│   │       ├── quiz.svg             # Ícone quiz
+│   │       ├── trophy.svg           # Troféu
+│   │       ├── book.svg             # Livro (enciclopédia)
+│   │       └── myth-buster.svg      # Lupa (mitos)
+│   │
+│   └── audio/ (opcional)
+│       ├── correct.mp3              # Som de acerto (curto)
+│       ├── incorrect.mp3            # Som de erro (curto)
+│       ├── achievement.mp3          # Som de conquista
+│       └── drop.mp3                 # Som de gota caindo
+```
+
+---
+
+## Convenções de nomenclatura
+
+| Elemento | Convenção | Exemplo |
+|:---|:---|:---|
+| Arquivos JS | kebab-case | `particle-system.js` |
+| Classes JS | PascalCase | `class ParticleSystem` |
+| Funções JS | camelCase | `function spawnParticles()` |
+| Constantes JS | UPPER_SNAKE | `const MAX_PARTICLES = 50` |
+| Variáveis CSS | kebab-case com prefixo | `--bg-primary`, `--text-xl` |
+| Classes CSS | BEM simplificado | `.reagent-well--anti-a` |
+| IDs HTML | kebab-case | `id="quiz-container"` |
+| Arquivos JSON | kebab-case | `blood-types.json` |
+
+---
+
+## Regras de organização
+
+1. **Um módulo por arquivo** — cada arquivo JS exporta uma coisa principal
+2. **Imports no topo** — todos os `import` agrupados no início
+3. **CSS modular** — cada arquivo CSS cobre um aspecto; `main.css` apenas importa
+4. **Dados separados do código** — todo conteúdo em `data/*.json`
+5. **Assets otimizados** — SVGs com SVGO, fontes em woff2
+6. **Nenhum arquivo fora de `app/`** — a pasta `app/` é auto-contida e deployável
+</file>
+
+<file path="07_DATA_SCHEMAS.md">
+# 📦 Schemas de Dados — ABO Sim v1.0
+
+## 1. blood-types.json
+
+Definição dos 8 tipos sanguíneos com todas as propriedades necessárias.
+
+```json
+{
+  "bloodTypes": [
+    {
+      "id": "A_POS",
+      "label": "A+",
+      "aboGroup": "A",
+      "rhFactor": "positive",
+      "antigens": {
+        "A": true,
+        "B": false,
+        "D": true
+      },
+      "antibodiesInPlasma": ["Anti-B"],
+      "possibleGenotypes": ["IA IA", "IA i"],
+      "canDonateTo": ["A+", "AB+"],
+      "canReceiveFrom": ["A+", "A-", "O+", "O-"],
+      "frequencyBrazil": 0.34,
+      "frequencyLabel": "~34%",
+      "description": "Tipo A positivo é o mais comum no Brasil. Possui antígeno A na superfície das hemácias e anticorpo Anti-B no plasma.",
+      "funFact": "Foi um dos primeiros tipos identificados por Karl Landsteiner em 1901."
+    }
+  ]
+}
+```
+
+**Campos obrigatórios por tipo:**
+| Campo | Tipo | Descrição |
+|:---|:---|:---|
+| `id` | string | Identificador único (A_POS, A_NEG, B_POS, etc.) |
+| `label` | string | Rótulo de exibição (A+, A-, B+, etc.) |
+| `aboGroup` | string | Grupo ABO (A, B, AB, O) |
+| `rhFactor` | string | "positive" ou "negative" |
+| `antigens` | object | `{A: bool, B: bool, D: bool}` |
+| `antibodiesInPlasma` | string[] | Lista de anticorpos no plasma |
+| `possibleGenotypes` | string[] | Genótipos possíveis |
+| `canDonateTo` | string[] | Para quem pode doar hemácias |
+| `canReceiveFrom` | string[] | De quem pode receber hemácias |
+| `frequencyBrazil` | number | Frequência decimal (0.34 = 34%) |
+| `frequencyLabel` | string | Frequência formatada |
+| `description` | string | Explicação educativa |
+| `funFact` | string | Curiosidade |
+
+**Os 8 tipos a serem incluídos:** A+, A-, B+, B-, AB+, AB-, O+, O-
+
+---
+
+## 2. questions.json
+
+Banco de questões do quiz gamificado.
+
+```json
+{
+  "questions": [
+    {
+      "id": "q001",
+      "category": "genetics",
+      "difficulty": "easy",
+      "type": "multiple_choice",
+      "question": "Quais são os alelos possíveis no sistema ABO?",
+      "options": [
+        { "id": "a", "text": "A, B e O" },
+        { "id": "b", "text": "IA, IB e i" },
+        { "id": "c", "text": "Rh+ e Rh-" },
+        { "id": "d", "text": "X e Y" }
+      ],
+      "correctAnswer": "b",
+      "explanation": "O sistema ABO é determinado por três alelos: IA (produz antígeno A), IB (produz antígeno B) e i (não produz antígeno). IA e IB são codominantes entre si e ambos dominam sobre i.",
+      "reference": "Genética mendeliana — Landsteiner, 1901"
+    },
+    {
+      "id": "q002",
+      "category": "transfusion",
+      "difficulty": "medium",
+      "type": "true_false",
+      "question": "Uma pessoa do tipo O negativo pode doar hemácias para qualquer pessoa.",
+      "correctAnswer": true,
+      "explanation": "Verdadeiro para hemácias concentradas: tipo O- não possui antígenos A, B nem D na superfície das hemácias, então não causa reação transfusional. Porém, o plasma de tipo O contém Anti-A e Anti-B, então a doação de sangue total deve ser feita com cautela.",
+      "reference": "Medicina transfusional"
+    },
+    {
+      "id": "q003",
+      "category": "antigens",
+      "difficulty": "hard",
+      "type": "matching",
+      "question": "Relacione cada tipo sanguíneo com os anticorpos presentes no seu plasma:",
+      "pairs": [
+        { "left": "Tipo A", "right": "Anti-B" },
+        { "left": "Tipo B", "right": "Anti-A" },
+        { "left": "Tipo AB", "right": "Nenhum" },
+        { "left": "Tipo O", "right": "Anti-A e Anti-B" }
+      ],
+      "explanation": "O organismo produz anticorpos contra os antígenos que NÃO possui. Tipo A tem antígeno A, então produz Anti-B. Tipo O não tem nenhum antígeno, então produz ambos.",
+      "reference": "Imunohematologia básica"
+    }
+  ]
+}
+```
+
+**Campos por questão:**
+| Campo | Tipo | Descrição |
+|:---|:---|:---|
+| `id` | string | Identificador único |
+| `category` | enum | `genetics`, `antigens`, `transfusion`, `rh_dhrn`, `biosafety` |
+| `difficulty` | enum | `easy`, `medium`, `hard` |
+| `type` | enum | `multiple_choice`, `true_false`, `matching`, `clinical_scenario` |
+| `question` | string | Enunciado da pergunta |
+| `options` | array | (para multiple_choice) Alternativas |
+| `pairs` | array | (para matching) Pares left/right |
+| `correctAnswer` | string\|boolean | Resposta correta |
+| `explanation` | string | Explicação científica |
+| `reference` | string | Fonte/referência |
+
+**Distribuição mínima:**
+- `genetics`: 8 perguntas (3 easy, 3 medium, 2 hard)
+- `antigens`: 6 perguntas (2 easy, 2 medium, 2 hard)
+- `transfusion`: 8 perguntas (3 easy, 3 medium, 2 hard)
+- `rh_dhrn`: 4 perguntas (1 easy, 2 medium, 1 hard)
+- `biosafety`: 4 perguntas (2 easy, 1 medium, 1 hard)
+
+---
+
+## 3. transfusion-rules.json
+
+Matriz de compatibilidade para hemácias concentradas.
+
+```json
+{
+  "compatibilityMatrix": {
+    "A+":  { "canReceiveFrom": ["A+","A-","O+","O-"], "canDonateTo": ["A+","AB+"] },
+    "A-":  { "canReceiveFrom": ["A-","O-"],           "canDonateTo": ["A+","A-","AB+","AB-"] },
+    "B+":  { "canReceiveFrom": ["B+","B-","O+","O-"], "canDonateTo": ["B+","AB+"] },
+    "B-":  { "canReceiveFrom": ["B-","O-"],           "canDonateTo": ["B+","B-","AB+","AB-"] },
+    "AB+": { "canReceiveFrom": ["A+","A-","B+","B-","AB+","AB-","O+","O-"], "canDonateTo": ["AB+"] },
+    "AB-": { "canReceiveFrom": ["A-","B-","AB-","O-"], "canDonateTo": ["AB+","AB-"] },
+    "O+":  { "canReceiveFrom": ["O+","O-"],           "canDonateTo": ["A+","B+","AB+","O+"] },
+    "O-":  { "canReceiveFrom": ["O-"],                "canDonateTo": ["A+","A-","B+","B-","AB+","AB-","O+","O-"] }
+  }
+}
+```
+
+---
+
+## 4. transfusion-scenarios.json
+
+```json
+{
+  "scenarios": [
+    {
+      "id": "ts001",
+      "difficulty": "easy",
+      "patient": {
+        "name": "João",
+        "age": 45,
+        "bloodType": "A+",
+        "situation": "Cirurgia eletiva de joelho. Necessita de 2 unidades de hemácias."
+      },
+      "availableBlood": ["A+", "B+", "O+", "AB-", "O-", "A-"],
+      "correctAnswers": ["A+", "O+", "O-", "A-"],
+      "explanation": "Paciente A+ pode receber de: A+, A-, O+, O-. Os tipos B+ e AB- contêm antígenos contra os quais o paciente possui anticorpos."
+    }
+  ]
+}
+```
+
+---
+
+## 5. myths.json
+
+```json
+{
+  "myths": [
+    {
+      "id": "m001",
+      "statement": "Pessoas com tipo sanguíneo O são 'doadores universais' e podem doar para qualquer pessoa sem risco.",
+      "answer": "partial_myth",
+      "answerLabel": "MITO PARCIAL",
+      "explanation": "É verdade que hemácias do tipo O não possuem antígenos A ou B, tornando-as compatíveis com qualquer receptor para transfusão de hemácias concentradas. Porém, o plasma do tipo O contém anticorpos Anti-A e Anti-B, que podem causar reações se o sangue total for transfundido. Por isso, em emergência, usa-se apenas hemácias concentradas de O-, não sangue total.",
+      "references": [
+        "Manual de Medicina Transfusional, Ministério da Saúde, 2016"
+      ],
+      "icon": "🩸"
+    }
+  ]
+}
+```
+
+**Campos:**
+| Campo | Tipo | Descrição |
+|:---|:---|:---|
+| `answer` | enum | `myth`, `fact`, `partial_myth`, `partial_fact` |
+| `answerLabel` | string | Rótulo de exibição |
+| `references` | string[] | Fontes |
+
+---
+
+## 6. encyclopedia.json
+
+```json
+{
+  "entries": [
+    {
+      "id": "enc001",
+      "title": "Sistema ABO",
+      "category": "fundamentos",
+      "shortDescription": "O sistema de classificação sanguínea mais importante na medicina transfusional.",
+      "content": "O sistema ABO foi descoberto por Karl Landsteiner em 1900-1901...",
+      "keyTerms": ["antígeno", "anticorpo", "aglutinação", "Landsteiner"],
+      "relatedEntries": ["enc002", "enc003", "enc004"],
+      "icon": "🔬"
+    }
+  ]
+}
+```
+
+---
+
+## 7. Dados de estado (LocalStorage)
+
+### abo-sim-score
+```json
+{
+  "totalScore": 0,
+  "currentStreak": 0,
+  "bestStreak": 0,
+  "typingsCompleted": 0,
+  "quizzesTaken": 0,
+  "scenariosCompleted": 0,
+  "lastUpdated": "2026-04-24T12:00:00Z"
+}
+```
+
+### abo-sim-achievements
+```json
+{
+  "unlocked": ["ACH01"],
+  "progress": {
+    "ACH02": { "current": 3, "target": 8 },
+    "ACH03": { "current": 7, "target": 10 }
+  }
+}
+```
+
+### abo-sim-teacher
+```json
+{
+  "pinHash": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
+  "totalTypings": 0,
+  "quizResults": [],
+  "mostMissedQuestions": []
+}
+```
+</file>
+
+<file path="08_AGGLUTINATION_ALGORITHM.md">
+# 🧬 Algoritmo de Aglutinação — Referência Técnica
+
+## 1. Contexto
+
+Este documento detalha o algoritmo do sistema de partículas (hemácias) e a simulação de aglutinação, que é o **coração visual** do simulador ABO Sim. A IA executora deve seguir esta especificação ao implementar os arquivos `particle.js`, `particle-system.js` e `agglutination.js`.
+
+---
+
+## 2. Modelo da partícula
+
+```javascript
+class Particle {
+  constructor(well) {
+    this.x = well.centerX + randomRange(-well.radius * 0.6, well.radius * 0.6);
+    this.y = well.centerY + randomRange(-well.radius * 0.6, well.radius * 0.6);
+    this.vx = randomRange(-0.5, 0.5);      // Brownian velocity
+    this.vy = randomRange(-0.5, 0.5);
+    this.radius = randomRange(5, 8);         // Visual radius
+    this.baseColor = 'hsl(0, 65%, 40%)';     // Hemácia normal
+    this.clusterColor = 'hsl(0, 70%, 28%)';  // Hemácia em cluster
+    this.color = this.baseColor;
+    this.opacity = 0;                        // Fade-in
+    this.clusterId = null;                   // null = livre
+    this.mass = 1;
+    this.friction = 0.98;
+  }
+}
+```
+
+---
+
+## 3. Brownian Motion (não-aglutinação)
+
+Quando o sangue NÃO reage com o reagente, as partículas devem se mover aleatoriamente, simulando hemácias livres em solução.
+
+```
+A cada frame (dt ≈ 16ms):
+  1. Aplicar perturbação aleatória:
+     vx += randomRange(-0.1, 0.1)
+     vy += randomRange(-0.1, 0.1)
+  
+  2. Aplicar fricção (desaceleração):
+     vx *= 0.98
+     vy *= 0.98
+  
+  3. Limitar velocidade máxima:
+     speed = sqrt(vx² + vy²)
+     if speed > MAX_SPEED (1.5):
+       vx = (vx / speed) * MAX_SPEED
+       vy = (vy / speed) * MAX_SPEED
+  
+  4. Atualizar posição:
+     x += vx * dt
+     y += vy * dt
+  
+  5. Colisão com parede circular do poço:
+     dist = distância(partícula, centro_do_poço)
+     if dist + particleRadius > wellRadius:
+       // Refletir velocidade na normal
+       nx = (x - well.centerX) / dist
+       ny = (y - well.centerY) / dist
+       dot = vx * nx + vy * ny
+       vx -= 2 * dot * nx
+       vy -= 2 * dot * ny
+       // Empurrar para dentro
+       x = well.centerX + nx * (wellRadius - particleRadius - 1)
+       y = well.centerY + ny * (wellRadius - particleRadius - 1)
+```
+
+---
+
+## 4. Aglutinação (clustering)
+
+Quando o sangue REAGE com o reagente (antígeno presente + anticorpo correspondente), as partículas devem se agrupar em clusters visíveis.
+
+### 4.1 Algoritmo de clustering
+
+```
+Constantes:
+  ATTRACTION_RADIUS = 60px      // Distância de atração
+  ATTRACTION_FORCE  = 0.02      // Intensidade da força
+  CLUSTER_RADIUS    = 12px      // Distância para considerar "clusterizado"
+  NUM_SEEDS         = 4         // Número de pontos sementes (centroides)
+  DAMPING           = 0.92      // Amortecimento no cluster
+
+Inicialização (quando reação é detectada):
+  1. Escolher 4 partículas aleatórias como "sementes" de cluster
+  2. Atribuir clusterId = 0,1,2,3 às sementes
+  3. Calcular centroides iniciais dos clusters
+
+A cada frame (dt ≈ 16ms):
+  Para cada partícula livre (clusterId === null):
+    1. Encontrar cluster mais próximo (centroide)
+    2. Se distância < ATTRACTION_RADIUS:
+       - Calcular vetor de atração em direção ao centroide
+       - Aplicar força: 
+         fx = (centroid.x - particle.x) * ATTRACTION_FORCE
+         fy = (centroid.y - particle.y) * ATTRACTION_FORCE
+       - vx += fx
+       - vy += fy
+    3. Se distância < CLUSTER_RADIUS:
+       - Atribuir clusterId = id_do_cluster
+       - Reduzir velocidade (DAMPING)
+       - Mudar cor para clusterColor
+       - Aumentar opacidade
+  
+  Para cada partícula em cluster (clusterId !== null):
+    1. Manter próxima ao centroide com força elástica fraca
+    2. Adicionar micro-vibração (jitter) para naturalismo
+       vx += randomRange(-0.03, 0.03)
+       vy += randomRange(-0.03, 0.03)
+    3. Aplicar damping forte (0.92)
+    4. Manter dentro do raio do cluster
+  
+  Recalcular centroides:
+    Para cada cluster:
+      centroid.x = média(x de todas as partículas do cluster)
+      centroid.y = média(y de todas as partículas do cluster)
+```
+
+### 4.2 Progressão temporal
+
+```
+t=0s    → Reação detectada. Partículas ainda dispersas.
+t=0.5s  → Sementes identificadas. Partículas começam a ser atraídas.
+t=1.0s  → ~40% das partículas em clusters. Clusters visíveis.
+t=1.5s  → ~70% em clusters. Padrão claro de aglutinação.
+t=2.0s  → ~90% em clusters. Aglutinação quase completa.
+t=2.5s  → ~100%. Clusters estabilizados com micro-jitter.
+t=3.0s  → Resultado "POSITIVO" exibido no poço.
+```
+
+### 4.3 Visual dos clusters
+
+```
+Cluster estabilizado:
+  - 6-15 partículas agrupadas
+  - Raio total do cluster: 20-35px
+  - Partículas se tocam/sobrepõem levemente
+  - Cor mais escura que partículas livres
+  - Opacidade mais alta (0.85 vs 0.6)
+  - Micro-vibração dá sensação de "vivo"
+  - Cluster inteiro se move lentamente (drift)
+
+Não-cluster (Brownian):
+  - Partículas espaçadas uniformemente
+  - Cor mais clara
+  - Opacidade mais baixa (0.6)
+  - Movimento individual aleatório
+  - Sem agrupamento visível
+```
+
+---
+
+## 5. Renderização (Canvas 2D)
+
+```javascript
+// Dentro do draw loop
+function drawParticle(ctx, particle) {
+  ctx.beginPath();
+  ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+  ctx.fillStyle = particle.color;
+  ctx.globalAlpha = particle.opacity;
+  ctx.fill();
+  
+  // Borda sutil para dar profundidade
+  ctx.strokeStyle = 'rgba(0, 0, 0, 0.15)';
+  ctx.lineWidth = 0.5;
+  ctx.stroke();
+  
+  ctx.globalAlpha = 1;
+}
+
+// Para o poço
+function drawWell(ctx, well) {
+  // Fundo do poço (sutil)
+  ctx.beginPath();
+  ctx.arc(well.centerX, well.centerY, well.radius, 0, Math.PI * 2);
+  ctx.fillStyle = well.bgColor; // from design system
+  ctx.fill();
+  
+  // Borda do poço
+  ctx.strokeStyle = well.borderColor; // Anti-A=azul, Anti-B=amarelo, Anti-D=verde
+  ctx.lineWidth = 3;
+  ctx.stroke();
+  
+  // Rótulo
+  ctx.fillStyle = well.labelColor;
+  ctx.font = '14px Inter';
+  ctx.textAlign = 'center';
+  ctx.fillText(well.label, well.centerX, well.centerY + well.radius + 20);
+}
+```
+
+---
+
+## 6. Otimizações de performance
+
+| Técnica | Descrição |
+|:---|:---|
+| Object pooling | Pré-alocar array de partículas; reusar ao invés de criar/destruir |
+| Spatial hashing | Para detecção de proximidade em O(n) ao invés de O(n²) |
+| Render skipping | Se nenhuma partícula se moveu >0.5px, skip redraw desse poço |
+| Offscreen detection | Não calcular partículas fora da viewport |
+| requestAnimationFrame | Sincroniza com refresh rate do monitor |
+| Delta time | Usar dt para independência de framerate |
+
+---
+
+## 7. Tabela de reação Antígeno-Anticorpo
+
+Referência rápida para `blood-logic.js`:
+
+```
+shouldAgglutinate(bloodType, reagent):
+
+          │ Anti-A │ Anti-B │ Anti-D │
+  ────────┼────────┼────────┼────────┤
+  A+      │  SIM   │  NÃO   │  SIM   │
+  A-      │  SIM   │  NÃO   │  NÃO   │
+  B+      │  NÃO   │  SIM   │  SIM   │
+  B-      │  NÃO   │  SIM   │  NÃO   │
+  AB+     │  SIM   │  SIM   │  SIM   │
+  AB-     │  SIM   │  SIM   │  NÃO   │
+  O+      │  NÃO   │  NÃO   │  SIM   │
+  O-      │  NÃO   │  NÃO   │  NÃO   │
+```
+
+Esta tabela é a **verdade absoluta** do simulador. Qualquer resultado diferente é um bug.
+</file>
+
+<file path="09_CHANGELOG_v1.1.md">
+# 📝 CHANGELOG v1.1.0 — Modo Diagnóstico Livre (Modo Inverso)
+
+**Data da Implementação:** 27 de Abril de 2026
+**Responsável:** AI Agent / Prof. Fábio Fabuloso
+**Pasta de Desenvolvimento:** `app-v1-1/`
+
+## Resumo Executivo
+Atendendo à demanda de ampliar a capacidade pedagógica do simulador, a versão 1.1.0 introduz o **Modo Diagnóstico Livre** (ou Modo Inverso). Anteriormente, o usuário selecionava o tipo sanguíneo e o sistema exibia a reação. Agora, a dinâmica inverte-se: o aluno pode "clicar" diretamente nos poços para simular reações visuais de aglutinação e solicitar ao sistema que identifique qual tipo sanguíneo produz aquele padrão.
+
+## Modificações Arquiteturais
+
+### 1. Núcleo Lógico (`blood-logic.js`)
+- **Implementado Busca Reversa:** Adicionada a função `getBloodTypeByReactions(antiA, antiB, antiD)`.
+- **Funcionamento:** Recebe uma trinca de valores booleanos e varre o banco de dados interno `BLOOD_TYPES` para encontrar a correspondência exata dos antígenos, retornando o objeto correspondente (ou nulo em casos de padronagens patológicas/inválidas).
+
+### 2. Motor Físico e Visual (`reagent-well.js`)
+- **Estados Independentes:** Poços agora mantêm um estado interno `manualAgglutinated`.
+- **Toggle de Aglutinação:** Adicionado o método `toggleManualAgglutination()`. Diferente da simulação padrão que envolve *delay* e pingar sangue, este método permite forçar a separação ou atração das hemácias (partículas) instantaneamente, reiniciando ou cancelando as forças físicas do `AgglutinationEngine` com base em cliques.
+
+### 3. Gerenciamento de Estado (`simulation-engine.js` & `simulator-screen.js`)
+- **Multimodo Integrado:** O orquestrador agora transiciona entre `discovery` (padrão) e `inverse`.
+- **Injeção Dinâmica:** Quando no modo inverso, a interação de pingar tubo é desabilitada. Os cliques no `canvas` do poço são capturados para disparar o toggle físico local.
+- **Botão Identificar:** Um novo fluxo de avaliação final consolida o array de booleanos dos 3 poços e evoca o Cartão de Resultados com a função reversa.
+
+### 4. Interface (UI/UX) (`index.html` & `main.css`)
+- **Mode Switcher:** Inclusão de _radio buttons_ para troca suave de modo.
+- **Feedback Tátil:** Adicionada a classe `.well-clickable` que induz _cursor pointer_, leve _scale_ (transform) e anéis de brilho (box-shadow) ao passar o mouse por cima dos poços no modo inverso.
+
+## Solução de Incidentes durante o Desenvolvimento
+
+- **Falso "Negativo" Global:** Corrigido um problema legado onde a avaliação dos resultados disparava antes do término da animação. O validador não lê mais a "física", mas cruza nativamente com a tabela da verdade.
+- **Erro de Bundle / Mojibake:** A reconstrução do `bundle.js` pela automação PowerShell gerou o cabeçalho "UTF-8 BOM", causando _Syntax Error_ no browser. Script corrigido para ler e salvar estritamente em UTF-8 SEM BOM e otimizada a limpeza de diretivas `import` / `export` com regex multiline em `build-bundle.ps1`.
+
+---
+
+> [!NOTE]
+> A pasta `app-v1-1` agora contém o artefato estável. Recomenda-se realizar o transplante dessas lógicas para a *codebase* principal de compilação futuramente, e empacotar uma nova versão `.exe` quando houver finalização absoluta da fase de manutenções.
+</file>
+
+<file path="10_UX_UI_REFACTOR_PLAN.md">
+# 🎨 Refatoração UX/UI — Integração de Skills (Fase 2)
+
+Este documento detalha o plano de ação estratégico para substituir as definições visuais ad-hoc descritas no arquivo `02_DESIGN_SYSTEM.md` por uma **arquitetura de tokens semânticos e Atomic Design** de alto nível, oriundos do repositório `ux-ui-agent-skills`.
+
+## 1. Visão Geral da Mudança
+O objetivo desta refatoração é elevar a maturidade da *codebase* CSS do projeto ABO Sim, tornando-a estritamente escalável, ultra-acessível e guiada por Design Tokens (Formato DTCG). A lógica funcional (Orquestrador, EventBus, StateManager) permanecerá intacta, mas a apresentação (UI) e o controle de estados visuais sofrerão um upgrade arquitetural.
+
+---
+
+## 2. Padrões Adotados (Agent Skills)
+
+### 2.1. Arquitetura de Tokens (3 Camadas)
+Todo valor numérico ou cor absoluta no CSS será refatorado para a hierarquia:
+1. **Primitives:** Cores/Medidas base (ex: `--blue-600: #2563EB`).
+2. **Semantics:** Valores com contexto lógico (ex: `--action-primary: var(--blue-600)`).
+3. **Components:** Valores isolados (ex: `--btn-bg: var(--action-primary)`).
+
+*Nota técnica: Como o simulador roda em Vanilla (sem compiladores como Tailwind), implementaremos esses tokens usando Variáveis Nativas (CSS Custom Properties) no arquivo global de estilos.*
+
+### 2.2. Atomic Design e Componentização
+- **Atoms:** Refatoração de `.btn`, `.input`, `.badge` para suportarem no mínimo 6 estados canônicos (Default, Hover, Focus, Active, Disabled, Loading).
+- **Molecules & Organisms:** Ajuste dos formulários (Painel do Professor) e dos layouts de grade.
+
+### 2.3. Acessibilidade Aprimorada (WCAG 2.2 AA)
+- Substituição de contornos (`outline`) nativos confusos por *Focus Rings* padronizados e semânticos (`--shadow-focus-ring`).
+- Injeção sistemática de atributos ARIA (`aria-live`, `aria-pressed`) controlados reativamente pelo `EventBus` do JS.
+
+---
+
+## 3. Roteiro de Execução
+
+| Etapa | Ação Técnica | Status |
+|:---|:---|:---|
+| **Auditoria Visual** | Analisar discrepâncias entre o app-v1-1 atual e os checks do `ux-ui-agent-skills` | Pendente |
+| **Tokens CSS** | Transcrever `colors.json`, `spacing.json` e `typography.json` para `:root` em `tokens.css` ou `main.css` | Pendente |
+| **Refatoração Global** | Trocar todas as variáveis antigas no CSS pelos novos tokens semânticos | Pendente |
+| **Componentes Atômicos** | Refazer os estilos de Botões, Inputs, Cards e Tipografia | Pendente |
+| **Orquestração de UI** | Ajustar o JS para que ele NÃO injete estilos inline, mas APENAS alterne classes de estado (`.is-active`, `.has-error`) | Pendente |
+| **Testes (QA)** | Validar acessibilidade (tabulação) e design nas telas de Simulação, Quiz e Enciclopédia | Pendente |
+| **Build Final** | Atualizar o script de build para unificar o CSS e gerar a v1.2 do app | Pendente |
+
+---
+
+> [!IMPORTANT]
+> Este plano entrará em execução imediata após o aval do usuário. Os artefatos do diretório `app-v1-1` atuarão como ambiente de laboratório para a transição.
+</file>
+
+<file path="11_CHANGELOG_v1.2.md">
+# Changelog v1.2.0 (2026-04-27)
+
+## 🎨 Design System & UX/UI (Refactor Completo)
+*   **Arquitetura de Tokens (DTCG)**: Implementação de sistema de 3 camadas (Primitive, Semantic, Component) no `tokens.css`.
+*   **Atomic Design**: Refatoração de componentes (átomos e moléculas) para garantir consistência visual.
+*   **Estados Interativos**: Todos os elementos interativos agora possuem os 6 estados obrigatórios (Default, Hover, Focus, Active, Disabled, Loading).
+*   **Fim dos Estilos Inline**: Manipulação visual via JavaScript agora utiliza estritamente o chaveamento de classes semânticas (`.is-active`, `.has-error`, `.is-hidden`).
+
+## ♿ Acessibilidade (WCAG 2.2 AA)
+*   **Keyboard Focus**: Implementação de `focus-visible` com anéis de foco de alto contraste em todo o sistema.
+*   **Semântica HTML**: Refino de `ARIA landmarks` e `roles` para melhor suporte a leitores de tela.
+*   **Contraste**: Validação de contraste de cores nos temas Dark e Light.
+
+## 🛠️ Infraestrutura e Build
+*   **Build Engine**: Novo script `build.ps1` para geração do `bundle.js` com limpeza de ESM e proteção contra Mojibake (UTF-8 sem BOM).
+*   **PWA & Chromebook**: Service Worker (`sw.js`) e `manifest.json` atualizados para caminhos relativos e inclusão dos novos arquivos de estilo no cache offline.
+*   **Legacy Aliases**: Mapa de compatibilidade mantido no `tokens.css` para garantir que extensões futuras não quebrem o legado.
+
+---
+**Status**: Versão de Alta Fidelidade (Premium) concluída.
+</file>
+
+<file path="IMPROVEMENTS_PROPOSAL.md">
+# 🚀 Proposta de Melhorias — ABO Sim
+
+## 1. Resumo Executivo
+O **ABO Sim** atingiu um estado de maturidade técnica e visual excepcional na versão 1.2.0, com a implementação de um Design System robusto (Tokens DTCG), conformidade WCAG 2.2 AA e a introdução do Modo Diagnóstico Livre (v1.1.0). Atualmente, o app cumpre todos os requisitos do MVP e as metas de alta fidelidade.
+
+Para evoluir de um "Simulador de Tipagem" para uma "Plataforma de Aprendizagem em Imunohematologia", propõe-se a expansão do conteúdo pedagógico, a gamificação avançada e a abertura do sistema para customização docente.
+
+---
+
+## 2. Análise de Estado Atual
+- **Pontos Fortes**:
+    - **Arquitetura**: Event-Driven, desacoplada e performática (Canvas 2D).
+    - **UI/UX**: Consistente, acessível e moderna.
+    - **Distribuição**: Versatilidade total (Web, PWA, Electron .exe).
+    - **Pedagogia**: Cobre a base do sistema ABO/Rh de forma interativa.
+
+- **Lacunas Identificadas**:
+    - **Profundidade Científica**: Limitado ao sistema ABO/Rh básico.
+    - **Interatividade Docente**: O Painel do Professor é apenas consultivo (leitura de dados).
+    - **Fluxo de Aprendizado**: As features (Simulador $\rightarrow$ Quiz $\rightarrow$ Enciclopédia) são independentes, sem um "fio condutor" ou trilha de aprendizado.
+
+---
+
+## 3. Propostas de Melhoria
+
+### 🟢 Nível 1: Expansão Pedagógica (Alto Impacto)
+*Objetivo: Aumentar a profundidade científica e a utilidade clínica.*
+
+1. **Módulos de Tipagem Avançada**:
+    - **Fenótipo Bombaim (h/h)**: Adicionar um cenário onde o sangue parece ser "O" no teste direto, mas a prova reversa revela a ausência de antígeno H.
+    - **Subgrupos de A (A1, A2)**: Simular reações mais fracas ou discordantes para ensinar a complexidade laboratorial.
+    - **Sistema Kell e Duffy**: Introduzir novos reagentes para expandir o conhecimento além do ABO/Rh.
+2. **Jornada do Paciente (Case Studies)**:
+    - Substituir cenários isolados por "Casos Clínicos". Ex: *Paciente chega com sintomas X $\rightarrow$ Usuário realiza tipagem $\rightarrow$ Usuário decide a transfusão $\rightarrow$ Sistema mostra a evolução do paciente.*
+3. **Enciclopédia Interativa**:
+    - Substituir textos longos por diagramas SVG interativos que mostram a ligação antígeno-anticorpo em nível molecular.
+
+### 🟡 Nível 2: Gamificação e Engajamento (Médio Impacto)
+*Objetivo: Aumentar a retenção e a motivação do aluno.*
+
+1. **Trilhas de Conquistas (Learning Paths)**:
+    - Criar "Missões". Ex: *Missão 1: O Básico (Completar 3 tipagens + 5 questões de genética).*
+2. **Modo Competitivo (Battle Mode)**:
+    - Desafio de tempo: Quem identifica o tipo sanguíneo mais rápido em 5 amostras aleatórias.
+3. **Certificado de Competência**:
+    - Gerar um PDF automático ao completar todas as conquistas e o quiz com nota $\ge 80\%$.
+
+### 🔵 Nível 3: Empoderamento Docente (Médio Impacto)
+*Objetivo: Transformar o app em uma ferramenta flexível para cada professor.*
+
+1. **Editor de Questões e Cenários**:
+    - Permitir que o professor adicione suas próprias perguntas ao quiz ou crie novos cenários de transfusão via Painel do Professor (salvos em `LocalStorage` ou exportáveis via JSON).
+2. **Gestão de Turmas**:
+    - Possibilidade de criar "Turmas" e exportar o relatório de desempenho da turma em CSV/Excel.
+
+### ⚪ Nível 4: Refinamentos Técnicos (Baixo Impacto)
+*Objetivo: Polimento final e escalabilidade.*
+
+1. **Adaptive Learning no Quiz**:
+    - O sistema ajusta a dificuldade das perguntas com base nos erros do aluno (se erra genética, o sistema oferece mais questões básicas de genética).
+2. **Modo de Performance "Lite"**:
+    - Opção de reduzir a quantidade de partículas no Canvas para dispositivos extremamente antigos (ex: Chromebooks de entrada).
+
+---
+
+## 4. Roadmap Sugerido
+
+| Prioridade | Feature | Esforço | Impacto | Prazo Est. |
+|:---:|:---|:---:|:---:|:---:|
+| **1** | Jornada do Paciente (Casos Clínicos) | Médio | Altíssimo | 1 semana |
+| **2** | Módulos Avançados (Bombaim/Subgrupos) | Médio | Alto | 1 semana |
+| **3** | Editor de Questões (Painel Professor) | Alto | Alto | 2 semanas |
+| **4** | Trilhas de Conquistas e Certificado | Baixo | Médio | 3 dias |
+| **5** | Modo Competitivo / Adaptive Learning | Alto | Médio | 2 semanas |
+
+## 5. Conclusão
+O ABO Sim já é uma ferramenta de excelência. A transição para a versão 2.0 deve focar menos em "estética" (que já está resolvida) e mais em **"profundidade pedagógica"** e **"autonomia docente"**, consolidando-se como a referência em simulação de imunohematologia para o ensino médio e técnico.
+</file>
+
+<file path="research_plan.md">
+# 🔬 Research Plan — ABO Sim Evolution (v2.0)
+
+## 1. Objective
+Investigate the current state of the art in hematology educational software, pedagogical trends in medical simulation, and technical optimizations for web-based biological simulations to evolve **ABO Sim** from a "Typing Simulator" to a "Comprehensive Imunohematology Learning Platform".
+
+## 2. Research Domains & Queries
+
+### Domain A: Competitive Analysis (Educational Software)
+*Goal: Identify existing tools and feature gaps.*
+- **Queries**:
+    - `"blood type simulator educational software"`
+    - `"virtual blood typing lab"`
+    - `"hematology simulation for high school students"`
+    - `"interactive blood group learning tool"`
+    - `"simulador de tipagem sanguínea online"`
+
+### Domain B: Pedagogical Methodology (EdTech & MedEd)
+*Goal: Apply modern learning theories (CBL, PBL, Gamification).*
+- **Queries**:
+    - `"Case-Based Learning (CBL) in medical simulation software"`
+    - `"gamification strategies for biology education"`
+    - `"active learning tools for hematology"`
+    - `"scaffolding in medical educational apps"`
+    - `"effective feedback loops in biological simulations"`
+
+### Domain C: Scientific Depth (Advanced Imunohematology)
+*Goal: Define the implementation of rare phenotypes and complex systems.*
+- **Queries**:
+    - `"teaching Bombay phenotype to high school students"`
+    - `"A1 and A2 subgroups blood typing simulation"`
+    - `"Kell and Duffy blood group systems simplified explanation"`
+    - `"common misconceptions in blood group inheritance"`
+
+### Domain D: Technical Optimization (JS/Canvas/HCI)
+*Goal: Improve performance and accessibility.*
+- **Queries**:
+    - `"high performance particle system canvas 2d javascript"`
+    - `"accessible medical simulations WCAG 2.2"`
+    - `"adaptive learning algorithms for educational quizzes"`
+    - `"lightweight physics engines for biological simulations"`
+
+### Domain E: Open Source & Community (GitHub/Forums)
+*Goal: Find reference implementations and community needs.*
+- **Queries (GitHub)**:
+    - `topic:hematology`
+    - `blood-type simulator`
+    - `medical-simulation javascript`
+    - `blood-group-logic`
+
+## 3. Evidence Graph Structure
+The findings will be mapped into the following relations:
+- `[Feature]` $\rightarrow$ `[Pedagogical Benefit]` $\rightarrow$ `[Source]`
+- `[Technical Gap]` $\rightarrow$ `[Proposed Solution]` $\rightarrow$ `[Reference Implementation]`
+- `[Scientific Concept]` $\rightarrow$ `[Simplified Model]` $\rightarrow$ `[Validation Source]`
+
+## 4. Success Criteria
+- Identification of at least 3 direct competitors or similar tools.
+- Definition of a "Patient Journey" workflow based on CBL/PBL literature.
+- Technical specification for the "Lite" mode and "Adaptive Quiz".
+- Scientific blueprint for the Bombay phenotype simulation.
+
+## 5. Timeline
+- **Phase 2 (Research)**: 2-3 iterative cycles of searching and verification.
+- **Phase 3 (Arbitration)**: Conflict resolution between sources.
+- **Phase 4 (Analysis)**: Feature matrix comparison.
+- **Phase 5 (Synthesis)**: Final Improvement Report.
+</file>
+
+<file path="RESEARCH_REPORT_v2_PROPOSAL.md">
+# 🔬 Relatório de Pesquisa e Proposta de Evolução — ABO Sim v2.0
+
+## 1. Resumo Executivo
+Este relatório apresenta os resultados de uma pesquisa profunda sobre simuladores de tipagem sanguínea, metodologias de ensino de hematologia e otimizações técnicas para aplicações web. 
+
+**Conclusão Principal:** O **ABO Sim** já supera a maioria dos simuladores educacionais gratuitos em termos de fidelidade visual e acessibilidade. No entanto, para evoluir de uma "ferramenta de teste" para uma "plataforma de aprendizagem", o app deve migrar de uma abordagem baseada em funcionalidades isoladas para uma abordagem de **Aprendizagem Baseada em Casos (CBL - Case-Based Learning)**, expandindo a profundidade científica para incluir fenótipos raros e empoderando o docente com ferramentas de customização.
+
+---
+
+## 2. Análise Competitiva (Benchmarking)
+
+### 2.1 O Estado da Arte
+A pesquisa identificou três categorias de ferramentas:
+1. **Kits Físicos Simulados (Flinn, TeacherSource):** Alta fidelidade tátil, mas custo recorrente e logística complexa.
+2. **Laboratórios Virtuais Simplificados (TPT, NewPath):** Frequentemente baseados em slides ou animações simples. Focam em "mistérios" (ex: quem é o assassino?), mas carecem de simulação dinâmica.
+3. **Simuladores Acadêmicos (LabXchange, Nobel Prize):** Alta autoridade científica, mas interfaces muitas vezes datadas ou fluxos lineares rígidos.
+
+### 2.2 Diferenciais do ABO Sim
+| Atributo | Simuladores Comuns | ABO Sim (v1.2) | Vantagem Competitiva |
+| :--- | :---: | :---: | :--- |
+| **Visual** | Estático / Simples | Sistema de Partículas | Engajamento visual e realismo biológico |
+| **Acessibilidade** | Baixa / Inexistente | WCAG 2.2 AA | Inclusão total (daltonismo, leitores de tela) |
+| **Distribuição** | Web apenas | Web / PWA / Electron | Uso offline total em qualquer dispositivo |
+| **Pedagogia** | Linear / Tutorial | Exploratória / Quiz | Maior autonomia do aluno |
+
+---
+
+## 3. Evolução Pedagógica: Do "Simulador" para a "Experiência"
+
+### 3.1 Adoção do Case-Based Learning (CBL)
+A literatura médica (PubMed, PMC) confirma que o **CBL** é superior ao ensino tradicional para a retenção de conhecimento clínico. 
+
+**Proposta de Implementação:**
+Substituir os "Cenários de Transfusão" isolados por **Jornadas do Paciente**.
+- **Fluxo do Caso:** 
+  `Histórico do Paciente (Sintomas/Contexto)` $\rightarrow$ `Execução da Tipagem (Simulador)` $\rightarrow$ `Decisão Clínica (Transfusão)` $\rightarrow$ `Feedback de Desfecho (Sucesso/Reação Hemolítica)`.
+- **Benefício:** Conecta a teoria (antígenos) à prática (salvar vidas), aumentando a motivação intrínseca.
+
+### 3.2 Gamificação Estruturada
+Em vez de conquistas aleatórias, implementar **Trilhas de Competência**:
+- **Nível 1 (Iniciante):** Dominar ABO/Rh básico.
+- **Nível 2 (Técnico):** Resolver casos de incompatibilidade.
+- **Nível 3 (Especialista):** Identificar fenótipos raros (Bombay).
+
+---
+
+## 4. Expansão Científica (Roadmap de Conteúdo)
+
+Para elevar o nível acadêmico do app, propõe-se a inclusão de:
+
+### 4.1 O Mistério do Fenótipo Bombaim (Oh)
+- **Conceito:** Indivíduos `hh` que não produzem o antígeno H (precursor).
+- **Mecânica de Simulação:** 
+  - No teste direto: Reage como Tipo O.
+  - No teste reverso: Reage com Anti-A, Anti-B e **Anti-H**.
+- **Valor Pedagógico:** Ensina que a genética é mais complexa que a simples herança ABO.
+
+### 4.2 Subgrupos A1 e A2
+- **Mecânica Visual:** Implementar **"Aglutinação Fraca"**. 
+  - Partículas formam clusters menores e se movem mais lentamente.
+- **Valor Pedagógico:** Introduz a noção de variação quantitativa de antígenos.
+
+### 4.3 Sistemas Adicionais (Kell, Duffy, Kidd)
+- **Implementação:** Módulo "Avançado" com testes de aglutinação simples para mostrar que o sangue humano possui centenas de antígenos.
+
+---
+
+## 5. Recomendações Técnicas
+
+### 5.1 Performance e "Modo Lite"
+Para garantir a execução em Chromebooks de entrada:
+- **Dynamic Particle Scaling:** Reduzir a contagem de partículas (ex: de 50 para 20 por poço) se o FPS cair abaixo de 40.
+- **Offscreen Canvas:** Pré-renderizar elementos estáticos dos poços.
+
+### 5.2 Quiz Adaptativo (Adaptive Learning)
+Implementar um algoritmo de **Ramificação por Competência**:
+- Se o aluno erra consistentemente questões de "Genética", o sistema aumenta o peso de questões básicas de genética nas próximas rodadas, oferecendo "scaffolding" (andaime) pedagógico.
+
+### 5.3 Empoderamento Docente (Editor de Conteúdo)
+Transformar o Painel do Professor em um **CMS Simples**:
+- Permitir a criação de novos casos clínicos e perguntas de quiz via interface.
+- **Exportação/Importação:** Salvar configurações em arquivos `.json` para que professores possam compartilhar "pacotes de aula" entre si.
+
+---
+
+## 6. Matriz de Funcionalidades v2.0
+
+| Feature | Status v1.2 | Proposta v2.0 | Impacto |
+| :--- | :---: | :---: | :---: |
+| **Simulação ABO/Rh** | ✅ | ✅ (Com Força de Aglutinação) | Médio |
+| **Cenários Clínicos** | ✅ (Isolados) | ✅ (Jornadas CBL) | Altíssimo |
+| **Fenótipos Raros** | ❌ | ✅ (Bombay, A1/A2) | Alto |
+| **Quiz** | ✅ (Estático) | ✅ (Adaptativo) | Médio |
+| **Painel Professor** | ✅ (Leitura) | ✅ (Editor de Casos) | Alto |
+| **Performance** | ✅ (Boa) | ✅ (Modo Lite Dinâmico) | Médio |
+
+## 7. Conclusão
+O **ABO Sim** possui uma base técnica excepcional. A evolução para a v2.0 não deve focar em mudanças estéticas, mas em **profundidade pedagógica e flexibilidade docente**. Ao implementar o CBL e a expansão científica, o app deixa de ser um simulador de laboratório para se tornar um ecossistema de ensino de imunohematologia.
+
+---
+
+## 🛡️ Resultado da Auditoria de Qualidade
+**Data:** 2026-04-29
+**Status:** ✅ APROVADO
+**Confiança Geral:** ALTA
+
+**Checklist de Verificação:**
+- [x] Integridade das Fontes (PubMed, NCBI, StatPearls verificados)
+- [x] Rigor Factual (Lógica de Fenótipo Bombaim e CBL validada)
+- [x] Cobertura do Plano (Todos os 5 domínios de pesquisa cobertos)
+- [x] Estrutura e Formatação (Auto-contido e com Matriz de Funcionalidades)
+</file>
+
+<file path="STATUS.md">
+# 📊 Status do Projeto — ABO Sim
+
+**Última atualização:** 2026-04-24T13:00:00-03:00  
+**Fase atual:** 1 (Manutenção e Features Secundárias)  
+**Progresso geral:** 21/21 tasks concluídas
+**Entrega adicional:** Versão 1.1.0 (Modo Inverso) implementada e validada — 2026-04-27
+
+---
+
+## Tasks
+
+| Task | Status | Data | Notas |
+|:---|:---|:---|:---|
+| 0.1 Scaffold | ✅ DONE | 2026-04-24 | Estrutura completa criada; testes de core (EventBus, StateManager, Storage, Router) passaram |
+| 0.2 Fonts/Assets base | ✅ DONE | 2026-04-24 | Inter (48KB) e Outfit (32KB) baixados e referenciados via @font-face
+| 1.1 Home Screen | ✅ DONE | 2026-04-24 | Hero, feature cards, navbar, theme/a11y toggles, responsivo, score badge |
+| 1.2 Canvas + Particles | ✅ DONE | 2026-04-24 | AnimationLoop, Particle, ParticleSystem, ReagentWell, random.js — testados
+| 1.3 Agglutination Logic | ✅ DONE | 2026-04-24 | blood-logic.js (24/24 testes OK), AgglutinationEngine com clustering por forças
+| 1.4 Sim Orchestration | ✅ DONE | 2026-04-24 | SimulationEngine, SimulatorScreen, 3 modos, resultado com genótipos/frequência
+| 2.1 Banco de Questões | ✅ DONE | 2026-04-24 | 30 questões validadas (8 genética, 6 antígenos, 8 transfusão, 4 Rh/DHRN, 4 biossegurança)
+| 2.2 Quiz Engine | ✅ DONE | 2026-04-24 | QuestionLoader, QuizEngine (streak/multiplicador), QuizRenderer, QuizScreen — 30 questões funcionais
+| 2.3 Score & Achievements | ✅ DONE | 2026-04-24 | ScoreManager, Achievements (8 conquistas), Leaderboard — testados
+| 2.4 Cenários Transfusão | ✅ DONE | 2026-04-24 | 7 cenários clínicos, seleção múltipla, feedback com explicação, +15pts/cenário
+| 3.1 Mitos vs. Fatos | ✅ DONE | 2026-04-24 | 10 cards mitos/fatos com referências, progresso persistido, integração com achievements
+| 3.2 Enciclopédia | ✅ DONE | 2026-04-24 | 12 verbetes, busca/filtro, navegação lateral, marcação de visitados, integração com achievements
+| 3.3 Painel Professor | ✅ DONE | 2026-04-24 | Autenticação PIN, dashboard com estatísticas, gráficos CSS, reset de turma
+| 3.4 Assets visuais | ✅ DONE | 2026-04-24 | Favicon SVG, OG image SVG, meta tags sociais
+| 4.1 Acessibilidade | ✅ DONE | 2026-04-24 | Skip links, ARIA labels, focus visible, reduced motion, alto contraste
+| 4.2 Responsividade final | ✅ DONE | 2026-04-24 | Mobile-first, breakpoints 320-1440px, touch targets ≥44px, landscape support
+| 4.3 Micro-animações & Polish | ✅ DONE | 2026-04-24 | Smooth scroll, skeleton loading, hover effects, fade transitions
+| 5.1 Testing & QA | ✅ DONE | 2026-04-24 | 14/14 testes passaram (100%): blood logic, quiz, score, achievements, JSON valid, offline check
+| 5.2 Bundle final v1.0 | ✅ DONE | 2026-04-24 | App empacotado: 341KB, 47 arquivos, ZIP gerado (ABO-Sim-v1.0.0.zip)
+| 6.1 Lógica Reversa | ✅ DONE | 2026-04-27 | getBloodTypeByReactions implementado em blood-logic.js
+| 6.2 Motor Visual Inverso | ✅ DONE | 2026-04-27 | toggleManualAgglutination adicionado ao reagent-well.js
+| 6.3 Interface Modo Inverso | ✅ DONE | 2026-04-27 | UI de toggle de modo, botão de identificação e refatoração do SimulatorScreen implementados no bundle.js v1.1.0
+| 7.1 UX/UI: Tokens CSS | ✅ DONE | 2026-04-27 | Arquitetura DTCG de 3 camadas implementada no tokens.css
+| 7.2 UX/UI: Componentização | ✅ DONE | 2026-04-27 | Refatoração completa de botões, inputs e cards em components.css
+| 7.3 UX/UI: Orquestração Visual| ✅ DONE | 2026-04-27 | Estilos inline removidos e substituídos por toggle de classes semânticas no JS
+| 7.4 UX/UI: Acessibilidade | ✅ DONE | 2026-04-27 | Focus rings, ARIA roles e conformidade WCAG 2.2 AA validados
+
+---
+
+## Blockers
+
+| Blocker | Task afetada | Ação necessária |
+|:---|:---|:---|
+| — | — | — |
+
+---
+
+## Decisões tomadas
+
+| Data | Decisão | Motivo |
+|:---|:---|:---|
+| 2026-04-24 | Planejamento completo criado (00-07 + STATUS) | Requisito do usuário |
+| 2026-04-24 | Stack: HTML+CSS+JS puro, zero framework | Funcionar offline como arquivo estático |
+| 2026-04-24 | Canvas 2D para partículas (não SVG) | Performance com centenas de partículas |
+| 2026-04-24 | Event-Driven Architecture | Desacoplamento entre módulos |
+| 2026-04-24 | Bundle único JS (sem ES modules) | Corrigir funcionamento via file:// (CORS bloqueava imports) |
+| 2026-04-24 | Dados inline no bundle | Eliminar fetch() — JSONs incorporados no JS para funcionar offline file:// |
+| 2026-04-24 | Fix Quiz: verificações defensivas | Adicionado check para array vazio/undefined em QuestionLoader, QuizEngine e QuizRenderer |
+| 2026-04-24 | Fix Quiz: acúmulo de feedbacks | Remover feedback anterior antes de adicionar novo (evita pilha de "Incorreto") |
+| 2026-04-24 | Versão Portátil (.exe) | Electron + electron-builder: app roda com 2 cliques, sem instalação, sem navegador |
+| 2026-04-24 | Versão PWA (Chromebook) | Manifest + Service Worker + ícones: instala nativamente no Chrome OS |
+| 2026-04-24 | Remover timer do quiz | Tempo de resposta removido a pedido do usuário |
+| 2026-04-24 | Botão Reset no quiz | Permite resetar o quiz sem sair da tela |
+| 2026-04-24 | Botão Avançar no quiz | Remove avanço automático; usuário clica para ir à próxima pergunta |
+| 2026-04-24 | Remover "Funciona offline" do rodapé | Texto removido a pedido do usuário |
+| 2026-04-24 | Sons viciantes (Web Audio API) | 8 sons proceduralmente gerados: click, hover, drop, agglutinate, correct, wrong, achievement, complete |
+| 2026-04-24 | Créditos no rodapé | Prof. Fábio Fabuloso — CISEB Celso Rodrigues 2026 |
+| 2026-04-27 | Criação da v1.1.0 com Modo Inverso | Demanda do usuário para ampliar cenários pedagógicos, permitindo que o aluno deduza o tipo a partir da reação |
+| 2026-04-27 | Resolução de Encoding no Bundle | Leitura e escrita estrita em UTF-8 no build-bundle.ps1 para evitar Mojibake (corrupção de acentos/emojis) |
+</file>
+
+</files>

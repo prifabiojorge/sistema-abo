@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#111520"/>
+  <rect x="50" y="50" width="1100" height="530" rx="20" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+  <text x="600" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="92" font-weight="bold" fill="#da2c2c">ABO Pai d'égua</text>
+  <text x="600" y="350" text-anchor="middle" font-family="Arial, sans-serif" font-size="48" fill="#eef0f5">Simulador de Tipagem Sanguínea ABO/Rh</text>
+  <text x="600" y="430" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="#959cae">Aprenda imunohematologia de forma segura e gamificada</text>
+  <circle cx="600" cy="520" r="30" fill="#da2c2c" opacity="0.8"/>
+  <text x="600" y="530" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#111520" font-weight="bold">CISEB 2026</text>
+</svg>

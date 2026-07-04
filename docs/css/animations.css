@@ -1,0 +1,173 @@
+/* ==========================================================================
+   ANIMATIONS — ABO Sim v1.3.0
+   ========================================================================== */
+
+/* --- Existing animations --- */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(var(--well-color-rgb, 255,255,255), 0.4); }
+  50%      { box-shadow: 0 0 0 12px rgba(var(--well-color-rgb, 255,255,255), 0); }
+}
+
+@keyframes dropFall {
+  0%   { transform: translateY(-60px) scale(1); opacity: 0; }
+  50%  { opacity: 1; }
+  100% { transform: translateY(0) scale(0.8); opacity: 0.8; }
+}
+
+@keyframes scorePopup {
+  0%   { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-40px) scale(1.2); opacity: 0; }
+}
+
+/* --- NEW v1.3.0 animations (Task 8.5) --- */
+
+/* Page transitions */
+@keyframes pageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pageSlideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+/* Error: well clicked incorrectly */
+@keyframes wellShake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+  20%, 40%, 60%, 80% { transform: translateX(4px); }
+}
+
+/* Result card reveal */
+@keyframes resultReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.85);
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.02);
+    box-shadow: 0 0 24px 4px rgba(220, 38, 38, 0.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 16px 2px rgba(220, 38, 38, 0.1);
+  }
+}
+
+/* Achievement unlock */
+@keyframes achievementUnlock {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(-10deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15) rotate(5deg);
+  }
+  75% {
+    transform: scale(0.95) rotate(-2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Skeleton shimmer */
+@keyframes skeletonShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Toast animations */
+@keyframes toastSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes toastSlideOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+/* Tour tooltip appear */
+@keyframes tourAppear {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Modal overlay */
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes overlayFadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* --- Transition classes for router (Task 8.5) --- */
+
+.screen-enter {
+  animation: pageSlideIn 300ms var(--ease-out-quart, cubic-bezier(0.25, 1, 0.5, 1)) forwards;
+}
+
+.screen-exit {
+  animation: pageSlideOut 200ms ease-in forwards;
+}
+
+/* Result card */
+.result-card {
+  animation: resultReveal 500ms var(--ease-spring, cubic-bezier(0.34, 1.56, 0.64, 1)) forwards;
+}
+
+/* Well shake on error */
+.well-shake {
+  animation: wellShake 500ms ease-in-out;
+}
+
+/* Achievement unlock animation */
+.achievement-toast {
+  animation: achievementUnlock 600ms var(--ease-spring, cubic-bezier(0.34, 1.56, 0.64, 1)) forwards;
+}

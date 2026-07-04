@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QR Code - ABO Pai d'égua</title>
+  <style>
+    :root {
+      color: #111827;
+      background: #ffffff;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: #f3f4f6;
+    }
+
+    .sheet {
+      width: min(100%, 210mm);
+      min-height: 297mm;
+      margin: 0 auto;
+      padding: 14mm;
+      box-sizing: border-box;
+      display: grid;
+      gap: 12mm;
+      background: #ffffff;
+    }
+
+    .qr-card {
+      border: 2px solid #111827;
+      padding: 10mm;
+      display: grid;
+      grid-template-columns: 84mm 1fr;
+      gap: 10mm;
+      align-items: center;
+      page-break-inside: avoid;
+    }
+
+    .qr-card img {
+      width: 84mm;
+      height: 84mm;
+      display: block;
+    }
+
+    h1 {
+      margin: 0 0 6mm;
+      font-size: 20pt;
+      line-height: 1.1;
+    }
+
+    p {
+      margin: 0 0 4mm;
+      font-size: 12pt;
+      line-height: 1.35;
+    }
+
+    .url {
+      padding: 3mm;
+      border: 1px solid #374151;
+      font-family: "Courier New", monospace;
+      font-size: 10pt;
+      word-break: break-all;
+      background: #f9fafb;
+    }
+
+    .credits {
+      margin-top: 6mm;
+      font-size: 10pt;
+      color: #374151;
+    }
+
+    @media screen and (max-width: 760px) {
+      .sheet {
+        min-height: auto;
+        padding: 16px;
+      }
+
+      .qr-card {
+        grid-template-columns: 1fr;
+      }
+
+      .qr-card img {
+        width: min(100%, 320px);
+        height: auto;
+        margin: 0 auto;
+      }
+    }
+
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 0;
+      }
+
+      body {
+        background: #ffffff;
+      }
+
+      .sheet {
+        width: 210mm;
+        min-height: 297mm;
+        padding: 12mm;
+        gap: 10mm;
+      }
+
+      .qr-card {
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="sheet">
+    <section class="qr-card">
+      <img src="./img/qr-code.svg" alt="QR Code para abrir o ABO Pai d'égua">
+      <div>
+        <h1>Escaneie para abrir o ABO Pai d'égua</h1>
+        <p>Abra a câmera do Chromebook, aponte para o QR Code e toque no link exibido.</p>
+        <p class="url">https://prifabiojorge.github.io/sistema-abo/</p>
+        <p class="credits">Prof. Fábio Fabuloso - CISEB 2026</p>
+      </div>
+    </section>
+
+    <section class="qr-card">
+      <img src="./img/qr-code.svg" alt="QR Code para abrir o ABO Pai d'égua">
+      <div>
+        <h1>Escaneie para abrir o ABO Pai d'égua</h1>
+        <p>Abra a câmera do Chromebook, aponte para o QR Code e toque no link exibido.</p>
+        <p class="url">https://prifabiojorge.github.io/sistema-abo/</p>
+        <p class="credits">Prof. Fábio Fabuloso - CISEB 2026</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

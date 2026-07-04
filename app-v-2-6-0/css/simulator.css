@@ -1,0 +1,105 @@
+/* Simulator — ABO Sim */
+
+.simulator__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-6);
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.type-selector {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+  flex-wrap: wrap;
+}
+
+.type-selector select {
+  background: var(--surface-sunken);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.type-selector select:focus-visible {
+  border-color: var(--border-focus);
+  box-shadow: var(--shadow-focus-ring);
+}
+
+.wells-container {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-5);
+}
+
+.reagent-well {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.well-canvas {
+  width: 160px;
+  height: 160px;
+  border-radius: var(--radius-full);
+  border: 3px solid var(--border-default);
+  background: var(--surface-sunken);
+  cursor: pointer;
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.2s;
+  outline: none;
+}
+
+.well-canvas:focus-visible {
+  box-shadow: var(--shadow-focus-ring);
+}
+
+.reagent-well[data-reagent="anti-a"] .well-canvas { border-color: var(--reagent-anti-a); }
+.reagent-well[data-reagent="anti-b"] .well-canvas { border-color: var(--reagent-anti-b); }
+.reagent-well[data-reagent="anti-d"] .well-canvas { border-color: var(--reagent-anti-d); }
+
+.well-canvas:hover, .well-canvas.is-hovered {
+  box-shadow: 0 0 24px rgba(255, 255, 255, 0.1);
+  transform: scale(1.02);
+}
+
+.well-label {
+  font: var(--weight-semibold) var(--text-sm) var(--font-sans);
+  color: var(--text-secondary);
+}
+
+/* Result card */
+.result-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  text-align: left;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.result-card h3 {
+  font: var(--weight-bold) var(--text-xl) var(--font-display);
+  margin-bottom: var(--space-4);
+  color: var(--action-primary);
+}
+
+.result-reactions {
+  margin-bottom: var(--space-4);
+  line-height: 2;
+}
+
+.result-actions {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+  flex-wrap: wrap;
+}

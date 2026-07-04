@@ -1,0 +1,95 @@
+{
+  "scenarios": [
+    {
+      "id": "ts001",
+      "difficulty": "easy",
+      "patient": {
+        "name": "João",
+        "age": 45,
+        "bloodType": "A+",
+        "situation": "Cirurgia eletiva de joelho. Necessita de 2 unidades de hemácias."
+      },
+      "availableBlood": ["A+", "B+", "O+", "AB-", "O-", "A-"],
+      "correctAnswers": ["A+", "O+", "O-", "A-"],
+      "explanation": "Paciente A+ pode receber hemácias de: A+, A-, O+, O-. Os tipos B+ e AB- contêm antígenos contra os quais o paciente possui anticorpos (Anti-B)."
+    },
+    {
+      "id": "ts002",
+      "difficulty": "easy",
+      "patient": {
+        "name": "Maria",
+        "age": 28,
+        "bloodType": "O-",
+        "situation": "Hemorragia pós-parto. Estado de choque hemorrágico."
+      },
+      "availableBlood": ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"],
+      "correctAnswers": ["O-"],
+      "explanation": "Paciente O- não possui antígenos A, B nem D, e possui Anti-A e Anti-B no plasma. Só pode receber hemácias de O- (doador universal absoluto) para evitar reação hemolítica aguda."
+    },
+    {
+      "id": "ts003",
+      "difficulty": "medium",
+      "patient": {
+        "name": "Carlos",
+        "age": 62,
+        "bloodType": "AB+",
+        "situation": "Anemia severa por insuficiência renal crônica."
+      },
+      "availableBlood": ["A+", "B-", "O+", "AB+", "AB-"],
+      "correctAnswers": ["A+", "B-", "O+", "AB+", "AB-"],
+      "explanation": "AB+ é o receptor universal de hemácias. Possui todos os antígenos (A, B, D) e não produz anticorpos anti-A nem anti-B. Pode receber de qualquer tipo ABO e Rh."
+    },
+    {
+      "id": "ts004",
+      "difficulty": "medium",
+      "patient": {
+        "name": "Ana",
+        "age": 19,
+        "bloodType": "B-",
+        "situation": "Trauma em acidente de moto. Tipo sanguíneo confirmado."
+      },
+      "availableBlood": ["B+", "B-", "O+", "O-", "A-", "AB-"],
+      "correctAnswers": ["B-", "O-"],
+      "explanation": "Paciente B- possui antígeno B, mas não possui D. Possui Anti-A no plasma. Pode receber de B- (mesmo tipo) ou O- (sem A, sem B, sem D). B+ e O+ têm antígeno D, que causaria sensibilização."
+    },
+    {
+      "id": "ts005",
+      "difficulty": "hard",
+      "patient": {
+        "name": "Pedro",
+        "age": 8,
+        "bloodType": "A-",
+        "situation": "Leucemia aguda em quimioterapia. Necessita transfusão de plaquetas e hemácias."
+      },
+      "availableBlood": ["A+", "A-", "O+", "O-", "AB+", "B-"],
+      "correctAnswers": ["A-", "O-"],
+      "explanation": "Crianças com leucemia em tratamento devem receber sangue Rh-negativo sempre que possível para evitar sensibilização ao antígeno D, que limitaria opções futuras. A- e O- são as únicas opções seguras."
+    },
+    {
+      "id": "ts006",
+      "difficulty": "hard",
+      "patient": {
+        "name": "Lucia",
+        "age": 35,
+        "bloodType": "O+",
+        "situation": "Gravidez de risco com anemia falciforme. Gestação de 32 semanas."
+      },
+      "availableBlood": ["O+", "O-", "A+", "A-", "B+", "B-"],
+      "correctAnswers": ["O+", "O-"],
+      "explanation": "Gestante O+ pode receber O+ ou O-. Porém, em gestação, prefere-se O- para evitar sensibilização Rh, especialmente se o bebê for Rh+. O+ é aceitável se não houver O- disponível e a gestante já for Rh+."
+    },
+    {
+      "id": "ts007",
+      "difficulty": "hard",
+      "patient": {
+        "name": "Roberto",
+        "age": 55,
+        "bloodType": "AB-",
+        "situation": "Transplante de fígado em lista de espera. Necessita reserva de sangue."
+      },
+      "availableBlood": ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"],
+      "correctAnswers": ["A-", "B-", "AB-", "O-"],
+      "explanation": "AB- possui antígenos A e B, mas não D. Pode receber de A-, B-, AB- e O-. Não pode receber de tipos Rh+ (A+, B+, AB+, O+) pois não possui o antígeno D."
+    }
+  ]
+}

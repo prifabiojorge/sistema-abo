@@ -92,6 +92,7 @@
 | 19.4 `docs/` GitHub Pages | ✅ DONE | 2026-07-03 | `docs/` montada apenas com arquivos públicos: `index`, `manifest`, `sw`, `qr-print`, `js/bundle.js`, `css/`, `fonts/`, `img/` |
 | 19.5 Validação local v2.6.0 | ✅ DONE | 2026-07-03 | Build, `node --check`, varredura de segredos em `docs/` e decodificação OpenCV do QR Code passaram |
 | 19.6 Deploy GitHub Pages | ✅ DONE | 2026-07-03 | Commit `1d0ab9a` publicado em `main`; Pages configurado para `/docs`, status `built`, URL pública HTTP 200 |
+| 19.7 Offline PWA público | ✅ DONE | 2026-07-03 | Chrome headless validou service worker `abo-pai-degua-v2.6.0` com 21 itens cacheados e recarregamento offline da URL pública |
 
 ---
 

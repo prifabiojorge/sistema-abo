@@ -68,8 +68,9 @@ Permitir que alunos em Chromebook acessem o ABO Pai d'égua por QR Code, usando 
 - URL pública carregou com HTTP 200: `https://prifabiojorge.github.io/sistema-abo/`.
 - Artefatos públicos validados com HTTP 200: `qr-print.html`, `img/qr-code.svg`, `js/bundle.js` e `sw.js`.
 - `sw.js` remoto validado: 21 URLs cacheadas, 0 falhas; sem `README.md` ou launcher local no cache público.
+- Teste offline com Chrome headless: app abriu online, `abo-pai-degua-v2.6.0` cacheou 21 itens, navegador foi colocado offline e a URL pública recarregou com o título `ABO Pai d'égua v2.6.0 - Tipagem Sanguínea`.
 
 ## Pendências Externas
 
 - A validação em Chromebook real depende do dispositivo/câmera dos alunos ou do professor.
-- A validação offline real depende de abrir o app em navegador, permitir o service worker concluir o primeiro cache e testar sem conexão.
+- A validação de câmera ainda depende de apontar um Chromebook real para o QR Code projetado ou impresso.

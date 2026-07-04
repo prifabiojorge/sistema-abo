@@ -135,7 +135,7 @@ Repositório GitHub: prifabiojorge/sistema-abo
 - `[x]` 7.2 Varredura de segurança final em `docs/`: `grep -rn "AQ\.\|AIza\|api.key\|sk-" docs/` → 0 resultados
 - `[x]` 7.3 Verificar que `https://prifabiojorge.github.io/sistema-abo/` carrega (após ativação do Pages)
 - `[ ]` 7.4 Escanear QR Code com câmera do Chromebook e validar que abre direto
-- `[ ]` 7.5 Verificar que o Service Worker cacheia tudo e o app funciona offline após primeiro carregamento
+- `[x]` 7.5 Verificar que o Service Worker cacheia tudo e o app funciona offline após primeiro carregamento
 
 ---
 

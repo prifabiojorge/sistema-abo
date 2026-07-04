@@ -60,8 +60,16 @@ Permitir que alunos em Chromebook acessem o ABO Pai d'égua por QR Code, usando 
 - QR Code de `docs/img/qr-code.svg` decodificado com sucesso para a URL pública.
 - Lista do `sw.js` em `docs/` validada localmente: 21 URLs cacheadas, 0 arquivos ausentes.
 
+## Deploy GitHub Pages
+
+- Commit publicado em `main`: `1d0ab9aa7a8b46386b7a764cab81637713cafa6e`.
+- GitHub Pages criado/configurado via API para `main` + `/docs`.
+- Status final da API: `built`.
+- URL pública carregou com HTTP 200: `https://prifabiojorge.github.io/sistema-abo/`.
+- Artefatos públicos validados com HTTP 200: `qr-print.html`, `img/qr-code.svg`, `js/bundle.js` e `sw.js`.
+- `sw.js` remoto validado: 21 URLs cacheadas, 0 falhas; sem `README.md` ou launcher local no cache público.
+
 ## Pendências Externas
 
-- Após o push, confirmar/ativar GitHub Pages em `Settings > Pages > Source: main / Folder: /docs`.
-- Depois da propagação do GitHub Pages, validar carregamento em `https://prifabiojorge.github.io/sistema-abo/`.
 - A validação em Chromebook real depende do dispositivo/câmera dos alunos ou do professor.
+- A validação offline real depende de abrir o app em navegador, permitir o service worker concluir o primeiro cache e testar sem conexão.

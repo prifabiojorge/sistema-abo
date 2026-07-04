@@ -1,9 +1,9 @@
 # 📊 Status do Projeto — ABO Sim
 
 **Última atualização:** 2026-07-03T22:59:26-03:00  
-**Fase atual:** v2.6.0 preparada — QR Code + GitHub Pages para Chromebook  
-**Progresso v2.6.0:** 5/5 tasks locais concluídas  
-**Entrega adicional:** Versão 2.6.0 implementada em `app-v-2-6-0/` e `docs/` — 2026-07-03
+**Fase atual:** v2.6.0 publicada — QR Code + GitHub Pages para Chromebook  
+**Progresso v2.6.0:** 6/6 tasks concluídas no ambiente automatizável  
+**Entrega adicional:** Versão 2.6.0 implementada em `app-v-2-6-0/`, publicada em `docs/` e servida por GitHub Pages — 2026-07-03
 
 ---
 
@@ -91,6 +91,7 @@
 | 19.3 Integração Professor/PWA | ✅ DONE | 2026-07-03 | Aba `QR Code`, atalho `Q`, entrada na busca, modal de projeção, prompt PWA e manifest com `id`/`scope` |
 | 19.4 `docs/` GitHub Pages | ✅ DONE | 2026-07-03 | `docs/` montada apenas com arquivos públicos: `index`, `manifest`, `sw`, `qr-print`, `js/bundle.js`, `css/`, `fonts/`, `img/` |
 | 19.5 Validação local v2.6.0 | ✅ DONE | 2026-07-03 | Build, `node --check`, varredura de segredos em `docs/` e decodificação OpenCV do QR Code passaram |
+| 19.6 Deploy GitHub Pages | ✅ DONE | 2026-07-03 | Commit `1d0ab9a` publicado em `main`; Pages configurado para `/docs`, status `built`, URL pública HTTP 200 |
 
 ---
 

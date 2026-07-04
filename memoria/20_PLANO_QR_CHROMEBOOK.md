@@ -127,13 +127,13 @@ Repositório GitHub: prifabiojorge/sistema-abo
 - `[x]` 6.1 `git add docs/ memoria/ app-v-2-6-0/`
 - `[x]` 6.2 `git commit -m "v2.6.0: QR Code + GitHub Pages deploy para Chromebook"`
 - `[x]` 6.3 `git push origin main`
-- `[ ]` 6.4 **Ação manual do professor**: No GitHub → Settings → Pages → Source: `main` → Folder: `/docs` → Save
+- `[x]` 6.4 **Ação manual do professor**: No GitHub → Settings → Pages → Source: `main` → Folder: `/docs` → Save
   - Instruções passo a passo com screenshots serão fornecidas
 
 **Fase 7 — Validação**
 - `[x]` 7.1 `node --check docs/js/bundle.js` — sem erros
 - `[x]` 7.2 Varredura de segurança final em `docs/`: `grep -rn "AQ\.\|AIza\|api.key\|sk-" docs/` → 0 resultados
-- `[ ]` 7.3 Verificar que `https://prifabiojorge.github.io/sistema-abo/` carrega (após ativação do Pages)
+- `[x]` 7.3 Verificar que `https://prifabiojorge.github.io/sistema-abo/` carrega (após ativação do Pages)
 - `[ ]` 7.4 Escanear QR Code com câmera do Chromebook e validar que abre direto
 - `[ ]` 7.5 Verificar que o Service Worker cacheia tudo e o app funciona offline após primeiro carregamento
 
